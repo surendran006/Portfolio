@@ -30,7 +30,7 @@ const skills = [
 
 const experience = [
   {
-    company: 'Supreme Computers India PVT.LTD',
+    company: 'Supreme Computers India .PVT.LTD',
     role: 'Digital Marketing Executive',
     duration: 'Mar 2025 — Present',
     description: 'Website Administrator – E-commerce & Digital Marketing (IT Products)',
