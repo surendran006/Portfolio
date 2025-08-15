@@ -163,7 +163,7 @@ function App() {
                 </div>
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
                   <div className="text-2xl font-bold text-teal-600">MBA</div>
-                  <div className="text-sm text-gray-600">Marketing Management</div>
+                  <div className="text-sm text-gray-600">in Marketing Management</div>
                 </div>
               </div>
             </div>
