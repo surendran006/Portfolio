@@ -152,7 +152,7 @@ function App() {
               </p>
               <p className="text-gray-600 leading-relaxed mb-6">
                 My expertise spans across multiple digital platforms including Shopify, Google Analytics, 
-                and Google Ads, with a proven track record of delivering measurable improvements in 
+                and Google Ads, Meta Ads with a proven track record of delivering measurable improvements in 
                 online sales and user experience.
               </p>
               
