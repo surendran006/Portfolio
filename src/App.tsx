@@ -37,7 +37,7 @@ const experience = [
     achievements: [
       'Managed end-to-end e-commerce operations for SupremeIndia.com, including product uploads, pricing, inventory, and homepage merchandising',
       'Executed comprehensive SEO strategies improving organic traffic and keyword rankings',
-      'Launched and optimized Google Ads campaigns with focus on ROI and conversion tracking',
+      'Launched and optimized Google Ads/  Meta ads campaigns with focus on ROI and conversion tracking',
       'Collaborated with development teams to enhance UI/UX and site performance',
       'Implemented analytics dashboards for performance monitoring and user behavior analysis'
     ]
