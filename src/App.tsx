@@ -19,12 +19,13 @@ import {
 } from 'lucide-react';
 
 const skills = [
-  { name: 'SEO (On-page & Off-page)', level: 90, icon: Search },
-  { name: 'Google Ads (PPC)', level: 85, icon: MousePointer },
-  { name: 'Google Analytics', level: 88, icon: BarChart3 },
-  { name: 'Shopify', level: 82, icon: Globe },
-  { name: 'Social Media Marketing', level: 85, icon: Users },
-  { name: 'Content Optimization', level: 87, icon: TrendingUp }
+  { name: 'SEO (On-page & Off-page)', level: 100, icon: Search },
+  { name: 'Google Ads (PPC)', level: 100, icon: MousePointer },
+    { name: 'Meta Ads ', level: 100, icon: MousePointer },
+  { name: 'Google Analytics', level: 100, icon: BarChart3 },
+  { name: 'Shopify', level: 100, icon: Globe },
+  { name: 'Social Media Marketing', level: 100, icon: Users },
+  { name: 'Content Optimization', level: 100, icon: TrendingUp }
 ];
 
 const experience = [
@@ -53,7 +54,7 @@ const projects = [
   {
     title: 'Digital Marketing Campaign Management',
     description: 'Seasonal product campaigns with integrated social media and paid advertising',
-    technologies: ['Google Ads', 'Social Media', 'Analytics', 'Content Marketing'],
+    technologies: ['Google Ads','Meta Ads', 'Social Media', 'Analytics', 'Content Marketing'],
     results: 'Enhanced brand awareness and campaign performance tracking'
   }
 ];
