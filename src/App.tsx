@@ -48,7 +48,7 @@ const projects = [
   {
     title: 'E-commerce Platform Optimization',
     description: 'Complete SEO and UX overhaul for SupremeIndia.com resulting in improved conversion rates',
-    technologies: ['Shopify', 'Google Analytics', 'SEO', 'Google Ads'],
+    technologies: ['Shopify', 'Google Analytics', 'SEO', 'Google Ads''Meta Ads'],
     results: 'Improved search visibility and enhanced user experience'
   },
   {
