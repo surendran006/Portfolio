@@ -21,7 +21,7 @@ import {
 const skills = [
   { name: 'SEO (On-page & Off-page)', level: 100, icon: Search },
   { name: 'Google Ads (PPC)', level: 100, icon: MousePointer },
-    { name: 'Meta Ads ', level: 100, icon: MousePointer },
+    { name: 'Meta Ads ', level: 100, icon: BarChart3 },
   { name: 'Google Analytics', level: 100, icon: BarChart3 },
   { name: 'Shopify', level: 100, icon: Globe },
   { name: 'Social Media Marketing', level: 100, icon: Users },
