@@ -47,7 +47,7 @@ const experience = [
 const projects = [
   {
     title: 'E-commerce Platform Optimization',
-    description: 'Complete SEO and UX overhaul for <p><strong>Website:</strong> <a rel="noopener" href="https://www.supremeindia.com">www.supremeindia.com</a> resulting in improved conversion rates',
+    description: 'Complete SEO and UX overhaul for <p><strong>Website:</strong> <a rel="noopener" href="https://www.supremeindia.com">www.supremeindia.com resulting in improved conversion rates',
     technologies: ['Shopify', 'Google Analytics', 'SEO', 'Google Ads', 'Meta Ads'],
     results: 'Improved search visibility and enhanced user experience'
   },
