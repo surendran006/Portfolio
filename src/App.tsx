@@ -111,7 +111,7 @@ function App() {
               Digital Marketing Executive
             </p>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto mb-8">
-              Results-driven digital marketing professional specializing in SEO, Google Ads, 
+              Results-driven digital marketing professional specializing in SEO, Google Ads, Meta Ads
               and e-commerce optimization. Passionate about driving measurable growth through 
               data-driven marketing strategies.
             </p>
