@@ -4,7 +4,6 @@ import {
   Phone, 
   MapPin, 
   Linkedin, 
-  Github, 
   ExternalLink,
   ChevronDown,
   Calendar,
@@ -21,8 +20,8 @@ import {
 const skills = [
   { name: 'SEO (On-page & Off-page)', level: 100, icon: Search },
   { name: 'Google Ads (PPC)', level: 100, icon: MousePointer },
-    { name: 'Meta Ads ', level: 100, icon: BarChart3 },
-  { name: 'Google Analytics', level: 100, icon: BarChart3 },
+  { name: 'Meta Ads ', level: 100, icon: BarChart3 },
+  { name: 'Google Analytics', level: 100, icon: TrendingUp },
   { name: 'Shopify', level: 100, icon: Globe }, 
   { name: 'Social Media Marketing', level: 100, icon: Users },
   { name: 'Content Optimization', level: 100, icon: TrendingUp }
@@ -30,8 +29,8 @@ const skills = [
 
 const experience = [
   {
-    company: 'Supreme Computers India.PVT.LTD',
-    role: 'Digital Marketing Executive',
+    company: 'Supreme Computers India PVT LTD',
+    role: 'Digital Marketing Executive ( Website Admin )',
     duration: 'Mar 2025 — Present',
     description: 'Website Administrator – E-commerce & Digital Marketing (IT Products)',
     achievements: [
@@ -108,7 +107,7 @@ function App() {
               Surendran M
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-6 font-medium">
-              Digital Marketing Executive
+              Digital Marketing Executive (Website Admin)
             </p>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto mb-8">
               Results-driven digital marketing professional specializing in SEO, Google Ads, Meta Ads
@@ -129,6 +128,7 @@ function App() {
               >
                 View My Work
               </button>
+              {/* View Resume Button */}
               <a 
                 href="/resume.html" 
                 target="_blank" 
@@ -137,6 +137,16 @@ function App() {
               >
                 <ExternalLink className="w-4 h-4" />
                 <span>View My Resume</span>
+              </a>
+              {/* Download Resume Button */}
+              <a 
+                href="https://drive.google.com/uc?export=download&id=1f0x7K7ZWLUJw8rtqDk0xQXmyXwE3j_zR"
+                target="_blank" 
+                rel="noopener"
+                className="flex items-center space-x-2 px-8 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-700 transition-colors duration-200 shadow-lg"
+              >
+                <ExternalLink className="w-4 h-4" />
+                <span>Download Resume</span>
               </a>
             </div>
 
@@ -155,9 +165,7 @@ function App() {
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-gray-800">Professional Journey</h3>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Currently pursuing an MBA in Marketing Management while working as a Digital Marketing Executive 
-                at Supreme Computers (India). I bring hands-on experience in e-commerce operations, SEO strategies, 
-                and paid advertising campaigns.
+                I have completed my MBA in Marketing Management and currently work as a Digital Marketing Executive at Supreme Computers (India). I bring hands-on experience in e-commerce operations, SEO strategies, and paid advertising campaigns.
               </p>
               <p className="text-gray-600 leading-relaxed mb-6">
                 My expertise spans across multiple digital platforms including Shopify, Google Analytics, 
@@ -167,7 +175,7 @@ function App() {
               
               <div className="grid grid-cols-2 gap-4 mt-8">
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
-                  <div className="text-2xl font-bold text-teal-600">6+</div>
+                  <div className="text-2xl font-bold text-teal-600">7+</div>
                   <div className="text-sm text-gray-600">Months Experience</div>
                 </div>
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
@@ -180,11 +188,11 @@ function App() {
             <div className="space-y-6">
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-teal-600" />
-                <span className="text-gray-700">Chennai, India</span>
+                <span className="text-gray-700">Aminjikarai, Chennai, India</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-teal-600" />
-                <a href="tel:+919840696374" className="text-gray-700 hover:text-teal-600">(+91) 98406 96374</a>
+                <a href="tel:+919840696374" className="text-gray-700 hover:text-teal-600"> 9840696374</a>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-teal-600" />
@@ -192,7 +200,7 @@ function App() {
               </div>
               <div className="flex items-center space-x-3">
                 <Linkedin className="w-5 h-5 text-teal-600" />
-                <a href="https://www.linkedin.com/in/surendran-m-795a17338" className="text-gray-700 hover:text-teal-600">linkedin.com/in/surendran</a>
+                <a href="https://www.linkedin.com/in/surendran-m-795a17338" className="text-gray-700 hover:text-teal-600">linkedin.com/surendran</a>
               </div>
               
               <div className="mt-8">
@@ -389,7 +397,7 @@ function App() {
                 className="flex items-center justify-center space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
               >
                 <Phone className="w-5 h-5" />
-                <span className="font-medium">(+91) 98406 96374</span>
+                <span className="font-medium">Contact Me</span>
               </a>
               
               <a 
