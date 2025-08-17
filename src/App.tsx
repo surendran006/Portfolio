@@ -379,53 +379,6 @@ function App() {
           </div>
         </div>
       </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-12 text-gray-800">Let's Connect</h2>
-          
-          <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-            <p className="text-xl text-gray-700 mb-8">
-              Ready to discuss digital marketing opportunities? 
-              I'd love to hear about your project and how I can help drive results.
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <a 
-                href="tel:+919840696374"
-                className="flex items-center justify-center space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
-              >
-                <Phone className="w-5 h-5" />
-                <span className="font-medium">Contact Me</span>
-              </a>
-              
-              <a 
-                href="mailto:surendranbba006@gmail.com"
-                className="flex items-center justify-center space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
-              >
-                <Mail className="w-5 h-5" />
-                <span className="font-medium">Email Me</span>
-              </a>
-              
-              <a 
-                href="https://www.linkedin.com/in/surendran-m-795a17338"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
-              >
-                <Linkedin className="w-5 h-5" />
-                <span className="font-medium">LinkedIn</span>
-              </a>
-            </div>
-            
-            <p className="text-gray-600">
-              <MapPin className="w-4 h-4 inline mr-2" />
-              Based in Chennai, India • Available for remote opportunities
-            </p>
-          </div>
-        </div>
-      </section>
 import React, { useRef, useState } from "react";
 import emailjs from "emailjs-com";
 
@@ -538,6 +491,53 @@ function ContactForm() {
 }
 
 export default ContactForm;
+
+      {/* Contact Section */}
+      <section id="contact" className="py-16 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-12 text-gray-800">Let's Connect</h2>
+          
+          <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+            <p className="text-xl text-gray-700 mb-8">
+              Ready to discuss digital marketing opportunities? 
+              I'd love to hear about your project and how I can help drive results.
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <a 
+                href="tel:+919840696374"
+                className="flex items-center justify-center space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
+              >
+                <Phone className="w-5 h-5" />
+                <span className="font-medium">Contact Me</span>
+              </a>
+              
+              <a 
+                href="mailto:surendranbba006@gmail.com"
+                className="flex items-center justify-center space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
+              >
+                <Mail className="w-5 h-5" />
+                <span className="font-medium">Email Me</span>
+              </a>
+              
+              <a 
+                href="https://www.linkedin.com/in/surendran-m-795a17338"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
+              >
+                <Linkedin className="w-5 h-5" />
+                <span className="font-medium">LinkedIn</span>
+              </a>
+            </div>
+            
+            <p className="text-gray-600">
+              <MapPin className="w-4 h-4 inline mr-2" />
+              Based in Chennai, India • Available for remote opportunities
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="py-8 px-4 bg-gray-800 text-white">
