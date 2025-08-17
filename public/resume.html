@@ -1,210 +1,185 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Surendran M — Digital Marketing Executive</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root {
-  --accent: #0ea5a4;
-  --bg: #f4f8f9;
-  --card: #fff;
-  --muted: #6b7280;
-}
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: #111;
-  line-height: 1.6;
-}
-.container {
-  max-width: 900px;
-  margin: auto;
-  background: var(--card);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-  border-radius: 15px;
-  overflow: hidden;
-}
-header {
-  background: linear-gradient(135deg, var(--accent), #06b6d4);
-  color: white;
-  padding: 40px 20px;
-  text-align: center;
-}
-header h1 {
-  font-size: 28px;
-  font-weight: 800;
-}
-header p {
-  font-size: 16px;
-  font-weight: 500;
-  opacity: 0.9;
-}
-.contact {
-  margin-top: 15px;
-  font-size: 14px;
-}
-.contact a {
-  color: white;
-  text-decoration: none;
-}
-.section {
-  padding: 25px 30px;
-  border-bottom: 1px solid #eee;
-}
-.section h2 {
-  font-size: 18px;
-  color: var(--accent);
-  margin-bottom: 12px;
-}
-.skill-list, .pill-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.skill, .pill {
-  background: #eef6f6;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 13px;
-  color: #064e52;
-}
-.experience {
-  margin-bottom: 15px;
-}
-.experience h3 {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 5px;
-}
-.experience .role {
-  font-size: 13px;
-  color: var(--muted);
-}
-.experience .time {
-  font-size: 12px;
-  color: var(--muted);
-}
-ul {
-  padding-left: 18px;
-}
-footer {
-  text-align: center;
-  padding: 15px;
-  font-size: 13px;
-  color: var(--muted);
-}
-.download-btn {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 8px 16px;
-  background: white;
-  color: var(--accent);
-  font-weight: bold;
-  border-radius: 8px;
-  text-decoration: none;
-  border: 2px solid white;
-  transition: 0.3s;
-}
-.download-btn:hover {
-  background: var(--accent);
-  color: white;
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Surendran M — Digital Marketing Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#0ea5a4; /* teal */
+      --muted:#6b7280;
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --max-width:900px;
+      --paper-margin:18px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);padding:30px;display:flex;justify-content:center}
+    .resume{width:100%;max-width:var(--max-width);background:var(--card);box-shadow:0 10px 30px rgba(2,6,23,0.08);border-radius:12px;overflow:hidden}
+    .header{display:flex;align-items:center;gap:18px;padding:28px 32px;border-bottom:1px solid #eef2f7}
+    .avatar{width:84px;height:84px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:28px}
+    .name{font-size:20px;font-weight:800;margin:0}
+    .title{color:var(--muted);margin-top:4px;font-weight:600}
+    .contact{margin-left:auto;text-align:right;font-size:14px;color:var(--muted)}
+    .contact a{color:inherit;text-decoration:none}
+
+    .body{display:grid;grid-template-columns:300px 1fr}
+    .left{padding:24px 22px;background:linear-gradient(180deg,#ffffff 0%,#ffffff 100%)}
+    .right{padding:24px 34px}
+
+    h3{margin:0 0 10px 0;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:0.9px}
+    .section{margin-bottom:20px}
+    .skill-list{display:flex;flex-wrap:wrap;gap:8px}
+    .skill{background:#eef6f6;padding:6px 10px;border-radius:8px;font-size:13px;color:#064e52}
+    .pill{display:inline-block;background:#f1f5f9;padding:6px 8px;border-radius:8px;font-size:13px;color:var(--muted)}
+
+    .summary{font-size:15px;color:#111827;line-height:1.5;margin-bottom:6px}
+    .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+
+    .experience-item{margin-bottom:14px}
+    .exp-head{display:flex;align-items:center;justify-content:space-between}
+    .company{font-weight:700}
+    .role{color:var(--muted);font-size:14px}
+    .time{font-size:13px;color:var(--muted)}
+    .bullets{margin:8px 0 0 0;padding-left:18px}
+    .bullets li{margin-bottom:6px}
+
+    .edu-item{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+
+    .cert{font-size:14px;color:#0f172a}
+
+    .linkedin{display:inline-flex;align-items:center;gap:8px;color:var(--accent);text-decoration:none;font-weight:600}
+
+    /* print styles for PDF */
+    @media print{
+      body{background:white;padding:0}
+      .resume{box-shadow:none;border-radius:0}
+      .header,.left,.right{padding:12px}
+      .body{grid-template-columns:260px 1fr}
+    }
+
+    /* Responsive */
+    @media (max-width:800px){
+      .body{grid-template-columns:1fr}
+      .left{order:2}
+      .right{order:1}
+      .contact{text-align:left;margin-left:0}
+    }
+  </style>
 </head>
 <body>
+  <article class="resume" role="document">
+    <header class="header">
+      <div class="avatar">SM</div>
+      <div>
+        <h1 class="name">Surendran M</h1>
+        <div class="title">Digital Marketing Executive</div>
+      </div>
+      <div class="contact">
+        <div>📞 <a href="tel:+919840696374">(+91) 98406 96374</a></div>
+        <div>✉ <a href="mailto:surendranbba006@gmail.com">surendranbba006@gmail.com</a></div>
+        <div>🔗 <a class="linkedin" href="https://www.linkedin.com/in/surendran-m-795a17338">linkedin.com/in/surendran</a></div>
+        <div>📍 Chennai, India</div>
+      </div>
+    </header>
 
-<div class="container">
-  <header>
-    <h1>Surendran M</h1>
-    <p>Digital Marketing Executive</p>
-    <div class="contact">
-      📞 <a href="tel:+919840696374">(+91) 98406 96374</a> | 
-      ✉ <a href="mailto:surendranbba006@gmail.com">surendranbba006@gmail.com</a> | 
-      🔗 <a href="https://www.linkedin.com/in/surendran-m-795a17338">LinkedIn</a> | 
-      📍 Chennai, India
-    </div>
-    <a href="resume.pdf" class="download-btn">📄 Download PDF</a>
-    <a href="resume.pdf" download="Surendran_M_Resume.pdf" class="download-btn" style="margin-left: 10px;">💾 Save PDF</a>
-  </header>
+    <div class="body">
+      <aside class="left">
+        <section class="section">
+          <h3>Core Skills</h3>
+          <div class="skill-list">
+            <span class="skill">SEO (On-page & Off-page)</span>
+            <span class="skill">Google Ads (PPC)</span>
+            <span class="skill">Meta Ads (PPC)</span>
+            <span class="skill">Shopify</span>
+            <span class="skill">Google Analytics</span>
+            <span class="skill">Social Media</span>
+            <span class="skill">Content Optimization</span>
+            <span class="skill">MS Office</span>
+          </div>
+        </section>
 
-  <section class="section">
-    <h2>Professional Summary</h2>
-    <p>Results-driven Digital Marketing Executive with hands-on experience managing e-commerce operations, implementing SEO strategies, and running paid campaigns to drive traffic and conversions. Skilled at using Shopify, Google Analytics, and Google Ads to deliver measurable improvements in online sales and user experience.</p>
-  </section>
+        <section class="section">
+          <h3>Tools & Platforms</h3>
+          <div class="pill">Google Analytics</div>
+          <div class="pill">Search Console</div>
+          <div class="pill">Google Ads</div>
+          <div class="pill">Meta Ads</div>
+          <div class="pill">Shopify</div>
+          <div class="pill">Canva</div>
+        </section>
 
-  <section class="section">
-    <h2>Core Skills</h2>
-    <div class="skill-list">
-      <span class="skill">SEO (On-page & Off-page)</span>
-      <span class="skill">Google Ads (PPC)</span>
-      <span class="skill">Meta Ads (PPC)</span>
-      <span class="skill">Shopify</span>
-      <span class="skill">Google Analytics</span>
-      <span class="skill">Social Media</span>
-      <span class="skill">Content Optimization</span>
-      <span class="skill">MS Office</span>
-    </div>
-  </section>
+        <section class="section">
+          <h3>Education</h3>
+          <div class="edu-item">
+            <div>
+              <div style="font-weight:700">MBA - Marketing Management </div>
+              <div style="color:var(--muted);font-size:13px">Madras University, Chennai</div>
+            </div>
+            <div style="color:var(--muted);font-size:13px">2023 - 2025</div>
+          </div>
 
-  <section class="section">
-    <h2>Tools & Platforms</h2>
-    <div class="pill-list">
-      <span class="pill">Google Analytics</span>
-      <span class="pill">Search Console</span>
-      <span class="pill">Google Ads</span>
-      <span class="pill">Meta Ads</span>
-      <span class="pill">Shopify</span>
-      <span class="pill">Canva</span>
-    </div>
-  </section>
+          <div class="edu-item">
+            <div>
+              <div style="font-weight:700">BBA</div>
+              <div style="color:var(--muted);font-size:13px">St Thomas College of Arts & Science</div>
+            </div>
+            <div style="color:var(--muted);font-size:13px">2018 - 2022</div>
+          </div>
+        </section>
 
-  <section class="section">
-    <h2>Education</h2>
-    <p><b>MBA - Marketing Management</b>, Madras University, Chennai (2023 - 2025)</p>
-    <p><b>BBA</b>, St Thomas College of Arts & Science (2018 - 2022)</p>
-  </section>
+        <section class="section">
+          <h3>Certifications</h3>
+          <ul style="margin:0;padding-left:18px;color:var(--muted);font-size:14px">
+            <li>Digital Marketing Course - Inspire Digital Marketing </li>
+          </ul>
+        </section>
 
-  <section class="section">
-    <h2>Professional Experience</h2>
-    <div class="experience">
-      <h3>Supreme Computers (India) — Digital Marketing Executive</h3>
-      <div class="role">Website Administrator – E-commerce & Digital Marketing (IT Products)</div>
-      <div class="time">Mar 2025 — Present</div>
-      <ul>
-        <li>Managed end-to-end e-commerce operations for SupremeIndia.com</li>
-        <li>Executed on-page and off-page SEO improvements</li>
-        <li>Planned, launched, and monitored Google Ads, Meta Ads campaigns</li>
-        <li>Worked closely with developers and designers to improve UI/UX</li>
-        <li>Used Shopify, Google Analytics, Search Console, Razorpay</li>
-      </ul>
-    </div>
-  </section>
+        <section class="section">
+          <h3>Other</h3>
+          <div style="font-size:14px;color:var(--muted)">Total work experience: <strong>0 Year 6 Months</strong></div>
+        </section>
+      </aside>
 
-  <section class="section">
-    <h2>Key Projects & Achievements</h2>
-    <ul>
-      <li>Launched seasonal product campaigns improving site conversion rate</li>
-      <li>Optimized product pages for better search visibility</li>
-      <li>Implemented Google Analytics dashboards for campaign tracking</li>
-    </ul>
-  </section>
+      <main class="right">
+        <section class="section">
+          <h3>Professional Summary</h3>
+          <p class="summary">Results-driven Digital Marketing Executive with hands-on experience managing e-commerce operations, implementing SEO strategies, and running paid campaigns to drive traffic and conversions. Skilled at using Shopify (Project) , Google Analytics, and Google Ads to deliver measurable improvements in online sales and user experience.</p>
+        </section>
 
-  <section class="section">
-    <h2>Languages</h2>
-    <p>English (Fluent) • Tamil (Native)</p>
-  </section>
+        <section class="section">
+          <h3>Professional Experience</h3>
 
-  <footer>
-    &copy; 2025 Surendran M — Digital Marketing Executive
-  </footer>
-</div>
+          <div class="experience-item">
+            <div class="exp-head">
+              <div>
+                <div class="company">Supreme Computers (India) — <span style="font-weight:600">Digital Marketing Executive</span></div>
+                <div class="role">Website Administrator – E-commerce & Digital Marketing (IT Products)</div>
+              </div>
+              <div class="time">Mar 2025 — Present</div>
+            </div>
+            <ul class="bullets">
+              <li>Managed end-to-end e-commerce operations for <strong>SupremeIndia.com</strong>, including product uploads, pricing, inventory, and homepage merchandising for IT hardware & accessories.</li>
+              <li>Executed on-page and off-page <strong>SEO</strong> improvements — optimized meta tags, product descriptions, and blog content to improve keyword rankings and organic traffic.</li>
+              <li>Planned, launched, and monitored <strong>Google Ads, Meta Ads</strong> and social media campaigns; tracked performance (CTR, CPC, conversions) and optimized for ROI.</li>
+              <li>Worked closely with developers and designers to improve UI/UX, resolve issues, and ensure accurate product content and images.</li>
+              <li>Used <strong>Shopify, Google Analytics, Search Console</strong>, and Razorpay to monitor site health, analyze performance, and ensure smooth checkout flows.</li>
+            </ul>
+          </div>
 
-</body>
-</html>
+        </section>
+
+        <section class="section">
+          <h3>Key Projects & Achievements</h3>
+          <ul class="bullets">
+            <li>Launched seasonal product campaigns that improved site conversion rate (add numbers if available).</li>
+            <li>Optimized product pages leading to improved search visibility for priority keywords.</li>
+            <li>Implemented tracking and reporting dashboards in Google Analytics to measure campaign performance and user behaviour.</li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h3>Languages</h3>
+          <div style="color:var(--muted)">English (Fluent) • Tamil (Native)</div>
+        </section>
