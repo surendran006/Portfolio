@@ -129,6 +129,15 @@ function App() {
               >
                 View My Work
               </button>
+              <a 
+                href="/resume-surendran-m.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 px-8 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200"
+              >
+                <ExternalLink className="w-4 h-4" />
+                <span>View My Resume</span>
+              </a>
             </div>
 
             <div className="mt-12 flex justify-center">
