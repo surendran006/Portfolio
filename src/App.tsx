@@ -392,84 +392,44 @@ function ContactForm() {
 
     emailjs
       .sendForm(
-        "service_jij055t",   // Your Service ID
-        "template_hm2x5lp",  // Your Template ID
+        "service_jij055t",   // Service ID
+        "template_hm2x5lp",  // Template ID
         form.current,
-        "yNaFf9wCjc8dWEEtj"  // Your Public Key
+        "yNaFf9wCjc8dWEEtj"  // Public Key
       )
       .then(
         () => {
-          setStatus("✅ Message sent successfully!");
+          setStatus("Message sent ✅");
           form.current?.reset();
         },
-        (error) => {
-          setStatus("❌ Failed to send message. Please try again.");
-          console.error(error);
+        () => {
+          setStatus("Message failed ❌ Try again.");
         }
       );
   };
 
   return (
-    <section id="contact" className="py-16 px-6 bg-gradient-to-r from-teal-50 to-white">
-      <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">Contact Me</h2>
-        <p className="text-gray-600 mb-10">
-          Have a question or want to work together? Fill out the form below and I’ll get back to you.
-        </p>
-      </div>
-
-      <form
-        ref={form}
-        onSubmit={sendEmail}
-        className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-lg border border-gray-200"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <input
-            type="text"
-            name="from_name"
-            placeholder="Your Name"
-            required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
-          />
-          <input
-            type="email"
-            name="reply_to"
-            placeholder="Your Email"
-            required
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
-          />
+    <div style={{ maxWidth: "500px", margin: "0 auto", padding: "20px" }}>
+      <h2>Contact Me</h2>
+      <form ref={form} onSubmit={sendEmail}>
+        <div>
+          <label>Name</label>
+          <input type="text" name="from_name" required style={{ width: "100%", padding: "8px", marginBottom: "10px" }} />
         </div>
-
-        <input
-          type="text"
-          name="subject"
-          placeholder="Subject"
-          required
-          className="w-full mt-6 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
-        />
-
-        <textarea
-          name="message"
-          rows={6}
-          placeholder="Your Message..."
-          required
-          className="w-full mt-6 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
-        ></textarea>
-
-        <div className="mt-8 text-center">
-          <button
-            type="submit"
-            className="px-8 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-700 transition-colors duration-200 shadow-lg"
-          >
-            Send Message
-          </button>
+        <div>
+          <label>Email</label>
+          <input type="email" name="reply_to" required style={{ width: "100%", padding: "8px", marginBottom: "10px" }} />
         </div>
-
-        {status && (
-          <p className="mt-4 text-center text-sm text-gray-600">{status}</p>
-        )}
+        <div>
+          <label>Message</label>
+          <textarea name="message" required rows={5} style={{ width: "100%", padding: "8px", marginBottom: "10px" }}></textarea>
+        </div>
+        <button type="submit" style={{ padding: "10px 20px", background: "teal", color: "white", border: "none", cursor: "pointer" }}>
+          Send
+        </button>
       </form>
-    </section>
+      {status && <p style={{ marginTop: "10px" }}>{status}</p>}
+    </div>
   );
 }
 
