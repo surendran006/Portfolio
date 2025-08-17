@@ -426,67 +426,118 @@ function App() {
           </div>
         </div>
       </section>
-<section id="contact" class="py-16 px-4 bg-gray-50">
-  <div class="max-w-3xl mx-auto">
-    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Contact Me</h2>
+import React, { useRef, useState } from "react";
+import emailjs from "emailjs-com";
 
-    <!-- Contact Form -->
-    <form action="https://formspree.io/f/your-form-id" method="POST" class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Name -->
-        <div>
-          <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-          <input type="text" id="name" name="name" required
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none" />
-        </div>
+function ContactForm() {
+  const form = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState("");
 
-        <!-- Email -->
-        <div>
-          <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-          <input type="email" id="email" name="email" required
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none" />
-        </div>
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!form.current) return;
+
+    emailjs
+      .sendForm(
+        "service_jij055t",   // ✅ Your Service ID
+        "template_hm2x5lp",  // ✅ Your Template ID
+        form.current,
+        "yNaFf9wCjc8dWEEtj"  // ✅ Your Public Key
+      )
+      .then(
+        () => {
+          setStatus("✅ Message sent successfully!");
+          form.current?.reset();
+        },
+        (error) => {
+          setStatus("❌ Failed to send message. Try again.");
+          console.error(error);
+        }
+      );
+  };
+
+  return (
+    <section id="contact" className="py-16 px-4 bg-gray-50">
+      <div className="max-w-3xl mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
+          Contact Me
+        </h2>
+
+        <form
+          ref={form}
+          onSubmit={sendEmail}
+          className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Name
+              </label>
+              <input
+                type="text"
+                name="from_name"
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                name="reply_to"
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              />
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Subject
+            </label>
+            <input
+              type="text"
+              name="subject"
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+            />
+          </div>
+
+          <div className="mt-6">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Message
+            </label>
+            <textarea
+              name="message"
+              rows={5}
+              required
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
+            ></textarea>
+          </div>
+
+          <div className="mt-8 text-center">
+            <button
+              type="submit"
+              className="px-8 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-700 transition-colors duration-200 shadow-lg"
+            >
+              Send Message
+            </button>
+          </div>
+
+          {status && (
+            <p className="mt-4 text-center text-sm text-gray-600">{status}</p>
+          )}
+        </form>
       </div>
+    </section>
+  );
+}
 
-      <!-- Subject -->
-      <div class="mt-6">
-        <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
-        <input type="text" id="subject" name="subject" required
-          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none" />
-      </div>
-
-      <!-- Message -->
-      <div class="mt-6">
-        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-        <textarea id="message" name="message" rows="5" required
-          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"></textarea>
-      </div>
-
-      <!-- Submit Button -->
-      <div class="mt-8 text-center">
-        <button type="submit"
-          class="px-8 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-700 transition-colors duration-200 shadow-lg">
-          Send Message
-        </button>
-      </div>
-    </form>
-
-    <!-- Direct Contact Info -->
-    <div class="mt-12 text-center space-y-4">
-      <p class="text-gray-700">
-        📞 <a href="tel:+91984069674" class="text-teal-600 hover:underline">+91 98406 9674</a>
-      </p>
-      <p class="text-gray-700">
-        📧 <a href="mailto:surndranbba006@gmail.com" class="text-teal-600 hover:underline">surndranbba006@gmail.com</a>
-      </p>
-      <p class="text-gray-700">
-        💼 <a href="https://www.linkedin.com/in/surendran-m-795a17338" target="_blank" class="text-teal-600 hover:underline">
-          linkedin.com/in/surendran-m-795a17338
-        </a>
-      </p>
-    </div>
-  </div>
-</section>
+export default ContactForm;
 
       {/* Footer */}
       <footer className="py-8 px-4 bg-gray-800 text-white">
