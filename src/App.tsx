@@ -4,10 +4,11 @@ import {
   Phone, 
   MapPin, 
   Linkedin, 
+  Github, 
   ExternalLink,
   ChevronDown,
   Calendar,
-  Award,
+  Award, 
   Target,
   TrendingUp,
   Users,
@@ -20,17 +21,17 @@ import {
 const skills = [
   { name: 'SEO (On-page & Off-page)', level: 100, icon: Search },
   { name: 'Google Ads (PPC)', level: 100, icon: MousePointer },
-  { name: 'Meta Ads ', level: 100, icon: BarChart3 },
-  { name: 'Google Analytics', level: 100, icon: TrendingUp },
-  { name: 'Shopify', level: 100, icon: Globe }, 
+    { name: 'Meta Ads ', level: 100, icon: BarChart3 },
+  { name: 'Google Analytics', level: 100, icon: BarChart3 },
+  { name: 'Shopify', level: 100, icon: Globe },
   { name: 'Social Media Marketing', level: 100, icon: Users },
   { name: 'Content Optimization', level: 100, icon: TrendingUp }
 ];
 
 const experience = [
   {
-    company: 'Supreme Computers India PVT LTD',
-    role: 'Digital Marketing Executive ( Website Admin )',
+    company: 'Supreme Computers India.PVT.LTD',
+    role: 'Digital Marketing Executive',
     duration: 'Mar 2025 — Present',
     description: 'Website Administrator – E-commerce & Digital Marketing (IT Products)',
     achievements: [
@@ -107,7 +108,7 @@ function App() {
               Surendran M
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-6 font-medium">
-              Digital Marketing Executive (Website Admin)
+              Digital Marketing Executive
             </p>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto mb-8">
               Results-driven digital marketing professional specializing in SEO, Google Ads, Meta Ads
@@ -128,26 +129,6 @@ function App() {
               >
                 View My Work
               </button>
-              {/* View Resume Button */}
-              <a 
-                href="/resume.html" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 px-8 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200"
-              >
-                <ExternalLink className="w-4 h-4" />
-                <span>View My Resume</span>
-              </a>
-              {/* Download Resume Button */}
-              <a 
-                href="https://drive.google.com/uc?export=download&id=1f0x7K7ZWLUJw8rtqDk0xQXmyXwE3j_zR"
-                target="_blank" 
-                rel="noopener"
-                className="flex items-center space-x-2 px-8 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-700 transition-colors duration-200 shadow-lg"
-              >
-                <ExternalLink className="w-4 h-4" />
-                <span>Download Resume</span>
-              </a>
             </div>
 
             <div className="mt-12 flex justify-center">
@@ -165,7 +146,9 @@ function App() {
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-gray-800">Professional Journey</h3>
               <p className="text-gray-600 leading-relaxed mb-6">
-                I have completed my MBA in Marketing Management and currently work as a Digital Marketing Executive at Supreme Computers (India). I bring hands-on experience in e-commerce operations, SEO strategies, and paid advertising campaigns.
+                Currently pursuing an MBA in Marketing Management while working as a Digital Marketing Executive 
+                at Supreme Computers (India). I bring hands-on experience in e-commerce operations, SEO strategies, 
+                and paid advertising campaigns.
               </p>
               <p className="text-gray-600 leading-relaxed mb-6">
                 My expertise spans across multiple digital platforms including Shopify, Google Analytics, 
@@ -175,7 +158,7 @@ function App() {
               
               <div className="grid grid-cols-2 gap-4 mt-8">
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
-                  <div className="text-2xl font-bold text-teal-600">7+</div>
+                  <div className="text-2xl font-bold text-teal-600">6+</div>
                   <div className="text-sm text-gray-600">Months Experience</div>
                 </div>
                 <div className="text-center p-4 bg-gray-50 rounded-lg">
@@ -188,11 +171,11 @@ function App() {
             <div className="space-y-6">
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-teal-600" />
-                <span className="text-gray-700">Aminjikarai, Chennai, India</span>
+                <span className="text-gray-700">Chennai, India</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-teal-600" />
-                <a href="tel:+919840696374" className="text-gray-700 hover:text-teal-600"> 9840696374</a>
+                <a href="tel:+919840696374" className="text-gray-700 hover:text-teal-600">(+91) 98406 96374</a>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-teal-600" />
@@ -200,7 +183,7 @@ function App() {
               </div>
               <div className="flex items-center space-x-3">
                 <Linkedin className="w-5 h-5 text-teal-600" />
-                <a href="https://www.linkedin.com/in/surendran-m-795a17338" className="text-gray-700 hover:text-teal-600">linkedin.com/surendran</a>
+                <a href="https://www.linkedin.com/in/surendran-m-795a17338" className="text-gray-700 hover:text-teal-600">linkedin.com/in/surendran</a>
               </div>
               
               <div className="mt-8">
@@ -294,7 +277,7 @@ function App() {
           <div className="mt-12">
             <h3 className="text-xl font-semibold mb-6 text-gray-800">Tools & Platforms</h3>
             <div className="flex flex-wrap gap-3">
-              {['Google Analytics', 'Search Console', 'Google Ads','Shopify','Meta Ads', 'Canva', 'MS Office'].map((tool, index) => (
+              {['Google Analytics', 'Search Console', 'Google Ads','Shopify','Meta Ads', 'Razorpay', 'Canva', 'MS Office'].map((tool, index) => (
                 <span key={index} className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200">
                   {tool}
                 </span>
@@ -379,61 +362,7 @@ function App() {
           </div>
         </div>
       </section>
-import React, { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 
-function ContactForm() {
-  const form = useRef<HTMLFormElement>(null);
-  const [status, setStatus] = useState("");
-
-  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!form.current) return;
-
-    emailjs
-      .sendForm(
-        "service_jij055t",   // Service ID
-        "template_hm2x5lp",  // Template ID
-        form.current,
-        "yNaFf9wCjc8dWEEtj"  // Public Key
-      )
-      .then(
-        () => {
-          setStatus("Message sent ✅");
-          form.current?.reset();
-        },
-        () => {
-          setStatus("Message failed ❌ Try again.");
-        }
-      );
-  };
-
-  return (
-    <div style={{ maxWidth: "500px", margin: "0 auto", padding: "20px" }}>
-      <h2>Contact Me</h2>
-      <form ref={form} onSubmit={sendEmail}>
-        <div>
-          <label>Name</label>
-          <input type="text" name="from_name" required style={{ width: "100%", padding: "8px", marginBottom: "10px" }} />
-        </div>
-        <div>
-          <label>Email</label>
-          <input type="email" name="reply_to" required style={{ width: "100%", padding: "8px", marginBottom: "10px" }} />
-        </div>
-        <div>
-          <label>Message</label>
-          <textarea name="message" required rows={5} style={{ width: "100%", padding: "8px", marginBottom: "10px" }}></textarea>
-        </div>
-        <button type="submit" style={{ padding: "10px 20px", background: "teal", color: "white", border: "none", cursor: "pointer" }}>
-          Send
-        </button>
-      </form>
-      {status && <p style={{ marginTop: "10px" }}>{status}</p>}
-    </div>
-  );
-}
-
-export default ContactForm;
       {/* Contact Section */}
       <section id="contact" className="py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
@@ -451,7 +380,7 @@ export default ContactForm;
                 className="flex items-center justify-center space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
               >
                 <Phone className="w-5 h-5" />
-                <span className="font-medium">Contact Me</span>
+                <span className="font-medium">(+91) 98406 96374</span>
               </a>
               
               <a 
