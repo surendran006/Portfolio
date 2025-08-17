@@ -426,11 +426,6 @@ function App() {
           </div>
         </div>
       </section>
-<a href="tel:+91984069674"
-   class="px-6 py-3 bg-teal-600 text-white rounded-lg shadow-lg hover:bg-teal-700 transition">
-  </div>
-                                      🚀 Hire Me
-</a>
 
       {/* Footer */}
       <footer className="py-8 px-4 bg-gray-800 text-white">
