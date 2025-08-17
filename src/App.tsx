@@ -379,38 +379,6 @@ function App() {
           </div>
         </div>
       </section>
-<section id="contact" class="py-16 bg-gray-50 text-center">
-  <h2 class="text-3xl font-bold text-gray-800 mb-6">📬 Contact Me</h2>
-  <p class="text-gray-600 mb-10">
-    Let’s connect! You can reach me directly via email or socials below.
-  </p>
-
-  <div class="flex flex-col md:flex-row justify-center gap-6">
-    <!-- Email -->
-    <a href="mailto:surndranbba006@gmail.com"
-       class="px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition">
-      📩 Email Me
-    </a>
-
-    <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/in/surendran-m-795a17338" target="_blank"
-       class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-      🔗 LinkedIn
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/91984069674" target="_blank"
-       class="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition">
-      💬 WhatsApp
-    </a>
-
-    <!-- Resume -->
-    <a href="/Surendran_Resume.pdf" download
-       class="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition">
-      📄 Download Resume
-    </a>
-  </div>
-</section>
 
       {/* Contact Section */}
       <section id="contact" className="py-16 px-4">
