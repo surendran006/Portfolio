@@ -380,13 +380,13 @@ function App() {
         </div>
       </section>
 import React, { useRef, useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 
 function ContactForm() {
   const form = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState("");
 
-  const sendEmail = (e: React.FormEvent) => {
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!form.current) return;
