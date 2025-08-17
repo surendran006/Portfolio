@@ -434,7 +434,6 @@ function ContactForm() {
 }
 
 export default ContactForm;
-
       {/* Contact Section */}
       <section id="contact" className="py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
