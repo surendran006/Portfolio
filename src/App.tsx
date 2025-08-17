@@ -426,6 +426,16 @@ function App() {
           </div>
         </div>
       </section>
+<div class="flex gap-4 justify-center">
+  <a href="tel:+91984069674"
+     class="px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition">
+    📞 Call Me
+  </a>
+  <a href="mailto:surndranbba006@gmail.com"
+     class="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition">
+    📩 Email Me
+  </a>
+</div>
 
       {/* Footer */}
       <footer className="py-8 px-4 bg-gray-800 text-white">
