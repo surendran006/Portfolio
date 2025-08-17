@@ -138,16 +138,6 @@ function App() {
                 <ExternalLink className="w-4 h-4" />
                 <span>View My Resume</span>
               </a>
-              <a 
-                href="/resume.pdf" 
-                download="Surendran_M_Resume.pdf"
-                className="flex items-center space-x-2 px-8 py-3 bg-teal-600 border-2 border-teal-600 text-white rounded-lg font-semibold hover:bg-teal-700 hover:border-teal-700 transition-colors duration-200"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-4-4m4 4l4-4m6 5a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>Download PDF</span>
-              </a>
             </div>
 
             <div className="mt-12 flex justify-center">
