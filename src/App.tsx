@@ -74,7 +74,7 @@ function App() {
           <div className="flex justify-between items-center">
             <div className="font-bold text-xl text-gray-800">Surendran M</div>
             <div className="hidden md:flex space-x-8">
-              {['home', 'about', 'experience', 'skills', 'projects', 'contact'].map((section) => (
+              {['home', 'about', 'experience', 'skills', 'projects', 'blog', 'contact'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
@@ -84,7 +84,19 @@ function App() {
                       : 'text-gray-600 hover:text-teal-600'
                   }`}
                 >
-                  {section}
+                  {section === 'blog' ? (
+                    <a 
+                      href="https://medium.com/@surendrandigitalmarketing" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-gray-600 hover:text-teal-600 transition-colors duration-200"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      Blog
+                    </a>
+                  ) : (
+                    section
+                  )}
                 </button>
               ))}
             </div>
