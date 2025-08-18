@@ -152,7 +152,7 @@ function App() {
               </a>
               {/* Download Resume Button */}
               <a 
-                href="https://drive.google.com/uc?export=download&id=1f0x7K7ZWLUJw8rtqDk0xQXmyXwE3j_zR"
+                href="https://drive.google.com/uc?export=download&id=1_fDXmk5FfUv6Bd9W3bukp-T1VyZ4jkB6"
                 target="_blank" 
                 rel="noopener"
                 className="flex items-center space-x-2 px-8 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-700 transition-colors duration-200 shadow-lg"
