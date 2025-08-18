@@ -3,95 +3,150 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Surendran M — Digital Marketing Resume</title>
+  <title>Surendran M — Resume</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --accent:#0ea5a4; /* teal */
+    :root {
+      --accent:#0ea5a4;
       --muted:#6b7280;
       --bg:#f8fafc;
       --card:#ffffff;
-      --max-width:900px;
-      --paper-margin:18px;
+      --max-width:850px;
     }
-    *{box-sizing:border-box}
-    body{font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);padding:30px;display:flex;justify-content:center}
-    .resume{width:100%;max-width:var(--max-width);background:var(--card);box-shadow:0 10px 30px rgba(2,6,23,0.08);border-radius:12px;overflow:hidden}
-    .header{display:flex;align-items:center;gap:18px;padding:28px 32px;border-bottom:1px solid #eef2f7}
-    .avatar{width:84px;height:84px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:28px}
-    .name{font-size:20px;font-weight:800;margin:0}
-    .title{color:var(--muted);margin-top:4px;font-weight:600}
-    .contact{margin-left:auto;text-align:right;font-size:14px;color:var(--muted)}
-    .contact a{color:inherit;text-decoration:none}
-
-    .body{display:grid;grid-template-columns:300px 1fr}
-    .left{padding:24px 22px;background:linear-gradient(180deg,#ffffff 0%,#ffffff 100%)}
-    .right{padding:24px 34px}
-
-    h3{margin:0 0 10px 0;font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:0.9px}
-    .section{margin-bottom:20px}
-    .skill-list{display:flex;flex-wrap:wrap;gap:8px}
-    .skill{background:#eef6f6;padding:6px 10px;border-radius:8px;font-size:13px;color:#064e52}
-    .pill{display:inline-block;background:#f1f5f9;padding:6px 8px;border-radius:8px;font-size:13px;color:var(--muted)}
-
-    .summary{font-size:15px;color:#111827;line-height:1.5;margin-bottom:6px}
-    .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-
-    .experience-item{margin-bottom:14px}
-    .exp-head{display:flex;align-items:center;justify-content:space-between}
-    .company{font-weight:700}
-    .role{color:var(--muted);font-size:14px}
-    .time{font-size:13px;color:var(--muted)}
-    .bullets{margin:8px 0 0 0;padding-left:18px}
-    .bullets li{margin-bottom:6px}
-
-    .edu-item{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
-
-    .cert{font-size:14px;color:#0f172a}
-
-    .linkedin{display:inline-flex;align-items:center;gap:8px;color:var(--accent);text-decoration:none;font-weight:600}
-
-    /* print styles for PDF */
-    @media print{
-      body{background:white;padding:0}
-      .resume{box-shadow:none;border-radius:0}
-      .header,.left,.right{padding:12px}
-      .body{grid-template-columns:260px 1fr}
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family: Inter, system-ui, Arial, sans-serif;
+      background: var(--bg);
+      padding: 28px;
+      display: flex;
+      justify-content: center;
+      color:#111827;
+      line-height:1.45;
     }
+    .resume {
+      width: 100%;
+      max-width: var(--max-width);
+      background: var(--card);
+      box-shadow: 0 8px 28px rgba(2,6,23,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 22px 28px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), #06b6d4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 20px;
+    }
+    .name { font-size: 20px; font-weight: 800; }
+    .title { font-size: 14px; color: var(--muted); font-weight: 600; }
+    .contact {
+      margin-left:auto;
+      font-size: 13px;
+      text-align: right;
+      color: var(--muted);
+      line-height:1.6;
+    }
+    .contact a { color:inherit; text-decoration:none; }
 
+    .body {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+    }
+    .left { padding: 22px 18px; background:#fafafa; }
+    .right { padding: 22px 28px; }
+
+    h3 {
+      font-size: 13px;
+      font-weight:700;
+      text-transform: uppercase;
+      letter-spacing:0.7px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .section { margin-bottom: 18px; }
+    .skill-list, .pill-list {
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+    }
+    .skill, .pill {
+      background:#eef6f6;
+      color:#064e52;
+      padding:5px 8px;
+      font-size:12px;
+      border-radius:6px;
+    }
+    .pill {
+      background:#f1f5f9;
+      color:var(--muted);
+    }
+    .summary { font-size: 14px; margin-bottom: 6px; }
+    .experience-item { margin-bottom: 12px; }
+    .exp-head {
+      display:flex;
+      justify-content:space-between;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .company { font-weight: 700; }
+    .role { font-size: 13px; color: var(--muted); }
+    .time { font-size: 12px; color: var(--muted); }
+    .bullets { margin: 6px 0 0 16px; font-size: 13px; }
+    .bullets li { margin-bottom: 4px; }
+    .edu-item { margin-bottom:10px; font-size: 13px; }
+    .languages { font-size: 13px; color:var(--muted); }
+
+    /* Print optimizations */
+    @media print {
+      body { background:white; padding:0; }
+      .resume { box-shadow:none; border-radius:0; }
+      .left { background:white; }
+    }
     /* Responsive */
     @media (max-width:800px){
-      .body{grid-template-columns:1fr}
-      .left{order:2}
-      .right{order:1}
-      .contact{text-align:left;margin-left:0}
+      .body { grid-template-columns:1fr; }
+      .contact { text-align:left; margin-left:0; margin-top:10px; }
     }
   </style>
 </head>
 <body>
-  <article class="resume" role="document">
+  <article class="resume">
     <header class="header">
       <div class="avatar">SM</div>
       <div>
-        <h1 class="name">Surendran M</h1>
+        <div class="name">Surendran M</div>
         <div class="title">Digital Marketing Executive</div>
       </div>
       <div class="contact">
-        <div>📞 <a href="tel:+919840696374"> 9840696374 </a></div>
-        <div>✉ <a href="mailto:surendranbba006@gmail.com">surendranbba006@gmail.com</a></div>
-        <div>🔗 <a class="linkedin" href="https://www.linkedin.com/in/surendran-m-795a17338">linkedin.com/surendran</a></div>
-        <div>📍 Aminjikarai, Chennai, India</div>
+        📞 <a href="tel:+919840696374">(+91) 98406 96374</a><br>
+        ✉ <a href="mailto:surendranbba006@gmail.com">surendranbba006@gmail.com</a><br>
+        🔗 <a href="https://www.linkedin.com/in/surendran-m-795a17338">linkedin.com/in/surendran</a><br>
+        📍 Chennai, India
       </div>
     </header>
 
     <div class="body">
+      <!-- LEFT SIDEBAR -->
       <aside class="left">
         <section class="section">
           <h3>Core Skills</h3>
           <div class="skill-list">
-            <span class="skill">SEO (On-page & Off-page)</span>
+            <span class="skill">SEO</span>
             <span class="skill">Google Ads (PPC)</span>
-            <span class="skill">Meta Ads </span>
+            <span class="skill">Meta Ads</span>
             <span class="skill">Shopify</span>
             <span class="skill">Google Analytics</span>
             <span class="skill">Social Media</span>
@@ -99,87 +154,76 @@
             <span class="skill">MS Office</span>
           </div>
         </section>
-
         <section class="section">
-          <h3>Tools & Platforms</h3>
-          <div class="pill">Google Analytics</div>
-          <div class="pill">Search Console</div>
-          <div class="pill">Google Ads</div>
-          <div class="pill">Meta Ads</div>
-          <div class="pill">Shopify</div>
-          <div class="pill">Canva</div>
+          <h3>Tools</h3>
+          <div class="pill-list">
+            <span class="pill">Google Analytics</span>
+            <span class="pill">Search Console</span>
+            <span class="pill">Google Ads</span>
+            <span class="pill">Meta Ads</span>
+            <span class="pill">Shopify</span>
+            <span class="pill">Canva</span>
+          </div>
         </section>
-
         <section class="section">
           <h3>Education</h3>
-          <div class="edu-item">
-            <div>
-              <div style="font-weight:700">MBA - Marketing Management </div>
-              <div style="color:var(--muted);font-size:13px">Madras University, Chennai</div>
-            </div>
-            <div style="color:var(--muted);font-size:13px">2023 - 2025</div>
-          </div>
-
-          <div class="edu-item">
-            <div>
-              <div style="font-weight:700">BBA</div>
-              <div style="color:var(--muted);font-size:13px">St Thomas College of Arts & Science</div>
-            </div>
-            <div style="color:var(--muted);font-size:13px">2018 - 2022</div>
-          </div>
+          <div class="edu-item"><strong>MBA – Marketing Management</strong><br>Madras University, Chennai (2023–2025)</div>
+          <div class="edu-item"><strong>BBA</strong><br>St Thomas College of Arts & Science (2018–2022)</div>
         </section>
-
         <section class="section">
           <h3>Certifications</h3>
-          <ul style="margin:0;padding-left:18px;color:var(--muted);font-size:14px">
-            <li>Digital Marketing Course - Inspire Digital Marketing </li>
+          <ul class="bullets">
+            <li>Digital Marketing – Inspire Digital Marketing</li>
           </ul>
         </section>
-
         <section class="section">
-          <h3>Other</h3>
-          <div style="font-size:14px;color:var(--muted)">Total work experience: <strong>0 Year 7 Months</strong></div>
+          <h3>Total work experience</h3>
+          <div style="font-size:13px;color:var(--muted)">Experience: <strong>0 Year 6 Months</strong></div>
         </section>
       </aside>
 
+      <!-- RIGHT MAIN CONTENT -->
       <main class="right">
         <section class="section">
           <h3>Professional Summary</h3>
-          <p class="summary">Results-driven Digital Marketing Executive with hands-on experience managing e-commerce operations, implementing SEO strategies, and running paid campaigns to drive traffic and conversions. Skilled at using Shopify (Project) , Google Analytics, and Google Ads to deliver measurable improvements in online sales and user experience.</p>
+          <p class="summary">Results-driven Digital Marketing Executive with experience in SEO, PPC campaigns, and e-commerce operations. Skilled in Shopify, Google Ads, and Analytics to optimize campaigns, boost visibility, and drive conversions.</p>
         </section>
 
         <section class="section">
           <h3>Professional Experience</h3>
-
           <div class="experience-item">
             <div class="exp-head">
               <div>
-                <div class="company">Supreme Computers (India) — <span style="font-weight:600">Digital Marketing Executive</span></div>
-                <div class="role">Website Administrator – E-commerce & Digital Marketing (IT Products)</div>
+                <span class="company">Supreme Computers (India)</span> — 
+                <span class="role">Digital Marketing Executive</span>
               </div>
-              <div class="time">Mar 2025 — Present</div>
+              <div class="time">Mar 2025 – Present</div>
             </div>
             <ul class="bullets">
-              <li>Managed end-to-end e-commerce operations for <strong>SupremeIndia.com</strong>, including product uploads, pricing, inventory, and homepage merchandising for IT hardware & accessories.</li>
-              <li>Executed on-page and off-page <strong>SEO</strong> improvements — optimized meta tags, product descriptions, and blog content to improve keyword rankings and organic traffic.</li>
-              <li>Planned, launched, and monitored <strong>Google Ads, Meta Ads</strong> and social media campaigns; tracked performance (CTR, CPC, conversions) and optimized for ROI.</li>
-              <li>Worked closely with developers and designers to improve UI/UX, resolve issues, and ensure accurate product content and images.</li>
-              <li>Used <strong>Shopify, Google Analytics, Search Console</strong>, to monitor site health, analyze performance, and ensure smooth checkout flows.</li>
+              <li>Managed e-commerce operations for <strong>SupremeIndia.com</strong> including uploads, pricing, and merchandising.</li>
+              <li>Executed SEO strategies to improve rankings & traffic.</li>
+              <li>Planned & optimized <strong>Google Ads & Meta Ads</strong> campaigns for ROI.</li>
+              <li>Collaborated with developers/designers to improve UI/UX & content.</li>
+              <li>Monitored performance via <strong>Shopify, Google Analytics, Search Console</strong>, and Razorpay.</li>
             </ul>
           </div>
-
         </section>
 
         <section class="section">
           <h3>Key Projects & Achievements</h3>
           <ul class="bullets">
-            <li>Launched seasonal product campaigns that improved site conversion rate (add numbers if available).</li>
-            <li>Optimized product pages leading to improved search visibility for priority keywords.</li>
-            <li>Implemented tracking and reporting dashboards in Google Analytics to measure campaign performance and user behaviour.</li>
+            <li>Boosted conversions with seasonal product campaigns.</li>
+            <li>Optimized product pages for priority keyword visibility.</li>
+            <li>Implemented GA dashboards for performance tracking.</li>
           </ul>
         </section>
 
         <section class="section">
           <h3>Languages</h3>
-          <div style="color:var(--muted)">English (Fluent) • Tamil (Native)</div>
+          <div class="languages">English (Fluent) • Tamil (Native)</div>
         </section>
+      </main>
+    </div>
+  </article>
+</body>
+</html>
