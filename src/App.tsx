@@ -15,6 +15,8 @@ import {
   Search,
   MousePointer,
   Globe
+  Menu,
+  X
 } from 'lucide-react';
 
 const skills = [
@@ -60,9 +62,11 @@ const projects = [
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
+    setIsMobileMenuOpen(false);
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -100,7 +104,48 @@ function App() {
                 </button>
               ))}
             </div>
+            
+            {/* Mobile menu button */}
+            <button
+              className="md:hidden p-2 text-gray-600 hover:text-teal-600 transition-colors duration-200"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
+          
+          {/* Mobile menu */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden mt-4 pb-4 border-t border-gray-200">
+              <div className="flex flex-col space-y-3 pt-4">
+                {['home', 'about', 'experience', 'skills', 'projects', 'blog', 'contact'].map((section) => (
+                  <button
+                    key={section}
+                    onClick={() => scrollToSection(section)}
+                    className={`capitalize text-left py-2 px-4 rounded-lg transition-colors duration-200 ${
+                      activeSection === section 
+                        ? 'text-teal-600 font-semibold bg-teal-50' 
+                        : 'text-gray-600 hover:text-teal-600 hover:bg-gray-50'
+                    }`}
+                  >
+                    {section === 'blog' ? (
+                      <a 
+                        href="https://medium.com/@surendrandigitalmarketing" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="block text-gray-600 hover:text-teal-600 transition-colors duration-200"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        Blog
+                      </a>
+                    ) : (
+                      section
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
