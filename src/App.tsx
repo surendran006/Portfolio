@@ -14,7 +14,7 @@ import {
   BarChart3,
   Search,
   MousePointer,
-  Globe
+  Globe,
   Menu,
   X
 } from 'lucide-react';
