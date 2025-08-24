@@ -45,6 +45,7 @@ const experience = [
     ]
   }
 ];
+];
 
 const projects = [
   {
