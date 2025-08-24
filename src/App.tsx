@@ -116,6 +116,7 @@ function App() {
       // Create form data for Netlify
       const formData = new FormData();
       formData.append('form-name', 'contact');
+      formDataToSubmit.append('_to', 'surendranbba006@gmail.com');
       formData.append('name', formData.name);
       formData.append('email', formData.email);
       formData.append('subject', formData.subject);
@@ -600,12 +601,10 @@ function App() {
                   method="POST" 
                   data-netlify="true" 
                   data-netlify-honeypot="bot-field"
-                  data-netlify-recaptcha="true"
                   onSubmit={handleSubmit} 
                   className="space-y-6"
                 >
                   <input type="hidden" name="form-name" value="contact" />
-                  <input type="hidden" name="_to" value="surendranbba006@gmail.com" />
                   <p style={{ display: 'none' }}>
                     <label>
                       Don't fill this out if you're human: <input name="bot-field" />
