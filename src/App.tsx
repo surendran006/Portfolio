@@ -57,6 +57,24 @@ const projects = [
     description: 'Seasonal product campaigns with integrated social media and paid advertising',
     technologies: ['Google Ads','Meta Ads', 'Social Media', 'Analytics', 'Content Marketing'],
     results: 'Enhanced brand awareness and campaign performance tracking'
+  },
+  {
+    title: 'On-Page SEO Optimization',
+    description: 'Comprehensive keyword research and content optimization for product pages and category structures',
+    technologies: ['Keyword Research', 'Meta Tags', 'Schema Markup', 'Content Optimization'],
+    results: 'Improved organic rankings and click-through rates from search results'
+  },
+  {
+    title: 'Off-Page SEO & Link Building',
+    description: 'Strategic link building campaigns and partnership development to boost domain authority',
+    technologies: ['Link Building', 'Guest Posting', 'Directory Submissions', 'Partnership Outreach'],
+    results: 'Increased domain authority and referral traffic from quality backlinks'
+  },
+  {
+    title: 'Technical SEO Implementation',
+    description: 'Site speed optimization, mobile responsiveness, and crawlability improvements',
+    technologies: ['Site Speed', 'Mobile Optimization', 'XML Sitemaps', 'Robots.txt'],
+    results: 'Enhanced site performance and better search engine indexing'
   }
 ];
 
