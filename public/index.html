@@ -6,13 +6,15 @@
   <title>Contact Form</title>
 </head>
 <body>
-  <!-- Netlify form detection -->
-  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+  <!-- Netlify form detection with email notification -->
+  <form name="contact" netlify netlify-honeypot="bot-field" action="/thank-you" method="POST" hidden>
     <input type="text" name="name" />
     <input type="email" name="email" />
     <input type="text" name="subject" />
     <textarea name="message"></textarea>
+    <input type="hidden" name="form-name" value="contact" />
+    <!-- Email notification -->
+    <input type="hidden" name="_to" value="surendranbba006@gmail.com" />
   </form>
 </body>
-</html></body>
 </html>
