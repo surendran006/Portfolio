@@ -600,10 +600,12 @@ function App() {
                   method="POST" 
                   data-netlify="true" 
                   data-netlify-honeypot="bot-field"
+                  data-netlify-recaptcha="true"
                   onSubmit={handleSubmit} 
                   className="space-y-6"
                 >
                   <input type="hidden" name="form-name" value="contact" />
+                  <input type="hidden" name="_to" value="surendranbba006@gmail.com" />
                   <p style={{ display: 'none' }}>
                     <label>
                       Don't fill this out if you're human: <input name="bot-field" />
