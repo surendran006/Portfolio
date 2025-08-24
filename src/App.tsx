@@ -75,6 +75,12 @@ const projects = [
     description: 'Site speed optimization, mobile responsiveness, and crawlability improvements',
     technologies: ['Site Speed', 'Mobile Optimization', 'XML Sitemaps', 'Robots.txt'],
     results: 'Enhanced site performance and better search engine indexing'
+  },
+  {
+    title: 'Google Analytics & Performance Tracking',
+    description: 'Comprehensive analytics setup with custom dashboards, goal tracking, and conversion optimization for data-driven decision making',
+    technologies: ['Google Analytics', 'Google Tag Manager', 'Conversion Tracking', 'Custom Reports', 'Data Analysis'],
+    results: 'Improved data visibility and actionable insights for marketing optimization'
   }
 ];
 
