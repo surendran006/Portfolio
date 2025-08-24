@@ -41,7 +41,7 @@ const experience = [
       'Executed comprehensive SEO strategies improving organic traffic and keyword rankings',
       'Launched and optimized Google Ads/  Meta ads campaigns with focus on ROI and conversion tracking',
       'Collaborated with development teams to enhance UI/UX and site performance',
-      'Implemented analytics dashboards for performance monitoring and user behavior analysis'
+      'Implemented analytics dashboards for performance monitoring and user behavior analysis' 
     ]
   }
 ];
