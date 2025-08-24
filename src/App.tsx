@@ -520,7 +520,7 @@ function App() {
                   <Phone className="w-5 h-5" />
                   <div className="text-left">
                     <div className="font-medium">Phone</div>
-                    <div className="text-sm text-gray-600">+91 9840696374</div>
+                    <div className="text-sm text-gray-600">Contact Us</div>
                   </div>
                 </a>
                 
@@ -531,7 +531,7 @@ function App() {
                   <Mail className="w-5 h-5" />
                   <div className="text-left">
                     <div className="font-medium">Email</div>
-                    <div className="text-sm text-gray-600">surendranbba006@gmail.com</div>
+                    <div className="text-sm text-gray-600">Email for Contact Us</div>
                   </div>
                 </a>
                 
