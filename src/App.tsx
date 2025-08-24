@@ -114,17 +114,17 @@ function App() {
     
     try {
       // Create form data for Netlify
-      const formData = new FormData();
-      formData.append('form-name', 'contact');
+      const formDataToSubmit = new FormData();
+      formDataToSubmit.append('form-name', 'contact');
       formDataToSubmit.append('_to', 'surendranbba006@gmail.com');
-      formData.append('name', formData.name);
-      formData.append('email', formData.email);
-      formData.append('subject', formData.subject);
-      formData.append('message', formData.message);
+      formDataToSubmit.append('name', formData.name);
+      formDataToSubmit.append('email', formData.email);
+      formDataToSubmit.append('subject', formData.subject);
+      formDataToSubmit.append('message', formData.message);
       
       const response = await fetch('/', {
         method: 'POST',
-        body: formData
+        body: formDataToSubmit
       });
       
       if (response.ok) {
