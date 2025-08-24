@@ -112,11 +112,22 @@ function App() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission (replace with actual form handling)
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          'form-name': 'contact',
+          ...formData
+        }).toString()
+      });
+      
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error('Form submission failed');
+      }
     } catch (error) {
       setSubmitStatus('error');
     } finally {
@@ -563,10 +574,12 @@ function App() {
                 name="contact" 
                 method="POST" 
                 data-netlify="true" 
+                data-netlify-honeypot="bot-field"
                 onSubmit={handleSubmit} 
                 className="space-y-6"
               >
                 <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="bot-field" />
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     <User className="w-4 h-4 inline mr-2" />
