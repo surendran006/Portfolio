@@ -16,7 +16,10 @@ import {
   MousePointer,
   Globe,
   Menu,
-  X
+  X,
+  Send,
+  User,
+  MessageSquare
 } from 'lucide-react';
 
 const skills = [
@@ -88,6 +91,39 @@ const projects = [
 function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate form submission (replace with actual form handling)
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus('idle'), 3000);
+    }
+  };
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -467,44 +503,171 @@ function App() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-12 text-gray-800">Let's Connect</h2>
           
-          <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-            <p className="text-xl text-gray-700 mb-8">
-              Ready to discuss digital marketing opportunities? 
-              I'd love to hear about your project and how I can help drive results.
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <a 
-                href="tel:+919840696374"
-                className="flex items-center justify-center space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
-              >
-                <Phone className="w-5 h-5" />
-                <span className="font-medium">Contact Me</span>
-              </a>
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Contact Info */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+              <h3 className="text-2xl font-semibold mb-6 text-gray-800">Get In Touch</h3>
+              <p className="text-lg text-gray-700 mb-8 text-left">
+                Ready to discuss digital marketing opportunities? 
+                I'd love to hear about your project and how I can help drive results.
+              </p>
               
-              <a 
-                href="mailto:surendranbba006@gmail.com"
-                className="flex items-center justify-center space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
-              >
-                <Mail className="w-5 h-5" />
-                <span className="font-medium">Email Me</span>
-              </a>
+              <div className="space-y-4 mb-8">
+                <a 
+                  href="tel:+919840696374"
+                  className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
+                >
+                  <Phone className="w-5 h-5" />
+                  <div className="text-left">
+                    <div className="font-medium">Phone</div>
+                    <div className="text-sm text-gray-600">+91 9840696374</div>
+                  </div>
+                </a>
+                
+                <a 
+                  href="mailto:surendranbba006@gmail.com"
+                  className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
+                >
+                  <Mail className="w-5 h-5" />
+                  <div className="text-left">
+                    <div className="font-medium">Email</div>
+                    <div className="text-sm text-gray-600">surendranbba006@gmail.com</div>
+                  </div>
+                </a>
+                
+                <a 
+                  href="https://www.linkedin.com/in/surendran-m-795a17338"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
+                >
+                  <Linkedin className="w-5 h-5" />
+                  <div className="text-left">
+                    <div className="font-medium">LinkedIn</div>
+                    <div className="text-sm text-gray-600">Connect with me</div>
+                  </div>
+                </a>
+              </div>
               
-              <a 
-                href="https://www.linkedin.com/in/surendran-m-795a17338"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center space-x-3 p-4 bg-gray-50 rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
-              >
-                <Linkedin className="w-5 h-5" />
-                <span className="font-medium">LinkedIn</span>
-              </a>
+              <p className="text-gray-600 text-left">
+                <MapPin className="w-4 h-4 inline mr-2" />
+                Based in Chennai, India • Available for remote opportunities
+              </p>
             </div>
-            
-            <p className="text-gray-600">
-              <MapPin className="w-4 h-4 inline mr-2" />
-              Based in Chennai, India • Available for remote opportunities
-            </p>
+
+            {/* Contact Form */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+              <h3 className="text-2xl font-semibold mb-6 text-gray-800">Send a Message</h3>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    <User className="w-4 h-4 inline mr-2" />
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors duration-200"
+                    placeholder="Your full name"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    <Mail className="w-4 h-4 inline mr-2" />
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors duration-200"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                    <Target className="w-4 h-4 inline mr-2" />
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors duration-200"
+                    placeholder="What's this about?"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    <MessageSquare className="w-4 h-4 inline mr-2" />
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
+                    rows={5}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors duration-200 resize-vertical"
+                    placeholder="Tell me about your project or how I can help..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`w-full flex items-center justify-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
+                    isSubmitting
+                      ? 'bg-gray-400 cursor-not-allowed'
+                      : 'bg-teal-600 hover:bg-teal-700 shadow-lg hover:shadow-xl'
+                  } text-white`}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      <span>Send Message</span>
+                    </>
+                  )}
+                </button>
+
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <p className="text-green-800 text-sm font-medium">
+                      ✅ Message sent successfully! I'll get back to you soon.
+                    </p>
+                  </div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <p className="text-red-800 text-sm font-medium">
+                      ❌ Something went wrong. Please try again or contact me directly.
+                    </p>
+                  </div>
+                )}
+              </form>
+            </div>
           </div>
         </div>
       </section>
