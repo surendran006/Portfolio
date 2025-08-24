@@ -83,31 +83,6 @@ const projects = [
     technologies: ['Google Analytics', 'Google Tag Manager', 'Conversion Tracking', 'Custom Reports', 'Data Analysis'],
     results: 'Improved data visibility and actionable insights for marketing optimization'
   },
-  {
-    title: 'On-Page SEO Optimization',
-    description: 'Comprehensive keyword research and content optimization for product pages and category structures',
-    technologies: ['Keyword Research', 'Meta Tags', 'Schema Markup', 'Content Optimization'],
-    results: 'Improved organic rankings and click-through rates from search results'
-  },
-  {
-    title: 'Off-Page SEO & Link Building',
-    description: 'Strategic link building campaigns and partnership development to boost domain authority',
-    technologies: ['Link Building', 'Guest Posting', 'Directory Submissions', 'Partnership Outreach'],
-    results: 'Increased domain authority and referral traffic from quality backlinks'
-  },
-  {
-    title: 'Technical SEO Implementation',
-    description: 'Site speed optimization, mobile responsiveness, and crawlability improvements',
-    technologies: ['Site Speed', 'Mobile Optimization', 'XML Sitemaps', 'Robots.txt'],
-    results: 'Enhanced site performance and better search engine indexing'
-  },
-  {
-    title: 'Google Analytics & Performance Tracking',
-    description: 'Comprehensive analytics setup with custom dashboards, goal tracking, and conversion optimization for data-driven decision making',
-    technologies: ['Google Analytics', 'Google Tag Manager', 'Conversion Tracking', 'Custom Reports', 'Data Analysis'],
-    results: 'Improved data visibility and actionable insights for marketing optimization'
-  }
-];
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
