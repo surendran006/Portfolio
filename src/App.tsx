@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
 import { 
   Mail, 
   Phone, 
@@ -113,26 +114,24 @@ function App() {
     setIsSubmitting(true);
     
     try {
-      // Create form data for Netlify
-      const formDataToSubmit = new FormData();
-      formDataToSubmit.append('form-name', 'contact');
-      formDataToSubmit.append('_to', 'surendranbba006@gmail.com');
-      formDataToSubmit.append('name', formData.name);
-      formDataToSubmit.append('email', formData.email);
-      formDataToSubmit.append('subject', formData.subject);
-      formDataToSubmit.append('message', formData.message);
-      
-      const response = await fetch('/', {
-        method: 'POST',
-        body: formDataToSubmit
-      });
-      
-      if (response.ok) {
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      } else {
-        throw new Error('Form submission failed');
-      }
+      // Send email directly using EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'surendranbba006@gmail.com'
+      };
+
+      await emailjs.send(
+        'service_portfolio', // You'll need to replace with your EmailJS service ID
+        'template_contact', // You'll need to replace with your EmailJS template ID
+        templateParams,
+        'your_public_key' // You'll need to replace with your EmailJS public key
+      );
+
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
       console.error('Form submission error:', error);
       setSubmitStatus('error');
@@ -576,40 +575,37 @@ function App() {
             <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
               <h3 className="text-2xl font-semibold mb-6 text-gray-800">Send a Message</h3>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Test form with sample data */}
-                <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg mb-6">
-                  <h4 className="font-semibold text-blue-800 mb-2">🧪 Test Form</h4>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setFormData({
-                        name: 'Test User',
-                        email: 'test@example.com',
-                        subject: 'Test Message from Portfolio',
-                        message: 'This is a test message to verify the contact form is working properly. If you receive this, the form is functioning correctly!'
-                      });
-                    }}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition-colors duration-200"
-                  >
-                    Fill Test Data
-                  </button>
-                </div>
-                
-                <form 
-                  name="contact" 
-                  method="POST" 
-                  data-netlify="true" 
-                  data-netlify-honeypot="bot-field"
-                  onSubmit={handleSubmit} 
-                  className="space-y-6"
+              {/* EmailJS Setup Instructions */}
+              <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg mb-6">
+                <h4 className="font-semibold text-yellow-800 mb-2">⚠️ Setup Required</h4>
+                <p className="text-yellow-700 text-sm">
+                  To receive emails directly, you need to set up EmailJS. 
+                  <a href="https://www.emailjs.com/" target="_blank" rel="noopener noreferrer" className="underline ml-1">
+                    Visit EmailJS.com
+                  </a> to create a free account and get your service credentials.
+                </p>
+              </div>
+
+              {/* Test form with sample data */}
+              <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg mb-6">
+                <h4 className="font-semibold text-blue-800 mb-2">🧪 Test Form</h4>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setFormData({
+                      name: 'Test User',
+                      email: 'test@example.com',
+                      subject: 'Test Message from Portfolio',
+                      message: 'This is a test message to verify the contact form is working properly. If you receive this, the form is functioning correctly!'
+                    });
+                  }}
+                  className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition-colors duration-200"
                 >
-                  <input type="hidden" name="form-name" value="contact" />
-                  <p style={{ display: 'none' }}>
-                    <label>
-                      Don't fill this out if you're human: <input name="bot-field" />
-                    </label>
-                  </p>
+                  Fill Test Data
+                </button>
+              </div>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                       <User className="w-4 h-4 inline mr-2" />
@@ -704,7 +700,7 @@ function App() {
                   {submitStatus === 'success' && (
                     <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
                       <p className="text-green-800 text-sm font-medium">
-                        ✅ Message sent successfully! I'll get back to you soon.
+                        ✅ Message sent successfully to surendranbba006@gmail.com! I'll get back to you soon.
                       </p>
                     </div>
                   )}
@@ -712,11 +708,10 @@ function App() {
                   {submitStatus === 'error' && (
                     <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
                       <p className="text-red-800 text-sm font-medium">
-                        ❌ Something went wrong. Please try again or contact me directly.
+                        ❌ EmailJS not configured yet. Please contact me directly at surendranbba006@gmail.com
                       </p>
                     </div>
                   )}
-                </form>
               </form>
             </div>
           </div>
