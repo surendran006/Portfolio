@@ -114,7 +114,15 @@ function App() {
     setIsSubmitting(true);
     
     try {
-      // Send email directly using EmailJS
+      // Check if EmailJS is properly configured
+      const serviceId = 'service_portfolio'; // Replace with your actual service ID
+      const templateId = 'template_contact'; // Replace with your actual template ID
+      const publicKey = 'your_public_key'; // Replace with your actual public key
+      
+      if (serviceId === 'service_portfolio' || templateId === 'template_contact' || publicKey === 'your_public_key') {
+        throw new Error('EmailJS not configured. Please set up your EmailJS credentials first.');
+      }
+      
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
@@ -123,13 +131,8 @@ function App() {
         to_email: 'surendranbba006@gmail.com'
       };
 
-      await emailjs.send(
-        'service_portfolio', // You'll need to replace with your EmailJS service ID
-        'template_contact', // You'll need to replace with your EmailJS template ID
-        templateParams,
-        'your_public_key' // You'll need to replace with your EmailJS public key
-      );
-
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
@@ -579,10 +582,16 @@ function App() {
               <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg mb-6">
                 <h4 className="font-semibold text-yellow-800 mb-2">⚠️ Setup Required</h4>
                 <p className="text-yellow-700 text-sm">
-                  To receive emails directly, you need to set up EmailJS. 
-                  <a href="https://www.emailjs.com/" target="_blank" rel="noopener noreferrer" className="underline ml-1">
-                    Visit EmailJS.com
-                  </a> to create a free account and get your service credentials.
+                  EmailJS is not configured yet. To receive emails directly:
+                </p>
+                <ol className="text-yellow-700 text-sm mt-2 ml-4 list-decimal space-y-1">
+                  <li>Create account at <a href="https://www.emailjs.com/" target="_blank" rel="noopener noreferrer" className="underline">EmailJS.com</a></li>
+                  <li>Add your email service (Gmail recommended)</li>
+                  <li>Create an email template</li>
+                  <li>Replace the placeholder values in the code with your actual credentials</li>
+                </ol>
+                <p className="text-yellow-700 text-xs mt-2">
+                  Until configured, form submissions will show an error message.
                 </p>
               </div>
 
@@ -708,7 +717,10 @@ function App() {
                   {submitStatus === 'error' && (
                     <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
                       <p className="text-red-800 text-sm font-medium">
-                        ❌ EmailJS not configured yet. Please contact me directly at surendranbba006@gmail.com
+                        ❌ EmailJS not configured yet. Please contact me directly at 
+                        <a href="mailto:surendranbba006@gmail.com" className="underline ml-1">
+                          surendranbba006@gmail.com
+                        </a>
                       </p>
                     </div>
                   )}
