@@ -116,10 +116,10 @@ function App() {
     try {
       // Check if EmailJS is properly configured
       const serviceId = 'service_portfolio'; // Replace with your actual service ID
-      const templateId = 'template_contact'; // Replace with your actual template ID
+      const templateId = 'template_erqwzv9'; // Your EmailJS template ID
       const publicKey = 'your_public_key'; // Replace with your actual public key
       
-      if (serviceId === 'service_portfolio' || templateId === 'template_contact' || publicKey === 'your_public_key') {
+      if (serviceId === 'service_portfolio' || templateId === 'template_erqwzv9' || publicKey === 'your_public_key') {
         throw new Error('EmailJS not configured. Please set up your EmailJS credentials first.');
       }
       
