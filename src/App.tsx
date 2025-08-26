@@ -578,42 +578,6 @@ function App() {
             <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
               <h3 className="text-2xl font-semibold mb-6 text-gray-800">Send a Message</h3>
               
-              {/* EmailJS Setup Instructions */}
-              <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg mb-6">
-                <h4 className="font-semibold text-yellow-800 mb-2">⚠️ Setup Required</h4>
-                <p className="text-yellow-700 text-sm">
-                  EmailJS is not configured yet. To receive emails directly:
-                </p>
-                <ol className="text-yellow-700 text-sm mt-2 ml-4 list-decimal space-y-1">
-                  <li>Create account at <a href="https://www.emailjs.com/" target="_blank" rel="noopener noreferrer" className="underline">EmailJS.com</a></li>
-                  <li>Add your email service (Gmail recommended)</li>
-                  <li>Create an email template</li>
-                  <li>Replace the placeholder values in the code with your actual credentials</li>
-                </ol>
-                <p className="text-yellow-700 text-xs mt-2">
-                  Until configured, form submissions will show an error message.
-                </p>
-              </div>
-
-              {/* Test form with sample data */}
-              <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg mb-6">
-                <h4 className="font-semibold text-blue-800 mb-2">🧪 Test Form</h4>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setFormData({
-                      name: 'Test User',
-                      email: 'test@example.com',
-                      subject: 'Test Message from Portfolio',
-                      message: 'This is a test message to verify the contact form is working properly. If you receive this, the form is functioning correctly!'
-                    });
-                  }}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition-colors duration-200"
-                >
-                  Fill Test Data
-                </button>
-              </div>
-              
               <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
