@@ -40,23 +40,33 @@ const experience = [
     role: 'Digital Marketing Executive ( Website Admin )',
     duration: 'Mar 2025 — Present',
     description: 'Website Administrator – E-commerce & Digital Marketing (IT Products)',
-    achievements: [
-      'Managed end-to-end e-commerce operations for SupremeIndia.com, including product uploads, pricing, inventory, and homepage merchandising',
-      'Executed comprehensive SEO strategies improving organic traffic and keyword rankings',
-      'Launched and optimized Google Ads/  Meta ads campaigns with focus on ROI and conversion tracking',
-      'Collaborated with development teams to enhance UI/UX and site performance',
-      'Implemented analytics dashboards for performance monitoring and user behavior analysis',
-      'Conducted keyword research and competitor analysis to identify market opportunities',
-      'Optimized product descriptions and meta tags for better search engine visibility',
-      'Created and managed social media content calendars across multiple platforms',
-      'Monitored website performance metrics and implemented conversion rate optimization strategies',
-      'Developed email marketing campaigns for customer retention and lead nurturing',
-      'Managed Google Shopping campaigns and product feed optimization',
-      'Coordinated with suppliers and vendors for product information and promotional materials',
-      'Analyzed customer behavior data to improve user experience and reduce bounce rates',
-      'Implemented schema markup and technical SEO improvements for better search rankings',
-      'Created monthly performance reports with actionable insights for management',
-      'Managed customer reviews and online reputation across various platforms'
+    segments: [
+      {
+        title: 'Website Administration',
+        achievements: [
+          'Managed end-to-end e-commerce operations for SupremeIndia.com, including product uploads, pricing, inventory, and homepage merchandising',
+          'Collaborated with development teams to enhance UI/UX and site performance',
+          'Implemented analytics dashboards for performance monitoring and user behavior analysis',
+          'Monitored website performance metrics and implemented conversion rate optimization strategies',
+          'Coordinated with suppliers and vendors for product information and promotional materials',
+          'Analyzed customer behavior data to improve user experience and reduce bounce rates',
+          'Implemented schema markup and technical SEO improvements for better search rankings',
+          'Managed customer reviews and online reputation across various platforms'
+        ]
+      },
+      {
+        title: 'Digital Marketing',
+        achievements: [
+          'Executed comprehensive SEO strategies improving organic traffic and keyword rankings',
+          'Launched and optimized Google Ads / Meta ads campaigns with focus on ROI and conversion tracking',
+          'Conducted keyword research and competitor analysis to identify market opportunities',
+          'Optimized product descriptions and meta tags for better search engine visibility',
+          'Created and managed social media content calendars across multiple platforms',
+          'Developed email marketing campaigns for customer retention and lead nurturing',
+          'Managed Google Shopping campaigns and product feed optimization',
+          'Created monthly performance reports with actionable insights for management'
+        ]
+      }
     ]
   }
 ];
@@ -393,11 +403,20 @@ function App() {
                       </div>
                     </div>
                     
-                    <div className="space-y-3">
-                      {exp.achievements.map((achievement, i) => (
-                        <div key={i} className="flex items-start space-x-3">
-                          <div className="w-2 h-2 bg-teal-400 rounded-full mt-2 flex-shrink-0"></div>
-                          <p className="text-gray-700 text-sm leading-relaxed">{achievement}</p>
+                    <div className="space-y-6">
+                      {exp.segments.map((segment, segIndex) => (
+                        <div key={segIndex} className="space-y-3">
+                          <h4 className="text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2">
+                            {segment.title}
+                          </h4>
+                          <div className="space-y-3">
+                            {segment.achievements.map((achievement, i) => (
+                              <div key={i} className="flex items-start space-x-3">
+                                <div className="w-2 h-2 bg-teal-400 rounded-full mt-2 flex-shrink-0"></div>
+                                <p className="text-gray-700 text-sm leading-relaxed">{achievement}</p>
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       ))}
                     </div>
