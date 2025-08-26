@@ -45,7 +45,18 @@ const experience = [
       'Executed comprehensive SEO strategies improving organic traffic and keyword rankings',
       'Launched and optimized Google Ads/  Meta ads campaigns with focus on ROI and conversion tracking',
       'Collaborated with development teams to enhance UI/UX and site performance',
-      'Implemented analytics dashboards for performance monitoring and user behavior analysis' 
+      'Implemented analytics dashboards for performance monitoring and user behavior analysis',
+      'Conducted keyword research and competitor analysis to identify market opportunities',
+      'Optimized product descriptions and meta tags for better search engine visibility',
+      'Created and managed social media content calendars across multiple platforms',
+      'Monitored website performance metrics and implemented conversion rate optimization strategies',
+      'Developed email marketing campaigns for customer retention and lead nurturing',
+      'Managed Google Shopping campaigns and product feed optimization',
+      'Coordinated with suppliers and vendors for product information and promotional materials',
+      'Analyzed customer behavior data to improve user experience and reduce bounce rates',
+      'Implemented schema markup and technical SEO improvements for better search rankings',
+      'Created monthly performance reports with actionable insights for management',
+      'Managed customer reviews and online reputation across various platforms'
     ]
   }
 ];
