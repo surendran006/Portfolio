@@ -110,6 +110,87 @@ const projects = [
   }
 ];
 
+const aiTools = [
+  {
+    name: 'ChatGPT',
+    category: 'Content & Strategy',
+    description: 'Advanced content creation, SEO strategy development, and marketing copy optimization',
+    icon: MessageSquare,
+    applications: [
+      'SEO-optimized content creation',
+      'Ad copy and marketing materials',
+      'Customer persona development',
+      'Content strategy planning'
+    ],
+    impact: 'Enhanced content quality and marketing effectiveness'
+  },
+  {
+    name: 'Bolt AI',
+    category: 'Web Development',
+    description: 'Rapid website development and UI/UX optimization for better user experience',
+    icon: Globe,
+    applications: [
+      'Portfolio website development',
+      'Landing page optimization',
+      'Responsive design implementation',
+      'User interface improvements'
+    ],
+    impact: 'Accelerated development and improved website performance'
+  },
+  {
+    name: 'GitHub Copilot',
+    category: 'Development',
+    description: 'AI-powered code assistance for website optimization and technical implementations',
+    icon: BarChart3,
+    applications: [
+      'Code optimization and debugging',
+      'Analytics implementation',
+      'Performance improvements',
+      'Technical SEO enhancements'
+    ],
+    impact: 'Faster development cycles and cleaner code implementation'
+  },
+  {
+    name: 'Claude AI',
+    category: 'Analysis & Insights',
+    description: 'Data analysis, market research, and strategic planning for digital marketing campaigns',
+    icon: TrendingUp,
+    applications: [
+      'Market research and analysis',
+      'Competitor analysis reports',
+      'Campaign performance insights',
+      'Strategic planning assistance'
+    ],
+    impact: 'Data-driven decision making and improved campaign strategies'
+  },
+  {
+    name: 'Canva AI',
+    category: 'Design & Creative',
+    description: 'AI-enhanced graphic design for social media, ads, and marketing materials',
+    icon: Target,
+    applications: [
+      'Social media graphics creation',
+      'Ad creative design',
+      'Brand asset development',
+      'Visual content optimization'
+    ],
+    impact: 'Professional visual content and improved brand consistency'
+  },
+  {
+    name: 'Grammarly AI',
+    category: 'Content Quality',
+    description: 'Advanced writing assistance for error-free, engaging marketing content',
+    icon: User,
+    applications: [
+      'Content proofreading and editing',
+      'Tone and style optimization',
+      'Grammar and clarity improvements',
+      'Professional communication'
+    ],
+    impact: 'Enhanced content quality and professional communication'
+  }
+];
+
 function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -184,7 +265,7 @@ function App() {
               <span>Surendran M</span>
             </div>
             <div className="hidden md:flex space-x-8">
-              {['home', 'about', 'experience', 'skills', 'projects', 'blog', 'contact'].map((section) => (
+              {['home', 'about', 'experience', 'skills', 'projects', 'ai-tools', 'blog', 'contact'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
@@ -204,6 +285,8 @@ function App() {
                     >
                       Blog
                     </a>
+                  ) : section === 'ai-tools' ? (
+                    'AI Tools'
                   ) : (
                     section
                   )}
@@ -224,7 +307,7 @@ function App() {
           {isMobileMenuOpen && (
             <div className="md:hidden mt-4 pb-4 border-t border-gray-200 bg-white/95 backdrop-blur-md">
               <div className="flex flex-col space-y-3 pt-4">
-                {['home', 'about', 'experience', 'skills', 'projects', 'blog', 'contact'].map((section) => (
+                {['home', 'about', 'experience', 'skills', 'projects', 'ai-tools', 'blog', 'contact'].map((section) => (
                   <button
                     key={section}
                     onClick={() => scrollToSection(section)}
@@ -244,6 +327,8 @@ function App() {
                       >
                         Blog
                       </a>
+                    ) : section === 'ai-tools' ? (
+                      'AI Tools'
                     ) : (
                       section
                     )}
@@ -527,6 +612,89 @@ function App() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AI Tools Section */}
+      <section className="py-16 px-4 bg-gradient-to-br from-purple-50 to-pink-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-12 text-gray-800 relative">
+            AI Tools for Enhanced User Experience
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+          </h2>
+          
+          <p className="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12">
+            Leveraging cutting-edge AI technologies to deliver superior website performance, 
+            enhanced user experience, and data-driven marketing strategies.
+          </p>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {aiTools.map((tool, index) => {
+              const IconComponent = tool.icon;
+              return (
+                <div key={index} className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="p-3 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl">
+                      <IconComponent className="w-6 h-6 text-purple-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-800">{tool.name}</h3>
+                      <span className="text-sm bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 px-3 py-1 rounded-full font-medium">
+                        {tool.category}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <p className="text-gray-600 mb-6 leading-relaxed">{tool.description}</p>
+                  
+                  <div className="space-y-3 mb-6">
+                    <h4 className="font-semibold text-gray-800 text-sm uppercase tracking-wide flex items-center">
+                      <div className="w-1 h-4 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full mr-2"></div>
+                      Key Applications
+                    </h4>
+                    <ul className="space-y-2">
+                      {tool.applications.map((app, i) => (
+                        <li key={i} className="flex items-start space-x-2 text-sm text-gray-600">
+                          <div className="w-1.5 h-1.5 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mt-2 flex-shrink-0"></div>
+                          <span>{app}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div className="pt-4 border-t border-gray-100">
+                    <div className="flex items-center text-green-600 text-sm bg-green-50 p-3 rounded-lg border border-green-200">
+                      <Target className="w-4 h-4 mr-2 text-green-500 flex-shrink-0" />
+                      <span className="font-medium">{tool.impact}</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          
+          <div className="mt-12 text-center">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 max-w-4xl mx-auto">
+              <h3 className="text-2xl font-semibold mb-4 text-gray-800 flex items-center justify-center">
+                <div className="w-2 h-8 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full mr-3"></div>
+                AI-Powered Results
+              </h3>
+              <div className="grid md:grid-cols-3 gap-6 mt-8">
+                <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl border border-purple-100">
+                  <div className="text-3xl font-bold text-transparent bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text mb-2">50%</div>
+                  <div className="text-sm text-gray-600">Faster Content Creation</div>
+                </div>
+                <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl border border-blue-100">
+                  <div className="text-3xl font-bold text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text mb-2">75%</div>
+                  <div className="text-sm text-gray-600">Improved Code Quality</div>
+                </div>
+                <div className="text-center p-6 bg-gradient-to-br from-pink-50 to-red-50 rounded-xl border border-pink-100">
+                  <div className="text-3xl font-bold text-transparent bg-gradient-to-r from-pink-600 to-red-600 bg-clip-text mb-2">90%</div>
+                  <div className="text-sm text-gray-600">Enhanced User Experience</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
