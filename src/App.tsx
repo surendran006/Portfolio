@@ -270,20 +270,18 @@ function App() {
                 href="/resume.html" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center space-x-2 px-8 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200"
+                className="px-8 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200"
               >
-                <ExternalLink className="w-4 h-4" />
-                <span>View My Resume</span>
+                View My Resume
               </a>
               {/* Download Resume Button */}
               <a 
                 href="https://drive.google.com/uc?export=download&id=1_fDXmk5FfUv6Bd9W3bukp-T1VyZ4jkB6"
                 target="_blank" 
                 rel="noopener"
-                className="flex items-center space-x-2 px-8 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-700 transition-colors duration-200 shadow-lg"
+                className="px-8 py-3 bg-teal-600 text-white rounded-lg font-semibold hover:bg-teal-700 transition-colors duration-200 shadow-lg"
               >
-                <ExternalLink className="w-4 h-4" />
-                <span>Download Resume</span>
+                Download Resume
               </a>
             </div>
 
