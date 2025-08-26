@@ -265,7 +265,6 @@ function App() {
               >
                 View My Work
               </button>
-              {/* View Resume Button */}
               <a 
                 href="/resume.html" 
                 target="_blank" 
@@ -274,7 +273,6 @@ function App() {
               >
                 View My Resume
               </a>
-              {/* Download Resume Button */}
               <a 
                 href="https://drive.google.com/uc?export=download&id=1_fDXmk5FfUv6Bd9W3bukp-T1VyZ4jkB6"
                 target="_blank" 
