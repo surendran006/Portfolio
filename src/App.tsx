@@ -137,7 +137,7 @@ function App() {
     try {
       // Check if EmailJS is properly configured
       const serviceId = 'service_jij055t'; // Your EmailJS service ID
-      const templateId = 'template_erqwzv9'; // Your EmailJS template ID
+      const templateId = 'template_jnvlv3b'; // Your EmailJS template ID
       const publicKey = 'yNaFf9wCjc8dWEEtj'; // Replace with your actual public key
       
       if (publicKey === 'your_public_key') {
