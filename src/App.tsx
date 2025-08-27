@@ -144,26 +144,28 @@ function App() {
         throw new Error('EmailJS not configured. Please set up your EmailJS credentials first.');
       }
       
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-        to_email: 'surendranbba006@gmail.com'
-      };
+const templateParams = {
+  from_name: formData.name,
+  from_email: formData.email,
+  reply_to: formData.email,   // 👈 ensures "Reply" goes to the sender
+  subject: formData.subject,
+  message: formData.message,
+  to_email: 'surendranbba006@gmail.com'
+};
 
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
-      
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus('idle'), 3000);
-    }
-  };
+try {
+  await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+  setSubmitStatus('success');
+  setFormData({ name: '', email: '', subject: '', message: '' });
+} catch (error) {
+  console.error('Form submission error:', error);
+  setSubmitStatus('error');
+} finally {
+  setIsSubmitting(false);
+  setTimeout(() => setSubmitStatus('idle'), 3000);
+}
+
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
