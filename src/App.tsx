@@ -147,7 +147,7 @@ function App() {
 const templateParams = {
   from_name: formData.name,
   from_email: formData.email,
-  reply_to: formData.email,   // 👈 ensures "Reply" goes to the sender
+  reply_to: formData.email,   //  ensures "Reply" goes to the sender
   subject: formData.subject,
   message: formData.message,
   to_email: 'surendranbba006@gmail.com'
