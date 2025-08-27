@@ -264,7 +264,7 @@ function App() {
           <div className="text-center py-20 relative z-10">
             <div className="relative inline-block mb-6">
               <div className="w-32 h-32 mx-auto bg-gradient-to-br from-teal-500 to-blue-500 rounded-2xl flex items-center justify-center text-white text-4xl font-bold shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                SM
+                MS
               </div>
               <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white animate-pulse"></div>
             </div>
