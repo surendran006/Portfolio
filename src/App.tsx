@@ -240,7 +240,7 @@ function App() {
               whileTap={{ scale: 0.95 }}
             >
               <div className="w-10 h-10 bg-gradient-to-br from-teal-500 via-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-white text-sm font-bold shadow-lg">
-                SM
+                MS
               </div>
               <span className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">Surendran M</span>
             </motion.button>
