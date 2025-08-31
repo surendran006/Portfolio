@@ -480,10 +480,8 @@ function App() {
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {[
-                  { number: '7+', label: 'Months Experience', icon: Calendar, color: 'from-teal-500 to-blue-500' },
+                  { number: '6+', label: 'Months Experience', icon: Calendar, color: 'from-teal-500 to-blue-500' },
                   { number: 'MBA', label: 'Marketing Management', icon: GraduationCap, color: 'from-blue-500 to-purple-500' },
-                  { number: '100%', label: 'Client Satisfaction', icon: Star, color: 'from-purple-500 to-pink-500' },
-                  { number: '6+', label: 'Key Projects', icon: Briefcase, color: 'from-pink-500 to-red-500' }
                 ].map((stat, index) => {
                   const IconComponent = stat.icon;
                   return (
