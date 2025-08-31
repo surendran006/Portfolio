@@ -232,24 +232,28 @@ function App() {
       >
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
-            <motion.div 
-              className="font-bold text-xl text-gray-800 flex items-center space-x-3"
+            {/* Logo - Make it clickable to scroll to home */}
+            <motion.button 
+              onClick={() => scrollToSection('home')}
+              className="font-bold text-xl text-gray-800 flex items-center space-x-3 cursor-pointer"
               whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <div className="w-10 h-10 bg-gradient-to-br from-teal-500 via-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-white text-sm font-bold shadow-lg">
                 SM
               </div>
               <span className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">Surendran M</span>
-            </motion.div>
+            </motion.button>
             
-            <div className="hidden lg:flex space-x-1">
+            {/* Desktop Navigation Menu */}
+            <div className="hidden lg:flex items-center space-x-1">
               {['home', 'about', 'experience', 'skills', 'projects', 'contact'].map((section) => (
                 <motion.button
                   key={section}
                   onClick={() => scrollToSection(section)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`capitalize transition-all duration-300 px-4 py-2 rounded-xl font-medium ${
+                  className={`capitalize transition-all duration-300 px-4 py-2 rounded-xl font-medium cursor-pointer ${
                     activeSection === section 
                       ? 'text-white bg-gradient-to-r from-teal-500 to-blue-500 shadow-lg' 
                       : 'text-gray-600 hover:text-teal-600 hover:bg-gray-50'
@@ -263,21 +267,26 @@ function App() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
-                className="text-gray-600 hover:text-teal-600 transition-all duration-300 px-4 py-2 rounded-xl font-medium hover:bg-gray-50 flex items-center space-x-1"
+                whileTap={{ scale: 0.95 }}
+                className="text-gray-600 hover:text-teal-600 transition-all duration-300 px-4 py-2 rounded-xl font-medium hover:bg-gray-50 flex items-center space-x-1 cursor-pointer"
               >
                 <span>Blog</span>
                 <ExternalLink className="w-3 h-3" />
               </motion.a>
             </div>
             
-            <button
-              className="lg:hidden p-2 text-gray-600 hover:text-teal-600 transition-all duration-300 rounded-xl hover:bg-gray-50"
+            {/* Mobile Menu Toggle */}
+            <motion.button
+              className="lg:hidden p-2 text-gray-600 hover:text-teal-600 transition-all duration-300 rounded-xl hover:bg-gray-50 cursor-pointer"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            </motion.button>
           </div>
           
+          {/* Mobile Navigation Menu */}
           <AnimatePresence>
             {isMobileMenuOpen && (
               <motion.div 
@@ -292,7 +301,8 @@ function App() {
                       key={section}
                       onClick={() => scrollToSection(section)}
                       whileHover={{ x: 5 }}
-                      className={`capitalize text-left py-3 px-4 rounded-xl transition-all duration-300 ${
+                      whileTap={{ scale: 0.98 }}
+                      className={`capitalize text-left py-3 px-4 rounded-xl transition-all duration-300 cursor-pointer ${
                         activeSection === section 
                           ? 'text-white bg-gradient-to-r from-teal-500 to-blue-500 shadow-lg' 
                           : 'text-gray-600 hover:text-teal-600 hover:bg-gray-50'
@@ -306,7 +316,7 @@ function App() {
                     target="_blank" 
                     rel="noopener noreferrer"
                     whileHover={{ x: 5 }}
-                    className="text-gray-600 hover:text-teal-600 transition-all duration-300 py-3 px-4 rounded-xl hover:bg-gray-50 flex items-center space-x-2"
+                    className="text-gray-600 hover:text-teal-600 transition-all duration-300 py-3 px-4 rounded-xl hover:bg-gray-50 flex items-center space-x-2 cursor-pointer"
                   >
                     <span>Blog</span>
                     <ExternalLink className="w-4 h-4" />
@@ -389,7 +399,7 @@ function App() {
                 onClick={() => scrollToSection('contact')}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-teal-600 to-blue-600 text-white rounded-2xl font-semibold hover:from-teal-700 hover:to-blue-700 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center space-x-2"
+                className="px-8 py-4 bg-gradient-to-r from-teal-600 to-blue-600 text-white rounded-2xl font-semibold hover:from-teal-700 hover:to-blue-700 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center space-x-2 cursor-pointer"
               >
                 <Mail className="w-5 h-5" />
                 <span>Get In Touch</span>
@@ -399,7 +409,7 @@ function App() {
                 onClick={() => scrollToSection('projects')}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border-2 border-teal-600 text-teal-600 rounded-2xl font-semibold hover:bg-teal-50 transition-all duration-300 flex items-center space-x-2"
+                className="px-8 py-4 border-2 border-teal-600 text-teal-600 rounded-2xl font-semibold hover:bg-teal-50 transition-all duration-300 flex items-center space-x-2 cursor-pointer"
               >
                 <Eye className="w-5 h-5" />
                 <span>View My Work</span>
@@ -408,10 +418,10 @@ function App() {
               <motion.a 
                 href="https://drive.google.com/uc?export=download&id=1_fDXmk5FfUv6Bd9W3bukp-T1VyZ4jkB6"
                 target="_blank" 
-                rel="noopener"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-2xl font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center space-x-2"
+                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-2xl font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center space-x-2 cursor-pointer"
               >
                 <Download className="w-5 h-5" />
                 <span>Download Resume</span>
@@ -478,10 +488,11 @@ function App() {
                 </div>
               </div>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {/* Statistics Cards - Only showing 7+ Months Experience and MBA */}
+              <div className="grid grid-cols-2 gap-6">
                 {[
-                  { number: '6+', label: 'Months Experience', icon: Calendar, color: 'from-teal-500 to-blue-500' },
-                  { number: 'MBA', label: 'Marketing Management', icon: GraduationCap, color: 'from-blue-500 to-purple-500' },
+                  { number: '7+', label: 'Months Experience', icon: Calendar, color: 'from-teal-500 to-blue-500' },
+                  { number: 'MBA', label: 'Marketing Management', icon: GraduationCap, color: 'from-blue-500 to-purple-500' }
                 ].map((stat, index) => {
                   const IconComponent = stat.icon;
                   return (
@@ -699,7 +710,7 @@ function App() {
                 onClick={() => setSelectedProjectCategory(category)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 ${
+                className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 cursor-pointer ${
                   selectedProjectCategory === category
                     ? 'bg-gradient-to-r from-teal-500 to-blue-500 text-white shadow-lg'
                     : 'bg-white text-gray-600 hover:text-teal-600 hover:bg-gray-50 border border-gray-200'
@@ -831,7 +842,7 @@ function App() {
                         target="_blank"
                         rel="noopener noreferrer"
                         whileHover={{ x: 5, scale: 1.02 }}
-                        className="flex items-center space-x-4 p-4 bg-white rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 hover:bg-gray-50"
+                        className="flex items-center space-x-4 p-4 bg-white rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 hover:bg-gray-50 cursor-pointer"
                       >
                         <div className={`w-12 h-12 ${contact.color} bg-gray-100 rounded-2xl flex items-center justify-center`}>
                           <IconComponent className="w-6 h-6" />
@@ -942,7 +953,7 @@ function App() {
                   disabled={isSubmitting}
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`w-full flex items-center justify-center space-x-3 px-8 py-5 rounded-2xl font-bold text-lg transition-all duration-300 ${
+                  className={`w-full flex items-center justify-center space-x-3 px-8 py-5 rounded-2xl font-bold text-lg transition-all duration-300 cursor-pointer ${
                     isSubmitting
                       ? 'bg-gray-400 cursor-not-allowed'
                       : 'bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700 shadow-xl hover:shadow-2xl'
@@ -1023,7 +1034,7 @@ function App() {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.2, y: -3 }}
-                  className={`p-3 bg-white/10 rounded-2xl text-gray-300 ${social.color} transition-all duration-300 hover:bg-white/20`}
+                  className={`p-3 bg-white/10 rounded-2xl text-gray-300 ${social.color} transition-all duration-300 hover:bg-white/20 cursor-pointer`}
                 >
                   <IconComponent className="w-6 h-6" />
                 </motion.a>
