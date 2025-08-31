@@ -279,7 +279,7 @@ function App() {
             {/* Mobile Menu Toggle */}
             <motion.button
               className="lg:hidden p-2 text-gray-600 hover:text-teal-600 transition-all duration-300 rounded-xl hover:bg-gray-50 cursor-pointer"
-              onClick={() => scrollToSection(section)}
+              onClick={() => setIsMobileMenuOpen(isMobileMenuOpen)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
