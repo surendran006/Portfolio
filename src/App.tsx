@@ -1,4 +1,34 @@
-
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import emailjs from 'emailjs-com';
+import { 
+  Mail, 
+  Phone, 
+  MapPin, 
+  Linkedin, 
+  ExternalLink,
+  ChevronDown,
+  Calendar,
+  Award,
+  Target,
+  TrendingUp, 
+  Users,
+  BarChart3,
+  Search,
+  MousePointer,
+  Globe,
+  Menu,
+  X,
+  Send,
+  User,
+  MessageSquare,
+  Download,
+  Eye,
+  ArrowRight,
+  CheckCircle,
+  Star,
+  Briefcase,
+  GraduationCap 
 } from 'lucide-react';
 
 const skills = [
