@@ -1169,6 +1169,6 @@ function App() {
       </footer>
     </div>
   );
-}
+{'}'}
 
 export default App;
