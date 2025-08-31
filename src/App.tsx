@@ -308,8 +308,6 @@ function App() {
   )}
 </AnimatePresence>
 
-      </motion.nav>
-
       {/* Hero Section */}
       <section id="home" className="pt-24 pb-20 px-4 relative overflow-hidden min-h-screen flex items-center">
         <div className="absolute inset-0">
