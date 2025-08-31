@@ -152,7 +152,7 @@ function App() {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState('idle');
 
   // Intersection Observer for active section tracking
   useEffect(() => {
@@ -173,7 +173,7 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -181,7 +181,7 @@ function App() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
@@ -211,7 +211,7 @@ function App() {
     }
   };
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId) => {
     setActiveSection(sectionId);
     setIsMobileMenuOpen(false);
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
@@ -499,84 +499,55 @@ function App() {
                       <div className={`w-12 h-12 mx-auto mb-3 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center shadow-lg`}>
                         <IconComponent className="w-6 h-6 text-white" />
                       </div>
-                      <div className={`text-3xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-1`}>
-                        {stat.number}
-                      </div>
-                      <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+                      <div className="text-2xl font-bold text-gray-800">{stat.number}</div>
+                      <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
                     </motion.div>
                   );
                 })}
               </div>
             </motion.div>
-            
+
             <motion.div 
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-xl border border-gray-100"
             >
-              <div className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-xl border border-gray-100">
-                <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                  <div className="w-3 h-8 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full mr-3"></div>
-                  Contact Info
-                </h3>
-                
-                <div className="space-y-4">
-                  {[
-                    { icon: MapPin, label: 'Location', value: 'Aminjikarai, Chennai, India', href: null },
-                    { icon: Phone, label: 'Phone', value: '+91 9840696374', href: 'tel:+919840696374' },
-                    { icon: Mail, label: 'Email', value: 'surendranbba006@gmail.com', href: 'mailto:surendranbba006@gmail.com' },
-                    { icon: Linkedin, label: 'LinkedIn', value: 'Connect with me', href: 'https://www.linkedin.com/in/surendran-m-795a17338' }
-                  ].map((contact, index) => {
-                    const IconComponent = contact.icon;
-                    const content = (
-                      <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-2xl hover:bg-gradient-to-r hover:from-teal-50 hover:to-blue-50 transition-all duration-300 border border-gray-200 hover:border-teal-200 hover:shadow-md">
-                        <div className="p-3 bg-gradient-to-br from-teal-100 to-blue-100 rounded-xl">
-                          <IconComponent className="w-5 h-5 text-teal-600" />
-                        </div>
-                        <div className="text-left flex-grow">
-                          <div className="font-semibold text-gray-800">{contact.label}</div>
-                          <div className="text-sm text-gray-600">{contact.value}</div>
-                        </div>
-                        {contact.href && <ArrowRight className="w-4 h-4 text-gray-400" />}
-                      </div>
-                    );
-                    
-                    return contact.href ? (
-                      <motion.a 
-                        key={index}
-                        href={contact.href}
-                        target={contact.href.startsWith('http') ? '_blank' : undefined}
-                        rel={contact.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        whileHover={{ scale: 1.02 }}
-                        className="block"
-                      >
-                        {content}
-                      </motion.a>
-                    ) : (
-                      <motion.div key={index} whileHover={{ scale: 1.02 }}>
-                        {content}
-                      </motion.div>
-                    );
-                  })}
-                </div>
-                
-                <div className="mt-8 pt-6 border-t border-gray-200">
-                  <h4 className="font-bold mb-4 text-gray-800 flex items-center">
-                    <Globe className="w-5 h-5 mr-2 text-teal-600" />
-                    Languages
-                  </h4>
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-200">
-                      <span className="font-medium text-gray-700">English</span>
-                      <span className="text-sm bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-1 rounded-full font-bold shadow-sm">Fluent</span>
+              <h3 className="text-3xl font-bold mb-8 text-gray-800 flex items-center">
+                <div className="w-3 h-10 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full mr-4"></div>
+                Core Strengths
+              </h3>
+              
+              <div className="space-y-6">
+                {[
+                  { skill: 'SEO Optimization', level: 100, color: 'from-green-500 to-teal-500' },
+                  { skill: 'Paid Advertising', level: 100, color: 'from-teal-500 to-blue-500' },
+                  { skill: 'Analytics & Reporting', level: 100, color: 'from-blue-500 to-purple-500' },
+                  { skill: 'E-commerce Management', level: 100, color: 'from-purple-500 to-pink-500' }
+                ].map((skill, index) => (
+                  <div key={index} className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="font-semibold text-gray-800">{skill.skill}</span>
+                      <span className="text-sm text-gray-600">{skill.level}%</span>
                     </div>
-                    <div className="flex justify-between items-center p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
-                      <span className="font-medium text-gray-700">Tamil</span>
-                      <span className="text-sm bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-3 py-1 rounded-full font-bold shadow-sm">Native</span>
+                    <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${skill.level}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.5, delay: index * 0.2 }}
+                        className={`h-full bg-gradient-to-r ${skill.color} rounded-full shadow-sm`}
+                      />
                     </div>
                   </div>
-                </div>
+                ))}
+              </div>
+              
+              <div className="mt-8 p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-2xl border border-gray-200">
+                <p className="text-gray-700 flex items-center text-lg">
+                  <MapPin className="w-5 h-5 mr-3 text-teal-600" />
+                  Based in Chennai, India • Available for remote opportunities
+                </p>
               </div>
             </motion.div>
           </div>
@@ -592,87 +563,64 @@ function App() {
             viewport={{ once: true }}
             className="text-5xl font-bold text-center mb-16 text-gray-800 relative"
           >
-            Professional Experience
+            Experience
             <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
           </motion.h2>
           
-          <div className="relative">
-            <div className="absolute left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-teal-300 via-blue-300 to-purple-300 rounded-full"></div>
-            
+          <div className="space-y-12">
             {experience.map((exp, index) => (
               <motion.div 
                 key={index}
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="relative flex items-start space-x-10 pb-16"
+                className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
               >
-                <motion.div 
-                  whileHover={{ scale: 1.1 }}
-                  className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-teal-500 to-blue-500 rounded-2xl flex items-center justify-center z-10 shadow-xl"
-                >
-                  <Briefcase className="w-6 h-6 text-white" />
-                </motion.div>
-                
-                <div className="flex-grow">
-                  <div className="bg-white p-10 rounded-3xl shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500">
-                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
-                      <div className="flex-grow">
-                        <h3 className="text-3xl font-bold text-gray-800 mb-2">{exp.company}</h3>
-                        <p className="text-xl text-transparent bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text font-bold mb-2">{exp.role}</p>
-                        <p className="text-gray-600 mb-3">{exp.description}</p>
-                        <div className="flex items-center space-x-4 text-sm text-gray-500">
-                          <span className="flex items-center">
-                            <MapPin className="w-4 h-4 mr-1" />
-                            {exp.location}
-                          </span>
-                          <span className="flex items-center">
-                            <Briefcase className="w-4 h-4 mr-1" />
-                            {exp.type}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="flex items-center text-gray-600 text-sm mt-4 lg:mt-0 bg-gradient-to-r from-gray-100 to-blue-100 px-4 py-3 rounded-2xl border border-gray-200">
-                        <Calendar className="w-4 h-4 mr-2" />
-                        {exp.duration}
-                      </div>
+                <div className="bg-gradient-to-r from-teal-500 via-blue-500 to-purple-500 p-8 text-white">
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                    <div className="flex-1">
+                      <h3 className="text-3xl font-bold mb-2">{exp.role}</h3>
+                      <p className="text-xl text-blue-100 mb-2">{exp.company}</p>
+                      <p className="text-lg text-blue-100">{exp.description}</p>
                     </div>
-                    
-                    <div className="space-y-8">
-                      {exp.segments.map((segment, segIndex) => (
-                        <motion.div 
-                          key={segIndex}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: segIndex * 0.1 }}
-                          className="space-y-4"
-                        >
-                          <h4 className="text-2xl font-bold text-gray-800 pb-4 border-b-2 border-gradient-to-r from-teal-200 to-blue-200 flex items-center">
-                            <div className="w-3 h-8 bg-gradient-to-b from-teal-500 to-blue-500 rounded-full mr-4"></div>
-                            {segment.title}
-                          </h4>
-                          <div className="grid gap-3">
-                            {segment.achievements.map((achievement, i) => (
-                              <motion.div 
-                                key={i}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.05 }}
-                                whileHover={{ x: 5 }}
-                                className="flex items-start space-x-4 p-4 rounded-2xl hover:bg-gradient-to-r hover:from-teal-50 hover:to-blue-50 transition-all duration-300 border border-transparent hover:border-teal-200"
-                              >
-                                <div className="w-2 h-2 bg-gradient-to-r from-teal-400 to-blue-400 rounded-full mt-3 flex-shrink-0"></div>
-                                <p className="text-gray-700 leading-relaxed">{achievement}</p>
-                              </motion.div>
-                            ))}
-                          </div>
-                        </motion.div>
-                      ))}
+                    <div className="lg:text-right mt-4 lg:mt-0">
+                      <div className="inline-block bg-white/20 backdrop-blur-sm rounded-2xl p-4">
+                        <p className="text-lg font-semibold mb-1">{exp.duration}</p>
+                        <p className="text-blue-100 flex items-center justify-end">
+                          <MapPin className="w-4 h-4 mr-1" />
+                          {exp.location}
+                        </p>
+                        <p className="text-blue-100 text-sm mt-1">{exp.type}</p>
+                      </div>
                     </div>
                   </div>
+                </div>
+                
+                <div className="p-8 space-y-8">
+                  {exp.segments.map((segment, segIndex) => (
+                    <div key={segIndex}>
+                      <h4 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                        <div className="w-2 h-8 bg-gradient-to-b from-teal-500 to-blue-500 rounded-full mr-4"></div>
+                        {segment.title}
+                      </h4>
+                      <div className="grid gap-4">
+                        {segment.achievements.map((achievement, achIndex) => (
+                          <motion.div 
+                            key={achIndex}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: achIndex * 0.1 }}
+                            className="flex items-start space-x-4 p-4 bg-gradient-to-r from-gray-50 to-blue-50 rounded-2xl border border-gray-100 hover:from-blue-50 hover:to-teal-50 transition-all duration-300"
+                          >
+                            <div className="w-2 h-2 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <p className="text-gray-700 leading-relaxed">{achievement}</p>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             ))}
@@ -689,234 +637,148 @@ function App() {
             viewport={{ once: true }}
             className="text-5xl font-bold text-center mb-16 text-gray-800 relative"
           >
-            Core Skills
+            Skills & Expertise
             <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
           </motion.h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {skills.map((skill, index) => {
               const IconComponent = skill.icon;
               return (
                 <motion.div 
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
+                  whileHover={{ scale: 1.05, y: -10 }}
+                  className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 text-center group"
                 >
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center space-x-3">
-                      <div className="p-3 bg-gradient-to-br from-teal-100 to-blue-100 rounded-2xl">
-                        <IconComponent className="w-6 h-6 text-teal-600" />
-                      </div>
-                      <div>
-                        <span className="font-bold text-gray-800 block">{skill.name}</span>
-                        <span className="text-sm text-gray-500">{skill.category}</span>
-                      </div>
-                    </div>
-                    <span className="text-lg font-bold bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">
-                      {skill.level}%
-                    </span>
+                  <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-teal-500 via-blue-500 to-purple-500 rounded-3xl flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="w-10 h-10" />
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                    <motion.div 
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.5, delay: index * 0.1 }}
-                      className="bg-gradient-to-r from-teal-500 to-blue-500 h-3 rounded-full shadow-sm"
-                    ></motion.div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-4">{skill.name}</h3>
+                  <div className="space-y-3">
+                    <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${skill.level}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.5, delay: index * 0.1 }}
+                        className="h-full bg-gradient-to-r from-teal-500 to-blue-500 rounded-full shadow-sm"
+                      />
+                    </div>
+                    <p className="text-sm font-semibold text-gray-600">{skill.level}%</p>
+                  </div>
+                  <div className="mt-4 inline-block px-3 py-1 bg-gradient-to-r from-teal-100 to-blue-100 text-teal-700 rounded-full text-sm font-medium">
+                    {skill.category}
                   </div>
                 </motion.div>
               );
             })}
           </div>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-br from-gray-50 to-blue-50 p-10 rounded-3xl border border-gray-200 shadow-lg"
-          >
-            <h3 className="text-3xl font-bold mb-8 text-gray-800 flex items-center justify-center">
-              <div className="w-3 h-10 bg-gradient-to-b from-teal-500 to-blue-500 rounded-full mr-4"></div>
-              Tools & Platforms
-            </h3>
-            <div className="flex flex-wrap gap-4 justify-center">
-              {['Google Analytics', 'Search Console', 'Google Ads','Shopify','Meta Ads', 'Canva', 'MS Office', 'Google Tag Manager', 'SEMrush', 'Ahrefs'].map((tool, index) => (
-                <motion.span 
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  className="px-6 py-3 bg-white text-gray-700 rounded-2xl text-sm font-semibold hover:bg-gradient-to-r hover:from-teal-50 hover:to-blue-50 hover:text-teal-700 transition-all duration-300 shadow-md border border-gray-200 hover:border-teal-200 hover:shadow-lg"
-                >
-                  {tool}
-                </motion.span>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-purple-50">
-        <div className="max-w-6xl mx-auto">
+      <section id="projects" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="max-w-7xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-5xl font-bold text-center mb-16 text-gray-800 relative"
           >
-            Key Projects
+            Recent Projects
             <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
           </motion.h2>
           
-          {/* Project Filter */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-wrap justify-center gap-3 mb-12"
-          >
-            {projectCategories.map((category) => (
+          {/* Project Category Filter */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {projectCategories.map((category, index) => (
               <motion.button
-                key={category}
+                key={index}
                 onClick={() => setSelectedProjectCategory(category)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 ${
                   selectedProjectCategory === category
-                    ? 'bg-gradient-to-r from-teal-600 to-blue-600 text-white shadow-lg'
-                    : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200 hover:border-teal-200'
+                    ? 'bg-gradient-to-r from-teal-500 to-blue-500 text-white shadow-lg'
+                    : 'bg-white text-gray-600 hover:text-teal-600 hover:bg-gray-50 border border-gray-200'
                 }`}
               >
                 {category}
               </motion.button>
             ))}
-          </motion.div>
+          </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <AnimatePresence mode="wait">
+          <motion.div 
+            layout
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <AnimatePresence>
               {filteredProjects.map((project, index) => (
                 <motion.div 
-                  key={`${selectedProjectCategory}-${index}`}
-                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -30, scale: 0.9 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 group"
+                  key={project.title}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500"
                 >
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="p-3 bg-gradient-to-br from-teal-100 to-blue-100 rounded-2xl group-hover:from-teal-200 group-hover:to-blue-200 transition-all duration-300">
-                      <Target className="w-6 h-6 text-teal-600" />
+                  <div className="bg-gradient-to-br from-teal-500 via-blue-500 to-purple-500 p-6 text-white">
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-xl font-bold">{project.title}</h3>
+                      <div className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
+                        {project.category}
+                      </div>
                     </div>
-                    <span className="text-xs font-bold bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 px-3 py-1 rounded-full">
-                      {project.category}
-                    </span>
+                    <p className="text-blue-100 leading-relaxed">{project.description}</p>
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-teal-700 transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{project.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech, i) => (
-                      <span key={i} className="px-3 py-1 bg-gradient-to-r from-teal-100 to-blue-100 text-teal-800 rounded-full text-xs font-semibold border border-teal-200">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <div className="space-y-3">
-                    <div className="flex items-center text-green-600 text-sm bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-2xl border border-green-200">
-                      <CheckCircle className="w-5 h-5 mr-3 text-green-500" />
-                      <span className="font-medium">{project.results}</span>
+                  <div className="p-6 space-y-6">
+                    <div>
+                      <h4 className="font-semibold text-gray-800 mb-3 flex items-center">
+                        <Target className="w-4 h-4 mr-2 text-teal-600" />
+                        Technologies & Tools
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech, techIndex) => (
+                          <span 
+                            key={techIndex} 
+                            className="px-3 py-1 bg-gradient-to-r from-gray-100 to-blue-100 text-gray-700 rounded-full text-sm font-medium"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                    <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl border border-blue-200">
-                      <span className="text-sm font-medium text-gray-700">Impact:</span>
-                      <span className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                        {project.impact}
-                      </span>
+                    
+                    <div>
+                      <h4 className="font-semibold text-gray-800 mb-2 flex items-center">
+                        <TrendingUp className="w-4 h-4 mr-2 text-teal-600" />
+                        Results
+                      </h4>
+                      <p className="text-gray-600 text-sm leading-relaxed">{project.results}</p>
+                    </div>
+                    
+                    <div className="pt-4 border-t border-gray-100">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-500">Impact</span>
+                        <span className="font-bold text-xl text-transparent bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text">
+                          {project.impact}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
               ))}
             </AnimatePresence>
-          </div>
+          </motion.div>
         </div>
       </section>
-
-      {/* Education Section */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-5xl font-bold text-center mb-16 text-gray-800 relative"
-          >
-            Education & Certifications
-            <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
-          </motion.h2>
-          
-          <div className="grid lg:grid-cols-2 gap-12">
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
-              <h3 className="text-3xl font-bold text-gray-800 mb-8 flex items-center">
-                <div className="w-3 h-10 bg-gradient-to-b from-teal-500 to-blue-500 rounded-full mr-4"></div>
-                Education
-              </h3>
-              
-              <motion.div 
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="p-10 bg-gradient-to-br from-teal-50 to-blue-50 rounded-3xl border border-teal-100 shadow-xl hover:shadow-2xl transition-all duration-300"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-start space-x-4">
-                    <div className="p-3 bg-gradient-to-br from-teal-500 to-blue-500 rounded-2xl shadow-lg">
-                      <GraduationCap className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-800 text-2xl mb-2">MBA - Marketing Management</h4>
-                      <p className="text-xl text-transparent bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text font-bold">Madras University, Chennai</p>
-                    </div>
-                  </div>
-                  <span className="text-sm bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-2 rounded-full font-bold shadow-lg">
-                    2023 - 2025
-                  </span>
-                </div>
-              </motion.div>
-              
-              <motion.div 
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="p-10 bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl border border-blue-100 shadow-xl hover:shadow-2xl transition-all duration-300"
-              >
-                <div className="flex items-start justify-between">
-                  <div className="flex items-start space-x-4">
-                    <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl shadow-lg">
-                      <GraduationCap className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-800 text-2xl mb-2">BBA</h4>
-                      <p className="text-xl text-gray-600">St Thomas College of Arts & Science</p>
-                    </div>
-                  </div>
-                  <span className="text-sm bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-4 py-2 rounded-full font-bold shadow-lg">
-                    2018 - 2022
-                  </span>
-                </div>
-              </motion.div>
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 bg-white">
@@ -927,51 +789,60 @@ function App() {
             viewport={{ once: true }}
             className="text-5xl font-bold text-center mb-16 text-gray-800 relative"
           >
-            Let's Connect
+            Get In Touch
             <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
           </motion.h2>
           
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid lg:grid-cols-2 gap-12">
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <div className="bg-gradient-to-br from-white to-gray-50 p-10 rounded-3xl shadow-xl border border-gray-100">
-                <h3 className="text-3xl font-bold mb-8 text-gray-800 flex items-center">
+              <div className="bg-gradient-to-br from-gray-50 to-blue-50 p-8 rounded-3xl border border-gray-100 shadow-lg">
+                <h3 className="text-3xl font-bold mb-6 text-gray-800 flex items-center">
                   <div className="w-3 h-10 bg-gradient-to-b from-teal-500 to-blue-500 rounded-full mr-4"></div>
-                  Get In Touch
+                  Let's Collaborate
                 </h3>
-                <p className="text-xl text-gray-700 mb-10 leading-relaxed">
-                  Ready to discuss digital marketing opportunities? 
-                  I'd love to hear about your project and how I can help drive results.
-                </p>
-                
+                <div className="space-y-6 text-gray-700 leading-relaxed">
+                  <p className="text-lg">
+                    Ready to take your digital marketing to the next level? I'd love to discuss how we can work together 
+                    to achieve your business goals through strategic digital marketing initiatives.
+                  </p>
+                  <p className="text-lg">
+                    Whether you need help with SEO optimization, paid advertising campaigns, e-commerce management, 
+                    or comprehensive digital marketing strategy, I'm here to help drive measurable results for your business.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="space-y-6">
+                <h4 className="text-2xl font-bold text-gray-800">Contact Information</h4>
                 <div className="space-y-4">
                   {[
-                    { icon: Phone, label: 'Phone', value: '+91 9840696374', href: 'tel:+919840696374', color: 'from-green-500 to-emerald-500' },
-                    { icon: Mail, label: 'Email', value: 'surendranbba006@gmail.com', href: 'mailto:surendranbba006@gmail.com', color: 'from-blue-500 to-indigo-500' },
-                    { icon: Linkedin, label: 'LinkedIn', value: 'Connect with me', href: 'https://www.linkedin.com/in/surendran-m-795a17338', color: 'from-purple-500 to-pink-500' }
+                    { icon: Mail, label: 'Email', value: 'surendranbba006@gmail.com', href: 'mailto:surendranbba006@gmail.com', color: 'text-teal-600' },
+                    { icon: Linkedin, label: 'LinkedIn', value: 'Connect with me', href: 'https://www.linkedin.com/in/surendran-m-795a17338', color: 'text-blue-600' },
+                    { icon: ExternalLink, label: 'Medium Blog', value: 'Read my articles', href: 'https://medium.com/@surendrandigitalmarketing', color: 'text-purple-600' }
                   ].map((contact, index) => {
                     const IconComponent = contact.icon;
                     return (
                       <motion.a 
                         key={index}
                         href={contact.href}
-                        target={contact.href.startsWith('http') ? '_blank' : undefined}
-                        rel={contact.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        whileHover={{ scale: 1.02, x: 5 }}
-                        className="flex items-center space-x-4 p-6 bg-gray-50 rounded-2xl hover:bg-white transition-all duration-300 border border-gray-200 hover:border-teal-200 hover:shadow-lg group"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ x: 5, scale: 1.02 }}
+                        className="flex items-center space-x-4 p-4 bg-white rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 hover:bg-gray-50"
                       >
-                        <div className={`p-4 bg-gradient-to-br ${contact.color} rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300`}>
-                          <IconComponent className="w-6 h-6 text-white" />
+                        <div className={`w-12 h-12 ${contact.color} bg-gray-100 rounded-2xl flex items-center justify-center`}>
+                          <IconComponent className="w-6 h-6" />
                         </div>
-                        <div className="text-left flex-grow">
-                          <div className="font-bold text-gray-800 text-lg">{contact.label}</div>
-                          <div className="text-gray-600">{contact.value}</div>
+                        <div>
+                          <p className="font-semibold text-gray-800">{contact.label}</p>
+                          <p className="text-gray-600">{contact.value}</p>
                         </div>
-                        <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-teal-500 transition-colors duration-300" />
+                        <ArrowRight className="w-5 h-5 text-gray-400 ml-auto" />
                       </motion.a>
                     );
                   })}
@@ -1155,7 +1026,7 @@ function App() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.2, y: -3 }}
                   className={`p-3 bg-white/10 rounded-2xl text-gray-300 ${social.color} transition-all duration-300 hover:bg-white/20`}
-                > 
+                >
                   <IconComponent className="w-6 h-6" />
                 </motion.a>
               );
