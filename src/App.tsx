@@ -1155,7 +1155,7 @@ function App() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.2, y: -3 }}
                   className={`p-3 bg-white/10 rounded-2xl text-gray-300 ${social.color} transition-all duration-300 hover:bg-white/20`}
-                >
+                > 
                   <IconComponent className="w-6 h-6" />
                 </motion.a>
               );
@@ -1171,4 +1171,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;
