@@ -28,7 +28,7 @@ import {
   CheckCircle,
   Star,
   Briefcase,
-  GraduationCap 
+  GraduationCap
 } from 'lucide-react';
 
 const skills = [
