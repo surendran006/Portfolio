@@ -1026,7 +1026,7 @@ function App() {
             {[
               { icon: Linkedin, href: 'https://www.linkedin.com/in/surendran-m-795a17338', color: 'hover:text-blue-400' },
               { icon: Mail, href: 'mailto:surendranbba006@gmail.com', color: 'hover:text-teal-400' },
-              { icon: ExternalLink, href: 'https://medium.com/@surendrandigitalmarketing', color: 'hover:text-purple-400' }
+              { icon: Reading, href: 'https://medium.com/@surendrandigitalmarketing', color: 'hover:text-purple-400' }
             ].map((social, index) => {
               const IconComponent = social.icon;
               return (
