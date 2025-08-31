@@ -1165,7 +1165,6 @@ function App() {
             <p className="text-gray-400">&copy; 2025 Surendran M. All rights reserved.</p>
             <p className="text-gray-500 text-sm mt-2">Crafted with passion for digital excellence</p>
           </div>
-        </div>
       </footer>
     </div>           
   );
