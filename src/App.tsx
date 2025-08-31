@@ -272,7 +272,7 @@ function App() {
                 className="text-gray-600 hover:text-teal-600 transition-all duration-300 px-4 py-2 rounded-xl font-medium hover:bg-gray-50 flex items-center space-x-1 cursor-pointer"
               >
                 <span>Blog</span>
-                <ExternalLink className="w-3 h-3" />
+                <BookOpen className="w-3 h-3" />
               </motion.a>
             </div>
             
