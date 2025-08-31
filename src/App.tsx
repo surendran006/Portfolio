@@ -301,7 +301,7 @@ function App() {
                     <motion.button
                       key={section}
                       onClick={() => scrollToSection(section)}
-                      whileHover={{ x: 5 }}
+                      whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
                       className={`capitalize text-left py-3 px-4 rounded-xl transition-all duration-300 cursor-pointer ${
                         activeSection === section 
