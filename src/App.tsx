@@ -487,78 +487,93 @@ function App() {
                     to help businesses grow their online presence and achieve their marketing goals.
                   </p>
                 </div>
-</div>
+              </div>
 
-{/* Statistics Cards - BBA, MBA, and 6+ Months Experience */}
-<div className="grid grid-cols-3 gap-4">
-  {[
-    { number: 'BBA', label: 'Bachelor of Business Administration', icon: GraduationCap, color: 'from-purple-500 to-pink-500' },
-    { number: 'MBA', label: 'Marketing Management (Correspondence)', icon: GraduationCap, color: 'from-blue-500 to-purple-500' },
-    { number: '6+', label: 'Months Experience', icon: Calendar, color: 'from-teal-500 to-blue-500' }
-  ].map((stat, index) => {
-    const IconComponent = stat.icon; 
-    return (
-      <motion.div 
-        key={index}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: index * 0.1 }}
-        whileHover={{ scale: 1.05, y: -5 }}
-        className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
-      >
-        <div className={`w-12 h-12 mx-auto mb-3 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center shadow-lg`}>
-          <IconComponent className="w-6 h-6 text-white" />
-        </div>
-        <div className="text-2xl font-bold text-gray-800">{stat.number}</div>
-        <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
-      </motion.div>
-    );
-  })}
-</div>
+              {/* Statistics Cards - BBA, MBA, and 6+ Months Experience */}
+              <div className="grid grid-cols-3 gap-4">
+                {[
+                  { number: 'BBA', label: 'Bachelor of Business Administration', icon: GraduationCap, color: 'from-purple-500 to-pink-500' },
+                  { number: 'MBA', label: 'Marketing Management (Correspondence)', icon: GraduationCap, color: 'from-blue-500 to-purple-500' },
+                  { number: '6+', label: 'Months Experience', icon: Calendar, color: 'from-teal-500 to-blue-500' }
+                ].map((stat, index) => {
+                  const IconComponent = stat.icon; 
+                  return (
+                    <motion.div 
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      whileHover={{ scale: 1.05, y: -5 }}
+                      className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
+                    >
+                      <div className={`w-12 h-12 mx-auto mb-3 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center shadow-lg`}>
+                        <IconComponent className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="text-2xl font-bold text-gray-800">{stat.number}</div>
+                      <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </motion.div>
 
             <motion.div 
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-xl border border-gray-100"
+              className="space-y-6"
             >
-              <h3 className="text-3xl font-bold mb-8 text-gray-800 flex items-center">
-                <div className="w-3 h-10 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full mr-4"></div>
-                Core Strengths
-              </h3>
-              
-              <div className="space-y-6">
-                {[
-                  { skill: 'SEO Optimization', level: 100, color: 'from-green-500 to-teal-500' },
-                  { skill: 'Paid Advertising', level: 100, color: 'from-teal-500 to-blue-500' },
-                  { skill: 'Analytics & Reporting', level: 100, color: 'from-blue-500 to-purple-500' },
-                  { skill: 'E-commerce Management', level: 100, color: 'from-purple-500 to-pink-500' }
-                ].map((skill, index) => (
-                  <div key={index} className="space-y-3">
-                    <div className="flex justify-between items-center">
-                      <span className="font-semibold text-gray-800">{skill.skill}</span>
-                      <span className="text-sm text-gray-600">{skill.level}%</span>
+              <div className="bg-gradient-to-br from-teal-50 to-blue-50 p-8 rounded-3xl border border-gray-100 shadow-lg">
+                <h3 className="text-2xl font-bold mb-6 text-gray-800 flex items-center">
+                  <Target className="w-6 h-6 text-teal-600 mr-3" />
+                  Key Strengths
+                </h3>
+                <div className="space-y-4">
+                  {[
+                    { skill: 'SEO Strategy & Implementation', level: 95 },
+                    { skill: 'Google Ads & Meta Ads Management', level: 90 },
+                    { skill: 'E-commerce Platform Management', level: 88 },
+                    { skill: 'Data Analysis & Reporting', level: 85 }
+                  ].map((item, index) => (
+                    <div key={index} className="space-y-2">
+                      <div className="flex justify-between text-sm font-medium text-gray-700">
+                        <span>{item.skill}</span>
+                        <span>{item.level}%</span>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${item.level}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, delay: index * 0.2 }}
+                          className="bg-gradient-to-r from-teal-500 to-blue-500 h-2 rounded-full"
+                        ></motion.div>
+                      </div>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.5, delay: index * 0.2 }}
-                        className={`h-full bg-gradient-to-r ${skill.color} rounded-full shadow-sm`}
-                      />
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-              
-              <div className="mt-8 p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-2xl border border-gray-200">
-                <p className="text-gray-700 flex items-center text-lg">
-                  <MapPin className="w-5 h-5 mr-3 text-teal-600" />
-                  Based in Chennai, India • Available for remote opportunities
-                </p>
+
+              <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl border border-gray-100 shadow-lg">
+                <h3 className="text-2xl font-bold mb-4 text-gray-800 flex items-center">
+                  <Award className="w-6 h-6 text-purple-600 mr-3" />
+                  Professional Goals
+                </h3>
+                <ul className="space-y-3 text-gray-700">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>Drive measurable business growth through innovative digital strategies</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>Continuously stay updated with emerging digital marketing trends</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <span>Help businesses optimize their online presence and ROI</span>
+                  </li>
+                </ul>
               </div>
             </motion.div>
           </div>
@@ -578,64 +593,70 @@ function App() {
             <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
           </motion.h2>
           
-          <div className="space-y-12">
-            {experience.map((exp, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
-              >
-                <div className="bg-gradient-to-r from-teal-500 via-blue-500 to-purple-500 p-8 text-white">
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
-                    <div className="flex-1">
-                      <h3 className="text-3xl font-bold mb-2">{exp.role}</h3>
-                      <p className="text-xl text-blue-100 mb-2">{exp.company}</p>
-                      <p className="text-lg text-blue-100">{exp.description}</p>
-                    </div>
-                    <div className="lg:text-right mt-4 lg:mt-0">
-                      <div className="inline-block bg-white/20 backdrop-blur-sm rounded-2xl p-4">
-                        <p className="text-lg font-semibold mb-1">{exp.duration}</p>
-                        <p className="text-blue-100 flex items-center justify-end">
-                          <MapPin className="w-4 h-4 mr-1" />
-                          {exp.location}
-                        </p>
-                        <p className="text-blue-100 text-sm mt-1">{exp.type}</p>
+          {experience.map((exp, index) => (
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.2 }}
+              className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden mb-8"
+            >
+              <div className="p-8 lg:p-12">
+                <div className="flex flex-col lg:flex-row lg:items-start gap-8">
+                  <div className="lg:w-1/3">
+                    <div className="bg-gradient-to-br from-teal-500 to-blue-500 rounded-3xl p-8 text-white relative overflow-hidden">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+                      <div className="relative z-10">
+                        <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                          <Briefcase className="w-8 h-8 text-white" />
+                        </div>
+                        <h3 className="text-2xl font-bold mb-2">{exp.company}</h3>
+                        <p className="text-xl font-semibold mb-3 text-blue-100">{exp.role}</p>
+                        <p className="text-blue-100 mb-4">{exp.description}</p>
+                        <div className="space-y-2">
+                          <div className="flex items-center text-blue-100">
+                            <Calendar className="w-4 h-4 mr-2" />
+                            <span className="text-sm">{exp.duration}</span>
+                          </div>
+                          <div className="flex items-center text-blue-100">
+                            <MapPin className="w-4 h-4 mr-2" />
+                            <span className="text-sm">{exp.location}</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                
-                <div className="p-8 space-y-8">
-                  {exp.segments.map((segment, segIndex) => (
-                    <div key={segIndex}>
-                      <h4 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
-                        <div className="w-2 h-8 bg-gradient-to-b from-teal-500 to-blue-500 rounded-full mr-4"></div>
-                        {segment.title}
-                      </h4>
-                      <div className="grid gap-4">
-                        {segment.achievements.map((achievement, achIndex) => (
-                          <motion.div 
-                            key={achIndex}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: achIndex * 0.1 }}
-                            className="flex items-start space-x-4 p-4 bg-gradient-to-r from-gray-50 to-blue-50 rounded-2xl border border-gray-100 hover:from-blue-50 hover:to-teal-50 transition-all duration-300"
-                          >
-                            <div className="w-2 h-2 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                            <p className="text-gray-700 leading-relaxed">{achievement}</p>
-                          </motion.div>
-                        ))}
+                  
+                  <div className="lg:w-2/3 space-y-8">
+                    {exp.segments.map((segment, segIndex) => (
+                      <div key={segIndex}>
+                        <h4 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                          <div className={`w-4 h-4 rounded-full mr-3 ${segIndex === 0 ? 'bg-teal-500' : 'bg-blue-500'}`}></div>
+                          {segment.title}
+                        </h4>
+                        <div className="grid gap-4">
+                          {segment.achievements.map((achievement, achIndex) => (
+                            <motion.div 
+                              key={achIndex}
+                              initial={{ opacity: 0, x: -20 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: achIndex * 0.1 }}
+                              className="flex items-start p-4 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors duration-200"
+                            >
+                              <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                              <span className="text-gray-700 leading-relaxed">{achievement}</span>
+                            </motion.div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
@@ -652,37 +673,37 @@ function App() {
             <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
           </motion.h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {skills.map((skill, index) => {
               const IconComponent = skill.icon;
               return (
                 <motion.div 
                   key={index}
-                  initial={{ opacity: 0, y: 50 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -10 }}
-                  className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-3xl shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 text-center group"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="group bg-gradient-to-br from-gray-50 to-blue-50 p-8 rounded-3xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                 >
-                  <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-teal-500 via-blue-500 to-purple-500 rounded-3xl flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent className="w-10 h-10" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-4">{skill.name}</h3>
-                  <div className="space-y-3">
-                    <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1.5, delay: index * 0.1 }}
-                        className="h-full bg-gradient-to-r from-teal-500 to-blue-500 rounded-full shadow-sm"
-                      />
+                  <div className="text-center">
+                    <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-teal-500 to-blue-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <IconComponent className="w-8 h-8 text-white" />
                     </div>
-                    <p className="text-sm font-semibold text-gray-600">{skill.level}%</p>
-                  </div>
-                  <div className="mt-4 inline-block px-3 py-1 bg-gradient-to-r from-teal-100 to-blue-100 text-teal-700 rounded-full text-sm font-medium">
-                    {skill.category}
+                    <h3 className="text-lg font-bold text-gray-800 mb-3">{skill.name}</h3>
+                    <div className="text-sm text-gray-600 mb-4">{skill.category}</div>
+                    <div className="relative">
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.5, delay: index * 0.1 }}
+                          className="bg-gradient-to-r from-teal-500 to-blue-500 h-2 rounded-full"
+                        ></motion.div>
+                      </div>
+                      <span className="absolute -top-6 right-0 text-sm font-semibold text-gray-700">{skill.level}%</span>
+                    </div>
                   </div>
                 </motion.div>
               );
@@ -693,29 +714,38 @@ function App() {
 
       {/* Projects Section */}
       <section id="projects" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl font-bold text-center mb-16 text-gray-800 relative"
+            className="text-5xl font-bold text-center mb-8 text-gray-800 relative"
           >
-           Projects
+            Featured Projects
             <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
           </motion.h2>
           
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center text-gray-600 mb-12 text-lg max-w-3xl mx-auto"
+          >
+            Explore my portfolio of successful digital marketing campaigns and projects that have delivered measurable results for clients.
+          </motion.p>
+          
           {/* Project Category Filter */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {projectCategories.map((category, index) => (
+            {projectCategories.map((category) => (
               <motion.button
-                key={index}
+                key={category}
                 onClick={() => setSelectedProjectCategory(category)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 cursor-pointer ${
+                className={`px-6 py-3 rounded-2xl font-medium transition-all duration-300 ${
                   selectedProjectCategory === category
                     ? 'bg-gradient-to-r from-teal-500 to-blue-500 text-white shadow-lg'
-                    : 'bg-white text-gray-600 hover:text-teal-600 hover:bg-gray-50 border border-gray-200'
+                    : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
                 }`}
               >
                 {category}
@@ -723,71 +753,65 @@ function App() {
             ))}
           </div>
           
-          <motion.div 
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence>
               {filteredProjects.map((project, index) => (
                 <motion.div 
                   key={project.title}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -30 }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden group hover:shadow-2xl transition-all duration-300"
                 >
-                  <div className="bg-gradient-to-br from-teal-500 via-blue-500 to-purple-500 p-6 text-white">
-                    <div className="flex items-center justify-between mb-3">
-                      <h3 className="text-xl font-bold">{project.title}</h3>
-                      <div className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium">
+                  <div className="p-8">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-blue-500 rounded-2xl flex items-center justify-center">
+                        <TrendingUp className="w-6 h-6 text-white" />
+                      </div>
+                      <span className="px-3 py-1 bg-gradient-to-r from-teal-50 to-blue-50 text-teal-700 rounded-full text-sm font-medium border border-teal-200">
                         {project.category}
-                      </div>
-                    </div>
-                    <p className="text-blue-100 leading-relaxed">{project.description}</p>
-                  </div>
-                  
-                  <div className="p-6 space-y-6">
-                    <div>
-                      <h4 className="font-semibold text-gray-800 mb-3 flex items-center">
-                        <Target className="w-4 h-4 mr-2 text-teal-600" />
-                        Technologies & Tools
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech, techIndex) => (
-                          <span 
-                            key={techIndex} 
-                            className="px-3 py-1 bg-gradient-to-r from-gray-100 to-blue-100 text-gray-700 rounded-full text-sm font-medium"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
+                      </span>
                     </div>
                     
-                    <div>
-                      <h4 className="font-semibold text-gray-800 mb-2 flex items-center">
-                        <TrendingUp className="w-4 h-4 mr-2 text-teal-600" />
-                        Results
-                      </h4>
-                      <p className="text-gray-600 text-sm leading-relaxed">{project.results}</p>
-                    </div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-teal-600 transition-colors duration-300">
+                      {project.title}
+                    </h3>
                     
-                    <div className="pt-4 border-t border-gray-100">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-gray-500">Impact</span>
-                        <span className="font-bold text-xl text-transparent bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text">
-                          {project.impact}
-                        </span>
+                    <p className="text-gray-600 mb-6 leading-relaxed">
+                      {project.description}
+                    </p>
+                    
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-800 mb-2">Technologies Used:</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.map((tech, techIndex) => (
+                            <span key={techIndex} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div className="pt-4 border-t border-gray-100">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <p className="text-sm text-gray-600 mb-1">Impact:</p>
+                            <p className="font-bold text-lg text-green-600">{project.impact}</p>
+                          </div>
+                          <div className="text-right">
+                            <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-teal-500 transition-colors duration-300" />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </motion.div>
               ))}
             </AnimatePresence>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -798,13 +822,23 @@ function App() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl font-bold text-center mb-16 text-gray-800 relative"
+            className="text-5xl font-bold text-center mb-8 text-gray-800 relative"
           >
             Get In Touch
             <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
           </motion.h2>
           
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center text-gray-600 mb-16 text-lg max-w-3xl mx-auto"
+          >
+            Ready to take your digital marketing to the next level? Let's discuss how I can help grow your business through proven strategies and data-driven results.
+          </motion.p>
+          
           <div className="grid lg:grid-cols-2 gap-12">
+            {/* Contact Information */}
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -812,78 +846,92 @@ function App() {
               className="space-y-8"
             >
               <div className="bg-gradient-to-br from-gray-50 to-blue-50 p-8 rounded-3xl border border-gray-100 shadow-lg">
-                <h3 className="text-3xl font-bold mb-6 text-gray-800 flex items-center">
-                  <div className="w-3 h-10 bg-gradient-to-b from-teal-500 to-blue-500 rounded-full mr-4"></div>
-                  Let's Collaborate
-                </h3>
-                <div className="space-y-6 text-gray-700 leading-relaxed">
-                  <p className="text-lg">
-                    Ready to take your digital marketing to the next level? I'd love to discuss how we can work together 
-                    to achieve your business goals through strategic digital marketing initiatives.
-                  </p>
-                  <p className="text-lg">
-                    Whether you need help with SEO optimization, paid advertising campaigns, e-commerce management, 
-                    or comprehensive digital marketing strategy, I'm here to help drive measurable results for your business.
-                  </p>
+                <h3 className="text-2xl font-bold mb-6 text-gray-800">Contact Information</h3>
+                <div className="space-y-6">
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-teal-500 to-blue-500 rounded-2xl flex items-center justify-center mr-4">
+                      <Mail className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-600">Email</p>
+                      <a href="mailto:surendranbba006@gmail.com" className="text-lg font-semibold text-gray-800 hover:text-teal-600 transition-colors duration-300">
+                        surendranbba006@gmail.com
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mr-4">
+                      <Phone className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-600">Phone</p>
+                      <a href="tel:9840696374" className="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-300">
+                        +91 9840696374
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mr-4">
+                      <MapPin className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-600">Location</p>
+                      <p className="text-lg font-semibold text-gray-800">Chennai, India</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-teal-600 rounded-2xl flex items-center justify-center mr-4">
+                      <Linkedin className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-600">LinkedIn</p>
+                      <a 
+                        href="https://www.linkedin.com/in/surendran-m-795a17338" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-300"
+                      >
+                        Surendran M
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
-              
-              <div className="space-y-6">
-                <h4 className="text-2xl font-bold text-gray-800">Contact Information</h4>
-                <div className="space-y-4">
+
+              <div className="bg-gradient-to-br from-teal-50 to-blue-50 p-8 rounded-3xl border border-gray-100 shadow-lg">
+                <h3 className="text-xl font-bold mb-4 text-gray-800">Why Work With Me?</h3>
+                <ul className="space-y-3">
                   {[
-                    { icon: Mail, label: 'Email', value: 'surendranbba006@gmail.com', href: 'mailto:surendranbba006@gmail.com', color: 'text-teal-600' },
-                    { icon: Linkedin, label: 'LinkedIn', value: 'Connect with me', href: 'https://www.linkedin.com/in/surendran-m-795a17338', color: 'text-blue-600' },
-                    { icon: BookOpen, label: 'Blog', value: 'Read my articles', href: 'https://medium.com/@surendrandigitalmarketing', color: 'text-purple-600' }
-                  ].map((contact, index) => {
-                    const IconComponent = contact.icon;
-                    return (
-                      <motion.a 
-                        key={index}
-                        href={contact.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ x: 5, scale: 1.02 }}
-                        className="flex items-center space-x-4 p-4 bg-white rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300 hover:bg-gray-50 cursor-pointer"
-                      >
-                        <div className={`w-12 h-12 ${contact.color} bg-gray-100 rounded-2xl flex items-center justify-center`}>
-                          <IconComponent className="w-6 h-6" />
-                        </div>
-                        <div>
-                          <p className="font-semibold text-gray-800">{contact.label}</p>
-                          <p className="text-gray-600">{contact.value}</p>
-                        </div>
-                        <ArrowRight className="w-5 h-5 text-gray-400 ml-auto" />
-                      </motion.a>
-                    );
-                  })}
-                </div>
-                
-                <div className="mt-8 p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-2xl border border-gray-200">
-                  <p className="text-gray-700 flex items-center text-lg">
-                    <MapPin className="w-5 h-5 mr-3 text-teal-600" />
-                    Based in Chennai, India • Available for remote opportunities
-                  </p>
-                </div>
+                    'Proven track record with measurable results',
+                    'Expertise in SEO, Google Ads, and e-commerce',
+                    'Data-driven approach to digital marketing',
+                    'Dedicated to client success and ROI',
+                    'Up-to-date with latest industry trends'
+                  ].map((benefit, index) => (
+                    <li key={index} className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700">{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </motion.div>
 
+            {/* Contact Form */}
             <motion.div 
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-white to-gray-50 p-10 rounded-3xl shadow-xl border border-gray-100"
             >
-              <h3 className="text-3xl font-bold mb-8 text-gray-800 flex items-center">
-                <div className="w-3 h-10 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full mr-4"></div>
-                Send a Message
-              </h3>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+                <h3 className="text-2xl font-bold mb-6 text-gray-800">Send a Message</h3>
+                
+                <div className="space-y-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-bold text-gray-700 mb-3">
-                      <User className="w-4 h-4 inline mr-2" />
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                       Full Name
                     </label>
                     <input
@@ -893,14 +941,13 @@ function App() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-300 bg-white text-lg"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300"
                       placeholder="Your full name"
                     />
                   </div>
-
+                  
                   <div>
-                    <label htmlFor="email" className="block text-sm font-bold text-gray-700 mb-3">
-                      <Mail className="w-4 h-4 inline mr-2" />
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                       Email Address
                     </label>
                     <input
@@ -910,69 +957,60 @@ function App() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-300 bg-white text-lg"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300"
                       placeholder="your.email@example.com"
                     />
                   </div>
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-bold text-gray-700 mb-3">
-                    <Target className="w-4 h-4 inline mr-2" />
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-300 bg-white text-lg"
-                    placeholder="What's this about?"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-bold text-gray-700 mb-3">
-                    <MessageSquare className="w-4 h-4 inline mr-2" />
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={6}
-                    className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 transition-all duration-300 resize-vertical bg-white text-lg"
-                    placeholder="Tell me about your project or how I can help..."
-                  />
-                </div>
-
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`w-full flex items-center justify-center space-x-3 px-8 py-5 rounded-2xl font-bold text-lg transition-all duration-300 cursor-pointer ${
-                    isSubmitting
-                      ? 'bg-gray-400 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700 shadow-xl hover:shadow-2xl'
-                  } text-white`}
-                >
-                  {isSubmitting ? (
-                    <>
+                  
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                      Subject
+                    </label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300"
+                      placeholder="What's this about?"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      rows={5}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300 resize-none"
+                      placeholder="Tell me about your project or how I can help..."
+                    ></textarea>
+                  </div>
+                  
+                  <motion.button
+                    type="submit"
+                    disabled={isSubmitting}
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full bg-gradient-to-r from-teal-600 to-blue-600 text-white py-4 px-6 rounded-2xl font-semibold hover:from-teal-700 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      <span>Sending...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5" />
-                      <span>Send Message</span>
-                    </>
-                  )}
-                </motion.button>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        <span>Send Message</span>
+                      </>
+                    )}
+                  </motion.button>
+                </div>
 
                 <AnimatePresence>
                   {submitStatus === 'success' && (
