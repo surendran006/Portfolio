@@ -531,10 +531,10 @@ function App() {
                 </h3>
                 <div className="space-y-4">
                   {[
-                    { skill: 'SEO Strategy & Implementation', level: 95 },
-                    { skill: 'Google Ads & Meta Ads Management', level: 90 },
-                    { skill: 'E-commerce Platform Management', level: 88 },
-                    { skill: 'Data Analysis & Reporting', level: 85 }
+                    { skill: 'SEO Strategy & Implementation', level: 100 },
+                    { skill: 'Google Ads & Meta Ads Management', level: 100 },
+                    { skill: 'E-commerce Platform Management', level: 100 },
+                    { skill: 'Data Analysis & Reporting', level: 100 }
                   ].map((item, index) => (
                     <div key={index} className="space-y-2">
                       <div className="flex justify-between text-sm font-medium text-gray-700">
