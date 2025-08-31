@@ -1017,7 +1017,7 @@ function App() {
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <div className="flex justify-center mb-6">
             <div className="w-16 h-16 bg-gradient-to-br from-teal-500 via-blue-500 to-purple-500 rounded-2xl flex items-center justify-center text-white text-xl font-bold shadow-2xl">
-              SM
+              MS
             </div>
           </div>
           <h3 className="text-2xl font-bold mb-2">Surendran M</h3>
