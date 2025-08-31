@@ -303,7 +303,7 @@ function App() {
                       onClick={() => scrollToSection(section)}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
-                      className={`capitalize text-left py-3 px-4 rounded-xl transition-all duration-300 cursor-pointer ${
+                      className={`capitalize text-left py-2 px-4 rounded-xl transition-all duration-300 cursor-pointer ${
                         activeSection === section 
                           ? 'text-white bg-gradient-to-r from-teal-500 to-blue-500 shadow-lg' 
                           : 'text-gray-600 hover:text-teal-600 hover:bg-gray-50'
