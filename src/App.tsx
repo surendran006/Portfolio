@@ -855,7 +855,7 @@ function App() {
                     <div>
                       <p className="text-sm text-gray-600">Email</p>
                       <a href="mailto:surendranbba006@gmail.com" className="text-lg font-semibold text-gray-800 hover:text-teal-600 transition-colors duration-300">
-                        surendranbba006@gmail.com
+                        Mail Me
                       </a>
                     </div>
                   </div>
@@ -867,7 +867,7 @@ function App() {
                     <div>
                       <p className="text-sm text-gray-600">Phone</p>
                       <a href="tel:9840696374" className="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-300">
-                        +91 9840696374
+                        Contact Me
                       </a>
                     </div>
                   </div>
