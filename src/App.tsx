@@ -833,7 +833,14 @@ function App() {
                   {[
                     { icon: Mail, label: 'Email', value: 'surendranbba006@gmail.com', href: 'mailto:surendranbba006@gmail.com', color: 'text-teal-600' },
                     { icon: Linkedin, label: 'LinkedIn', value: 'Connect with me', href: 'https://www.linkedin.com/in/surendran-m-795a17338', color: 'text-blue-600' },
-                    { icon: ExternalLink, label: 'Blog', value: 'Read my articles', href: 'https://medium.com/@surendrandigitalmarketing', color: 'text-purple-600' }
+                    { 
+  icon: BookOpen, 
+  label: 'Blog', 
+  value: 'Read my articles', 
+  href: 'https://medium.com/@surendrandigitalmarketing', 
+  color: 'text-purple-600' 
+}
+
                   ].map((contact, index) => {
                     const IconComponent = contact.icon;
                     return (
