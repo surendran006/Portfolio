@@ -496,7 +496,7 @@ function App() {
             ].map((stat, index) => {
               const IconComponent = stat.icon;
               return (
-                <div>
+                </div>
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
