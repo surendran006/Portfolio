@@ -276,57 +276,51 @@ function App() {
               </motion.a>
             </div>
             
-            {/* Mobile Menu Toggle */}
-            <motion.button
-              className="lg:hidden p-2 text-gray-600 hover:text-teal-600 transition-all duration-300 rounded-xl hover:bg-gray-50 cursor-pointer"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }} 
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </motion.button>
-          </div>
-          
-          {/* Mobile Navigation Menu */}
-          <AnimatePresence>
-            {isMobileMenuOpen && (
-              <motion.div 
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="lg:hidden mt-4 pb-4 border-t border-gray-200"
-              >
-                <div className="flex flex-col space-y-2 pt-4">
-                  {['home', 'about', 'experience', 'skills', 'projects', 'contact'].map((section) => (
-                    <motion.button
-                      key={section}
-                      onClick={() => scrollToSection(section)}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.98 }}
-                      className={`capitalize text-left py-2 px-4 rounded-xl transition-all duration-300 cursor-pointer ${
-                        activeSection === section 
-                          ? 'text-white bg-gradient-to-r from-teal-500 to-blue-500 shadow-lg' 
-                          : 'text-gray-600 hover:text-teal-600 hover:bg-gray-50'
-                      }`}
-                    >
-                      {section}
-                    </motion.button>
-                  ))}
-                  <motion.a 
-                    href="https://medium.com/@surendrandigitalmarketing" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    whileHover={{ x: 5 }}
-                    className="text-gray-600 hover:text-teal-600 transition-all duration-300 py-3 px-4 rounded-xl hover:bg-gray-50 flex items-center space-x-2 cursor-pointer"
-                  >
-                    <span>Blog</span>
-                    <BookOpen className="w-4 h-4" />
-                  </motion.a>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+{/* Mobile Menu Toggle */}
+<motion.button
+  className="lg:hidden p-2 text-gray-600 hover:text-teal-600 transition-all duration-300 rounded-xl hover:bg-gray-50 cursor-pointer"
+  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }} 
+>
+  {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+</motion.button>
+</div>
+
+{/* Mobile Navigation Menu */}
+<AnimatePresence>
+  {isMobileMenuOpen && (
+    <motion.div 
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: 'auto' }}
+      exit={{ opacity: 0, height: 0 }}
+      className="lg:hidden mt-4 pb-4 border-t border-gray-200"
+    >
+      <div className="flex flex-col space-y-2 pt-4">
+        {['home', 'about', 'experience', 'skills', 'projects', 'contact', 'blog'].map((section) => (
+          <motion.button
+            key={section}
+            onClick={() => scrollToSection(section)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            className={`capitalize text-left py-2 px-4 rounded-xl transition-all duration-300 cursor-pointer ${
+              activeSection === section 
+                ? 'text-white bg-gradient-to-r from-teal-500 to-blue-500 shadow-lg' 
+                : 'text-gray-600 hover:text-teal-600 hover:bg-gray-50'
+            }`}
+          >
+            <div className="flex items-center space-x-2">
+              <span>{section}</span>
+              {section === 'blog' && <BookOpen className="w-4 h-4" />}
+            </div>
+          </motion.button>
+        ))}
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
+</div>
+
       </motion.nav>
 
       {/* Hero Section */}
