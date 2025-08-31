@@ -917,6 +917,125 @@ function App() {
                   </span>
                 </div>
               </motion.div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              <h3 className="text-3xl font-bold text-gray-800 mb-8 flex items-center">
+                <div className="w-3 h-10 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full mr-4"></div>
+                Certifications
+              </h3>
+              
+              <div className="space-y-6">
+                {[
+                  { 
+                    title: 'Google Ads Certified', 
+                    issuer: 'Google', 
+                    year: '2024',
+                    color: 'from-blue-500 to-indigo-500',
+                    description: 'Advanced certification in Google Ads campaign management and optimization'
+                  },
+                  { 
+                    title: 'Google Analytics Certified', 
+                    issuer: 'Google', 
+                    year: '2024',
+                    color: 'from-green-500 to-emerald-500',
+                    description: 'Professional certification in web analytics and data interpretation'
+                  },
+                  { 
+                    title: 'Meta Ads Professional', 
+                    issuer: 'Meta', 
+                    year: '2024',
+                    color: 'from-purple-500 to-pink-500',
+                    description: 'Certified in Facebook and Instagram advertising strategies'
+                  }
+                ].map((cert, index) => (
+                  <motion.div 
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ scale: 1.02, y: -3 }}
+                    className="p-6 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
+                  >
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex items-start space-x-3">
+                        <div className={`p-2 bg-gradient-to-br ${cert.color} rounded-xl shadow-lg`}>
+                          <Award className="w-5 h-5 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-800 text-lg">{cert.title}</h4>
+                          <p className="text-gray-600">{cert.issuer}</p>
+                        </div>
+                      </div>
+                      <span className={`text-xs bg-gradient-to-r ${cert.color} text-white px-3 py-1 rounded-full font-bold shadow-sm`}>
+                        {cert.year}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600 leading-relaxed">{cert.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl font-bold text-center mb-16 text-gray-800 relative"
+          >
+            Client Testimonials
+            <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
+          </motion.h2>
+          
+          <div className="grid gap-8">
+            {testimonials.map((testimonial, index) => (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="bg-white p-10 rounded-3xl shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500"
+              >
+                <div className="flex items-start space-x-6">
+                  <div className="flex-shrink-0">
+                    <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-500 rounded-2xl flex items-center justify-center text-white text-xl font-bold shadow-lg">
+                      {testimonial.name.charAt(0)}
+                    </div>
+                  </div>
+                  <div className="flex-grow">
+                    <div className="flex items-center mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                      ))}
+                    </div>
+                    <p className="text-xl text-gray-700 leading-relaxed mb-6 italic">
+                      "{testimonial.content}"
+                    </p>
+                    <div>
+                      <h4 className="font-bold text-gray-800 text-lg">{testimonial.name}</h4>
+                      <p className="text-gray-600">{testimonial.role}</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 bg-white">
