@@ -802,7 +802,7 @@ function App() {
                             <p className="font-bold text-lg text-green-600">{project.impact}</p>
                           </div>
                           <div className="text-right">
-                            <ExternalLink className="w-5 h-5 text-gray-400 group-hover:text-teal-500 transition-colors duration-300" />
+                            < className="w-5 h-5 text-gray-400 group-hover:text-teal-500 transition-colors duration-300" />
                           </div>
                         </div>
                       </div>
