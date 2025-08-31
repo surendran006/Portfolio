@@ -489,7 +489,7 @@ function App() {
               </div>
               
               {/* Statistics Cards - Only showing 6+ Months Experience and MBA */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-3 gap-4">
                 {[
                   { number: '6+', label: 'Months Experience', icon: Calendar, color: 'from-teal-500 to-blue-500' },
                   { number: 'MBA', label: 'Marketing Management (Correspondence)', icon: GraduationCap, color: 'from-blue-500 to-purple-500' }
