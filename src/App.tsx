@@ -94,7 +94,7 @@ const projects = [
   {
     title: 'Digital Marketing Campaign Management',
     description: 'Seasonal product campaigns with integrated social media and paid advertising',
-    technologies: ['Google Ads','Meta Ads', 'Social Media', 'Analytics', 'Content Marketing'],
+    technologies: ['Google Ads','Meta Ads', 'Social Media', 'Social Media', 'Analytics', 'Content Marketing'],
     results: 'Enhanced brand awareness and campaign performance tracking',
     impact: '+60% engagement',
     category: 'Campaigns'
