@@ -487,12 +487,12 @@ function App() {
                   </p>
                 </div>
               </div>
-          {/* Statistics Cards - Only showing 6+ Months Experience MBA Experience and MBA */}
+          {/* Statistics Cards - Only showing 6+ Months Experience MBA Experience and BBA */}
           <div className="grid grid-cols-3 gap-4">
             {[
               { number: '6+', label: 'Months Experience', icon: Calendar, color: 'from-teal-500 to-blue-500' },
               { number: 'MBA', label: 'Marketing Management (Correspondence)', icon: GraduationCap, color: 'from-blue-500 to-purple-500' }
-                            { number: 'MBA', label: 'Marketing Management (Correspondence)', icon: GraduationCap, color: 'from-blue-500 to-purple-500' }
+                            { number: 'BBA', label: 'Marketing Management (Correspondence)', icon: GraduationCap, color: 'from-blue-500 to-purple-500' }
             ].map((stat, index) => {
               const IconComponent = stat.icon;
               return (
