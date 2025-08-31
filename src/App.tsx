@@ -6,7 +6,7 @@ import {
   Phone, 
   MapPin, 
   Linkedin,
-  Reading,
+  BookOpen,
   ExternalLink,
   ChevronDown,
   Calendar,
