@@ -346,7 +346,7 @@ function App() {
             >
               <div className="w-40 h-40 mx-auto bg-gradient-to-br from-teal-500 via-blue-500 to-purple-500 rounded-3xl flex items-center justify-center text-white text-5xl font-bold shadow-2xl transform hover:scale-105 transition-transform duration-300 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
-                <span className="relative z-10">SM</span>
+                <span className="relative z-10">MS</span>
               </div>
               <motion.div 
                 animate={{ scale: [1, 1.2, 1] }}
