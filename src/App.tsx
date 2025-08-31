@@ -486,34 +486,35 @@ function App() {
                     to help businesses grow their online presence and achieve their marketing goals.
                   </p>
                 </div>
-              </div>
-              
-              {/* Statistics Cards - Only showing 6+ Months Experience and MBA */}
-              <div className="grid grid-cols-3 gap-4">
-                {[
-                  { number: '6+', label: 'Months Experience', icon: Calendar, color: 'from-teal-500 to-blue-500' },
-                  { number: 'MBA', label: 'Marketing Management (Correspondence)', icon: GraduationCap, color: 'from-blue-500 to-purple-500' }
-                ].map((stat, index) => {
-                  const IconComponent = stat.icon; 
-                  return (
-                    <motion.div 
-                      key={index}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      whileHover={{ scale: 1.05, y: -5 }}
-                      className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
-                    >
-                      <div className={`w-12 h-12 mx-auto mb-3 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center shadow-lg`}>
-                        <IconComponent className="w-6 h-6 text-white" />
-                      </div>
-                      <div className="text-2xl font-bold text-gray-800">{stat.number}</div>
-                      <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
-                    </motion.div>
-                  );
-                })}
-              </div>
+</div>
+
+{/* Statistics Cards - 6+ Months Experience, MBA, and BBA */}
+<div className="grid grid-cols-3 gap-4">
+  {[
+    { number: '6+', label: 'Months Experience', icon: Calendar, color: 'from-teal-500 to-blue-500' },
+    { number: 'MBA', label: 'Marketing Management (Correspondence)', icon: GraduationCap, color: 'from-blue-500 to-purple-500' },
+    { number: 'BBA', label: 'Bachelor of Business Administration', icon: GraduationCap, color: 'from-purple-500 to-pink-500' }
+  ].map((stat, index) => {
+    const IconComponent = stat.icon; 
+    return (
+      <motion.div 
+        key={index}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: index * 0.1 }}
+        whileHover={{ scale: 1.05, y: -5 }}
+        className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
+      >
+        <div className={`w-12 h-12 mx-auto mb-3 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center shadow-lg`}>
+          <IconComponent className="w-6 h-6 text-white" />
+        </div>
+        <div className="text-2xl font-bold text-gray-800">{stat.number}</div>
+        <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
+      </motion.div>
+    );
+  })}
+</div>
             </motion.div>
 
             <motion.div 
