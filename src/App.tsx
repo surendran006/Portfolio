@@ -699,7 +699,7 @@ function App() {
             viewport={{ once: true }}
             className="text-5xl font-bold text-center mb-16 text-gray-800 relative"
           >
-            Recent Projects
+           Projects
             <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
           </motion.h2>
           
