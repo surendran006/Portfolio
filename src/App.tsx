@@ -14,7 +14,6 @@ import {
   TrendingUp,
   Users,
   BarChart3,
-  Search,
   MousePointer,
   Globe,
   Menu,
