@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from 'emailjs-com';
 import { 
@@ -154,6 +154,20 @@ function App() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('idle');
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const experienceRef = useRef(null);
+  const skillsRef = useRef(null);
+  const projectsRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const scrollToSection = (ref) => {
+    ref.current?.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+    setIsMobileMenuOpen(false); // Close mobile menu after clicking
+  };
 
   // Intersection Observer for active section tracking
   useEffect(() => {
@@ -212,7 +226,7 @@ function App() {
     }
   };
 
-  const scrollToSection = (sectionId) => {
+  const scrollToSection2 = (sectionId) => {
     setActiveSection(sectionId);
     setIsMobileMenuOpen(false);
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
@@ -235,7 +249,7 @@ function App() {
           <div className="flex justify-between items-center">
             {/* Logo - Make it clickable to scroll to home */}
             <motion.button 
-              onClick={() => scrollToSection('home')}
+              onClick={() => scrollToSection(homeRef)}
               className="font-bold text-xl text-gray-800 flex items-center space-x-3 cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -248,19 +262,26 @@ function App() {
             
             {/* Desktop Navigation Menu */}
             <div className="hidden lg:flex items-center space-x-1">
-              {['home', 'about', 'experience', 'skills', 'projects', 'contact'].map((section) => (
+              {[
+                { name: 'home', ref: homeRef },
+                { name: 'about', ref: aboutRef },
+                { name: 'experience', ref: experienceRef },
+                { name: 'skills', ref: skillsRef },
+                { name: 'projects', ref: projectsRef },
+                { name: 'contact', ref: contactRef }
+              ].map((section) => (
                 <motion.button
-                  key={section}
-                  onClick={() => scrollToSection(section)}
+                  key={section.name}
+                  onClick={() => scrollToSection(section.ref)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className={`capitalize transition-all duration-300 px-4 py-2 rounded-xl font-medium cursor-pointer ${
-                    activeSection === section 
+                    activeSection === section.name 
                       ? 'text-white bg-gradient-to-r from-teal-500 to-blue-500 shadow-lg' 
                       : 'text-gray-600 hover:text-teal-600 hover:bg-gray-50'
                   }`}
                 >
-                  {section}
+                  {section.name}
                 </motion.button>
               ))}
               <motion.a 
@@ -297,19 +318,26 @@ function App() {
                 className="lg:hidden mt-4 pb-4 border-t border-gray-200"
               >
                 <div className="flex flex-col space-y-2 pt-4">
-                  {['home', 'about', 'experience', 'skills', 'projects', 'contact'].map((section) => (
+                  {[
+                    { name: 'home', ref: homeRef },
+                    { name: 'about', ref: aboutRef },
+                    { name: 'experience', ref: experienceRef },
+                    { name: 'skills', ref: skillsRef },
+                    { name: 'projects', ref: projectsRef },
+                    { name: 'contact', ref: contactRef }
+                  ].map((section) => (
                     <motion.button
-                      key={section}
-                      onClick={() => scrollToSection(section)}
+                      key={section.name}
+                      onClick={() => scrollToSection(section.ref)}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
                       className={`capitalize text-left py-2 px-4 rounded-xl transition-all duration-300 cursor-pointer ${
-                        activeSection === section 
+                        activeSection === section.name 
                           ? 'text-white bg-gradient-to-r from-teal-500 to-blue-500 shadow-lg' 
                           : 'text-gray-600 hover:text-teal-600 hover:bg-gray-50'
                       }`}
                     >
-                      {section}
+                      {section.name}
                     </motion.button>
                   ))}
                   <motion.a 
@@ -330,7 +358,7 @@ function App() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-24 pb-20 px-4 relative overflow-hidden min-h-screen flex items-center">
+      <section ref={homeRef} id="home" className="pt-24 pb-20 px-4 relative overflow-hidden min-h-screen flex items-center">
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-teal-200/30 to-blue-200/30 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-br from-purple-200/30 to-pink-200/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -397,7 +425,7 @@ function App() {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
             >
               <motion.button 
-                onClick={() => scrollToSection('contact')}
+                onClick={() => scrollToSection(contactRef)}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-gradient-to-r from-teal-600 to-blue-600 text-white rounded-2xl font-semibold hover:from-teal-700 hover:to-blue-700 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center space-x-2 cursor-pointer"
@@ -407,7 +435,7 @@ function App() {
               </motion.button>
               
               <motion.button 
-                onClick={() => scrollToSection('projects')}
+                onClick={() => scrollToSection(projectsRef)}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 border-2 border-teal-600 text-teal-600 rounded-2xl font-semibold hover:bg-teal-50 transition-all duration-300 flex items-center space-x-2 cursor-pointer"
@@ -447,7 +475,7 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4 bg-white">
+      <section ref={aboutRef} id="about" className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
@@ -581,7 +609,7 @@ function App() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section ref={experienceRef} id="experience" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
@@ -661,7 +689,7 @@ function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 px-4 bg-white">
+      <section ref={skillsRef} id="skills" className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
@@ -713,7 +741,7 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section ref={projectsRef} id="projects" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
@@ -816,7 +844,7 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 bg-white">
+      <section ref={contactRef} id="contact" className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
@@ -1091,4 +1119,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;
