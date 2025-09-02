@@ -328,7 +328,12 @@ function App() {
                   ].map((section) => (
                     <motion.button
                       key={section.name}
-                      onClick={() => scrollToSection(section.ref)}
+onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        setTimeout(() => {
+                          scrollToSection(section.ref);
+                        }, 100); // 300ms delay for menu close animation
+                      }}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
                       className={`capitalize text-left py-2 px-4 rounded-xl transition-all duration-300 cursor-pointer ${
