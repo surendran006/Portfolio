@@ -332,7 +332,7 @@ onClick={() => {
                         setIsMobileMenuOpen(false);
                         setTimeout(() => {
                           scrollToSection(section.ref);
-                        }, 100); // 300ms delay for menu close animation
+                        }, 100); // 150ms delay for menu close animation
                       }}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
