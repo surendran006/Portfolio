@@ -328,7 +328,7 @@ function App() {
                   ].map((section) => (
                     <motion.button
                       key={section.name}
-                    onClick={() => {
+                        onClick={() => {
                         setIsMobileMenuOpen(false);
                         setTimeout(() => {
                           scrollToSection(section.ref);
