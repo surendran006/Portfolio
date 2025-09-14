@@ -238,26 +238,26 @@ function App() {
     : projects.filter(p => p.category === selectedProjectCategory);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <div className="min-h-screen w-full max-w-screen overflow-x-hidden">
       {/* Navigation */}
       <motion.nav 
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className="fixed top-0 w-full bg-white/90 backdrop-blur-xl border-b border-gray-200/50 z-50 shadow-lg"
       >
-        <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4">
           <div className="flex justify-between items-center">
             {/* Logo - Make it clickable to scroll to home */}
             <motion.button 
               onClick={() => scrollToSection(homeRef)}
-              className="font-bold text-xl text-gray-800 flex items-center space-x-3 cursor-pointer"
+              className="font-bold text-lg sm:text-xl text-gray-800 flex items-center space-x-2 sm:space-x-3 cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-teal-500 via-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-white text-sm font-bold shadow-lg">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-teal-500 via-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-white text-xs sm:text-sm font-bold shadow-lg">
                 MS
               </div>
-              <span className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">Surendran M</span>
+              <span className="bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent hidden sm:block">Surendran M</span>
             </motion.button>
             
             {/* Desktop Navigation Menu */}
@@ -304,7 +304,7 @@ function App() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }} 
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? <X className="w-3 h-6" /> : <Menu className="w-3 h-6" />}
             </motion.button>
           </div>
           
@@ -315,9 +315,9 @@ function App() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                className="lg:hidden mt-4 pb-4 border-t border-gray-200"
+                className="lg:hidden mt-2 pb-3 border-t border-gray-200"
               >
-                <div className="flex flex-col space-y-2 pt-4">
+                <div className="flex flex-col space-y-1 pt-3">
                   {[
                     { name: 'home', ref: homeRef },
                     { name: 'about', ref: aboutRef },
@@ -328,10 +328,15 @@ function App() {
                   ].map((section) => (
                     <motion.button
                       key={section.name}
-                      onClick={() => scrollToSection(section.ref)}
+                        onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        setTimeout(() => {
+                          scrollToSection(section.ref);
+                        }, 100); // 50ms delay for menu close animation
+                      }}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
-                      className={`capitalize text-left py-2 px-4 rounded-xl transition-all duration-300 cursor-pointer ${
+                      className={`capitalize text-left py-2 px-3 rounded-xl transition-all duration-300 cursor-pointer ${
                         activeSection === section.name 
                           ? 'text-white bg-gradient-to-r from-teal-500 to-blue-500 shadow-lg' 
                           : 'text-gray-600 hover:text-teal-600 hover:bg-gray-50'
@@ -345,7 +350,7 @@ function App() {
                     target="_blank" 
                     rel="noopener noreferrer"
                     whileHover={{ x: 5 }}
-                    className="text-gray-600 hover:text-teal-600 transition-all duration-300 py-3 px-4 rounded-xl hover:bg-gray-50 flex items-center space-x-2 cursor-pointer"
+                    className="text-gray-600 hover:text-teal-600 transition-all duration-300 py-2 px-3 rounded-xl hover:bg-gray-50 flex items-center space-x-2 cursor-pointer"
                   >
                     <span>Blog</span>
                     <BookOpen className="w-4 h-4" />
@@ -358,7 +363,7 @@ function App() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section ref={homeRef} id="home" className="pt-24 pb-20 px-4 relative overflow-hidden min-h-screen flex items-center">
+      <section ref={homeRef} id="home" className="pt-20 sm:pt-24 pb-16 sm:pb-20 px-3 sm:px-4 relative overflow-hidden min-h-screen flex items-center">
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-teal-200/30 to-blue-200/30 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-br from-purple-200/30 to-pink-200/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -373,16 +378,16 @@ function App() {
               transition={{ duration: 0.8, type: "spring" }}
               className="relative inline-block mb-8"
             >
-              <div className="w-40 h-40 mx-auto bg-gradient-to-br from-teal-500 via-blue-500 to-purple-500 rounded-3xl flex items-center justify-center text-white text-5xl font-bold shadow-2xl transform hover:scale-105 transition-transform duration-300 relative overflow-hidden">
+              <div className="w-32 h-32 sm:w-40 sm:h-40 mx-auto bg-gradient-to-br from-teal-500 via-blue-500 to-purple-500 rounded-3xl flex items-center justify-center text-white text-4xl sm:text-5xl font-bold shadow-2xl transform hover:scale-105 transition-transform duration-300 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
                 <span className="relative z-10">MS</span>
               </div>
               <motion.div 
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="absolute -bottom-3 -right-3 w-10 h-10 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full border-4 border-white shadow-lg flex items-center justify-center"
+                className="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full border-3 sm:border-4 border-white shadow-lg flex items-center justify-center"
               >
-                <CheckCircle className="w-5 h-5 text-white" />
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </motion.div>
             </motion.div>
             
@@ -390,7 +395,7 @@ function App() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-6xl md:text-7xl font-bold text-gray-800 mb-6 leading-tight"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-800 mb-4 sm:mb-6 leading-tight px-2"
             >
               <span className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 bg-clip-text text-transparent">
                 Surendran M
@@ -401,7 +406,7 @@ function App() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-2xl md:text-3xl text-transparent bg-gradient-to-r from-teal-600 via-blue-600 to-purple-600 bg-clip-text mb-8 font-bold"
+              className="text-xl sm:text-2xl md:text-3xl text-transparent bg-gradient-to-r from-teal-600 via-blue-600 to-purple-600 bg-clip-text mb-6 sm:mb-8 font-bold px-2"
             >
               Digital Marketing Executive
             </motion.p>
@@ -410,7 +415,7 @@ function App() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
-              className="text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed"
+              className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed px-2"
             >
               Results-driven digital marketing professional specializing in <span className="font-semibold text-teal-600">SEO</span>, 
               <span className="font-semibold text-blue-600"> Google Ads</span>, and 
@@ -422,13 +427,13 @@ function App() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-12 sm:mb-16 px-2"
             >
               <motion.button 
                 onClick={() => scrollToSection(contactRef)}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-teal-600 to-blue-600 text-white rounded-2xl font-semibold hover:from-teal-700 hover:to-blue-700 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center space-x-2 cursor-pointer"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-teal-600 to-blue-600 text-white rounded-2xl font-semibold hover:from-teal-700 hover:to-blue-700 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center space-x-2 cursor-pointer"
               >
                 <Mail className="w-5 h-5" />
                 <span>Get In Touch</span>
@@ -438,7 +443,7 @@ function App() {
                 onClick={() => scrollToSection(projectsRef)}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border-2 border-teal-600 text-teal-600 rounded-2xl font-semibold hover:bg-teal-50 transition-all duration-300 flex items-center space-x-2 cursor-pointer"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-teal-600 text-teal-600 rounded-2xl font-semibold hover:bg-teal-50 transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer"
               >
                 <Eye className="w-5 h-5" />
                 <span>View My Work</span>
@@ -450,7 +455,7 @@ function App() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-2xl font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center space-x-2 cursor-pointer"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-2xl font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center space-x-2 cursor-pointer"
               >
                 <Download className="w-5 h-5" />
                 <span>Download Resume</span>
@@ -475,7 +480,7 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section ref={aboutRef} id="about" className="py-20 px-4 bg-white">
+      <section ref={aboutRef} id="about" className="py-16 sm:py-20 px-3 sm:px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
@@ -487,14 +492,14 @@ function App() {
             <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
           </motion.h2>
           
-          <div className="grid lg:grid-cols-3 gap-12">
+          <div className="grid lg:grid-cols-3 gap-8 sm:gap-12">
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="lg:col-span-2 space-y-8"
             >
-              <div className="bg-gradient-to-br from-gray-50 to-blue-50 p-8 rounded-3xl border border-gray-100 shadow-lg">
+              <div className="bg-gradient-to-br from-gray-50 to-blue-50 p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-lg">
                 <h3 className="text-3xl font-bold mb-6 text-gray-800 flex items-center">
                   <div className="w-3 h-10 bg-gradient-to-b from-teal-500 to-blue-500 rounded-full mr-4"></div>
                   Professional Journey
@@ -518,7 +523,7 @@ function App() {
               </div>
 
               {/* Statistics Cards - BBA, MBA, and 6+ Months Experience */}
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {[
                   { number: 'BBA', label: 'Bachelor of Business Administration', icon: GraduationCap, color: 'from-purple-500 to-pink-500' },
                   { number: 'MBA', label: 'Marketing Management (Correspondence)', icon: GraduationCap, color: 'from-blue-500 to-purple-500' },
@@ -533,7 +538,7 @@ function App() {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
                       whileHover={{ scale: 1.05, y: -5 }}
-                      className="text-center p-6 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
+                      className="text-center p-4 sm:p-6 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
                     >
                       <div className={`w-12 h-12 mx-auto mb-3 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center shadow-lg`}>
                         <IconComponent className="w-6 h-6 text-white" />
@@ -552,7 +557,7 @@ function App() {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <div className="bg-gradient-to-br from-teal-50 to-blue-50 p-8 rounded-3xl border border-gray-100 shadow-lg">
+              <div className="bg-gradient-to-br from-teal-50 to-blue-50 p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-lg">
                 <h3 className="text-2xl font-bold mb-6 text-gray-800 flex items-center">
                   <Target className="w-6 h-6 text-teal-600 mr-3" />
                   Key Strengths
@@ -583,7 +588,7 @@ function App() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl border border-gray-100 shadow-lg">
+              <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-lg">
                 <h3 className="text-2xl font-bold mb-4 text-gray-800 flex items-center">
                   <Award className="w-6 h-6 text-purple-600 mr-3" />
                   Professional Goals
@@ -609,7 +614,7 @@ function App() {
       </section>
 
       {/* Experience Section */}
-      <section ref={experienceRef} id="experience" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section ref={experienceRef} id="experience" className="py-16 sm:py-20 px-3 sm:px-4 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
@@ -630,18 +635,18 @@ function App() {
               transition={{ delay: index * 0.2 }}
               className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden mb-8"
             >
-              <div className="p-8 lg:p-12">
+              <div className="p-6 sm:p-8 lg:p-12">
                 <div className="flex flex-col lg:flex-row lg:items-start gap-8">
                   <div className="lg:w-1/3">
-                    <div className="bg-gradient-to-br from-teal-500 to-blue-500 rounded-3xl p-8 text-white relative overflow-hidden">
+                    <div className="bg-gradient-to-br from-teal-500 to-blue-500 rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden">
                       <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
                       <div className="relative z-10">
                         <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
                           <Briefcase className="w-8 h-8 text-white" />
                         </div>
-                        <h3 className="text-2xl font-bold mb-2">{exp.company}</h3>
-                        <p className="text-xl font-semibold mb-3 text-blue-100">{exp.role}</p>
-                        <p className="text-blue-100 mb-4">{exp.description}</p>
+                        <h3 className="text-xl sm:text-2xl font-bold mb-2">{exp.company}</h3>
+                        <p className="text-lg sm:text-xl font-semibold mb-3 text-blue-100">{exp.role}</p>
+                        <p className="text-blue-100 mb-4 text-sm sm:text-base">{exp.description}</p>
                         <div className="space-y-2">
                           <div className="flex items-center text-blue-100">
                             <Calendar className="w-4 h-4 mr-2" />
@@ -659,7 +664,7 @@ function App() {
                   <div className="lg:w-2/3 space-y-8">
                     {exp.segments.map((segment, segIndex) => (
                       <div key={segIndex}>
-                        <h4 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                        <h4 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 flex items-center">
                           <div className={`w-4 h-4 rounded-full mr-3 ${segIndex === 0 ? 'bg-teal-500' : 'bg-blue-500'}`}></div>
                           {segment.title}
                         </h4>
@@ -671,10 +676,10 @@ function App() {
                               whileInView={{ opacity: 1, x: 0 }}
                               viewport={{ once: true }}
                               transition={{ delay: achIndex * 0.1 }}
-                              className="flex items-start p-4 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors duration-200"
+                              className="flex items-start p-3 sm:p-4 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors duration-200"
                             >
                               <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                              <span className="text-gray-700 leading-relaxed">{achievement}</span>
+                              <span className="text-sm sm:text-base text-gray-700 leading-relaxed">{achievement}</span>
                             </motion.div>
                           ))}
                         </div>
@@ -689,7 +694,7 @@ function App() {
       </section>
 
       {/* Skills Section */}
-      <section ref={skillsRef} id="skills" className="py-20 px-4 bg-white">
+      <section ref={skillsRef} id="skills" className="py-16 sm:py-20 px-3 sm:px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
@@ -701,7 +706,7 @@ function App() {
             <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
           </motion.h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {skills.map((skill, index) => {
               const IconComponent = skill.icon;
               return (
@@ -712,14 +717,14 @@ function App() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  className="group bg-gradient-to-br from-gray-50 to-blue-50 p-8 rounded-3xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  className="group bg-gradient-to-br from-gray-50 to-blue-50 p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                 >
                   <div className="text-center">
                     <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-teal-500 to-blue-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-lg font-bold text-gray-800 mb-3">{skill.name}</h3>
-                    <div className="text-sm text-gray-600 mb-4">{skill.category}</div>
+                    <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-3">{skill.name}</h3>
+                    <div className="text-xs sm:text-sm text-gray-600 mb-4">{skill.category}</div>
                     <div className="relative">
                       <div className="w-full bg-gray-200 rounded-full h-2">
                         <motion.div 
@@ -741,7 +746,7 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section ref={projectsRef} id="projects" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section ref={projectsRef} id="projects" className="py-16 sm:py-20 px-3 sm:px-4 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
@@ -757,7 +762,7 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center text-gray-600 mb-12 text-lg max-w-3xl mx-auto"
+            className="text-center text-gray-600 mb-8 sm:mb-12 text-base sm:text-lg max-w-3xl mx-auto px-2"
           >
             Explore my portfolio of successful digital marketing campaigns and projects that have delivered measurable results for clients.
           </motion.p>
@@ -770,7 +775,7 @@ function App() {
                 onClick={() => setSelectedProjectCategory(category)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`px-6 py-3 rounded-2xl font-medium transition-all duration-300 ${
+                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-2xl font-medium transition-all duration-300 text-sm sm:text-base ${
                   selectedProjectCategory === category
                     ? 'bg-gradient-to-r from-teal-500 to-blue-500 text-white shadow-lg'
                     : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
@@ -781,7 +786,7 @@ function App() {
             ))}
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <AnimatePresence>
               {filteredProjects.map((project, index) => (
                 <motion.div 
@@ -793,7 +798,7 @@ function App() {
                   whileHover={{ y: -5 }}
                   className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden group hover:shadow-2xl transition-all duration-300"
                 >
-                  <div className="p-8">
+                  <div className="p-6 sm:p-8">
                     <div className="flex items-center justify-between mb-6">
                       <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-blue-500 rounded-2xl flex items-center justify-center">
                         <TrendingUp className="w-6 h-6 text-white" />
@@ -803,11 +808,11 @@ function App() {
                       </span>
                     </div>
                     
-                    <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-teal-600 transition-colors duration-300">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 group-hover:text-teal-600 transition-colors duration-300">
                       {project.title}
                     </h3>
                     
-                    <p className="text-gray-600 mb-6 leading-relaxed">
+                    <p className="text-sm sm:text-base text-gray-600 mb-6 leading-relaxed">
                       {project.description}
                     </p>
                     
@@ -844,7 +849,7 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section ref={contactRef} id="contact" className="py-20 px-4 bg-white">
+      <section ref={contactRef} id="contact" className="py-16 sm:py-20 px-3 sm:px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
@@ -860,12 +865,12 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center text-gray-600 mb-16 text-lg max-w-3xl mx-auto"
+            className="text-center text-gray-600 mb-12 sm:mb-16 text-base sm:text-lg max-w-3xl mx-auto px-2"
           >
             Ready to take your digital marketing to the next level? Let's discuss how I can help grow your business through proven strategies and data-driven results.
           </motion.p>
           
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
             {/* Contact Information */}
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
@@ -873,7 +878,7 @@ function App() {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <div className="bg-gradient-to-br from-gray-50 to-blue-50 p-8 rounded-3xl border border-gray-100 shadow-lg">
+              <div className="bg-gradient-to-br from-gray-50 to-blue-50 p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-lg">
                 <h3 className="text-2xl font-bold mb-6 text-gray-800">Contact Information</h3>
                 <div className="space-y-6">
                   <div className="flex items-center">
@@ -929,7 +934,7 @@ function App() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-teal-50 to-blue-50 p-8 rounded-3xl border border-gray-100 shadow-lg">
+              <div className="bg-gradient-to-br from-teal-50 to-blue-50 p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-lg">
                 <h3 className="text-xl font-bold mb-4 text-gray-800">Why Work With Me?</h3>
                 <ul className="space-y-3">
                   {[
@@ -954,7 +959,7 @@ function App() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <form onSubmit={handleSubmit} className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+              <form onSubmit={handleSubmit} className="bg-white p-6 sm:p-8 rounded-3xl shadow-xl border border-gray-100">
                 <h3 className="text-2xl font-bold mb-6 text-gray-800">Send a Message</h3>
                 
                 <div className="space-y-6">
@@ -1078,7 +1083,7 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
+      <footer className="py-10 sm:py-12 px-3 sm:px-4 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-teal-900/20 to-blue-900/20"></div>
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <div className="flex justify-center mb-6">
@@ -1086,8 +1091,8 @@ function App() {
               MS
             </div>
           </div>
-          <h3 className="text-2xl font-bold mb-2">Surendran M</h3>
-          <p className="text-gray-300 text-lg mb-6">Digital Marketing Executive • Chennai, India</p>
+          <h3 className="text-xl sm:text-2xl font-bold mb-2">Surendran M</h3>
+          <p className="text-gray-300 text-base sm:text-lg mb-6">Digital Marketing Executive • Chennai, India</p>
           <div className="flex justify-center space-x-6 mb-8">
             {[
               { icon: Linkedin, href: 'https://www.linkedin.com/in/surendran-m-795a17338', color: 'hover:text-blue-400' },
