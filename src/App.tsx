@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import emailjs from 'emailjs-com';
+import { Mail, Phone, MapPin, Linkedin, ExternalLink, Award, TrendingUp, Users, Target, BarChart3, Globe, Search, Zap, ChevronDown, ChevronUp, Download, Send, CheckCircle, AlertCircle, Eye } from 'lucide-react';
 import { 
   Mail, 
   Phone, 
