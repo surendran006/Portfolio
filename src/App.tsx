@@ -31,53 +31,7 @@ import {
   Briefcase,
   GraduationCap
 } from 'lucide-react';
-import emailjs from 'emailjs-com';
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    try {
-      // EmailJS configuration
-      const serviceId = 'service_your_service_id'; // Replace with your EmailJS service ID
-      const templateId = 'template_your_template_id'; // Replace with your EmailJS template ID
-      const userId = 'your_user_id'; // Replace with your EmailJS user ID
-
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-        to_email: 'surendranbba006@gmail.com'
-      };
-
-      await emailjs.send(serviceId, templateId, templateParams, userId);
-      
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      console.error('Email send error:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 const skills = [
   { name: 'SEO (On-page & Off-page)', level: 100, icon: Search, category: 'SEO' },
   { name: 'Google Ads (PPC)', level: 100, icon: MousePointer, category: 'Paid Advertising' },
@@ -1000,15 +954,15 @@ function App() {
             </motion.div>
 
             {/* Contact Form */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
               <form onSubmit={handleSubmit} className="bg-white p-6 sm:p-8 rounded-3xl shadow-xl border border-gray-100">
                 <h3 className="text-2xl font-bold mb-6 text-gray-800">Send a Message</h3>
-                
-                <form onSubmit={handleSubmit} className="space-y-6">
+
+                <div className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                       Full Name
@@ -1019,16 +973,12 @@ function App() {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300"
                       placeholder="Your full name"
                     />
-                      required
                   </div>
-                  
+
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                       Email Address
@@ -1039,16 +989,12 @@ function App() {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300"
                       placeholder="your.email@example.com"
-                      required
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
                       Subject
@@ -1064,7 +1010,7 @@ function App() {
                       placeholder="What's this about?"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                       Message
@@ -1074,43 +1020,54 @@ function App() {
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
                       required
                       rows={5}
                       className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300 resize-none"
                       placeholder="Tell me about your project or how I can help..."
-                      required
                     ></textarea>
                   </div>
-                  
-                  {/* Status Messages */}
-                  {submitStatus === 'success' && (
-                    <div className="flex items-center text-green-600 bg-green-50 p-3 rounded-lg">
-                      <CheckCircle className="w-5 h-5 mr-2" />
-                      <span>Message sent successfully! I'll get back to you soon.</span>
-                    </div>
-                  )}
-                  
-                  {submitStatus === 'error' && (
-                    <div className="flex items-center text-red-600 bg-red-50 p-3 rounded-lg">
-                      <AlertCircle className="w-5 h-5 mr-2" />
-                      <span>Failed to send message. Please try again or contact me directly.</span>
-                    </div>
-                  )}
 
-                  
+                  <AnimatePresence>
+                    {submitStatus === 'success' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl"
+                      >
+                        <p className="text-green-800 font-semibold flex items-center">
+                          <CheckCircle className="w-5 h-5 mr-2" />
+                          Message sent successfully! I'll get back to you soon.
+                        </p>
+                      </motion.div>
+                    )}
+
+                    {submitStatus === 'error' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="p-4 bg-gradient-to-r from-red-50 to-pink-50 border-2 border-red-200 rounded-2xl"
+                      >
+                        <p className="text-red-800 font-semibold">
+                          Something went wrong. Please contact me directly at
+                          <a href="mailto:surendranbba006@gmail.com" className="underline ml-1 hover:text-red-600">
+                            surendranbba006@gmail.com
+                          </a>
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
-                    disabled={isSubmitting}
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors flex items-center justify-center ${
-                      isSubmitting 
-                        ? 'bg-gray-400 cursor-not-allowed' 
-                        : 'bg-teal-600 hover:bg-teal-700 text-white'
+                    className={`w-full py-3 px-6 rounded-2xl font-semibold transition-all duration-300 flex items-center justify-center ${
+                      isSubmitting
+                        ? 'bg-gray-400 cursor-not-allowed'
+                        : 'bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700 text-white shadow-lg hover:shadow-xl'
                     }`}
                   >
                     {isSubmitting ? (
@@ -1124,46 +1081,8 @@ function App() {
                         Send Message
                       </>
                     )}
-                    ) : (
-                      <>
-                        <Send className="w-5 h-5" />
-                        <span>Send Message</span>
-                      </>
-                    )}
                   </motion.button>
                 </div>
-
-                <AnimatePresence>
-                  {submitStatus === 'success' && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      className="p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl"
-                    >
-                      <p className="text-green-800 font-semibold flex items-center">
-                        <CheckCircle className="w-5 h-5 mr-2" />
-                        Message sent successfully! I'll get back to you soon.
-                      </p>
-                    </motion.div>
-                  )}
-
-                  {submitStatus === 'error' && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      className="p-6 bg-gradient-to-r from-red-50 to-pink-50 border-2 border-red-200 rounded-2xl"
-                    >
-                      <p className="text-red-800 font-semibold">
-                        ❌ Something went wrong. Please contact me directly at 
-                        <a href="mailto:surendranbba006@gmail.com" className="underline ml-1 hover:text-red-600">
-                          surendranbba006@gmail.com
-                        </a>
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </form>
             </motion.div>
           </div>
