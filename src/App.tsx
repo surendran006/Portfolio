@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import emailjs from 'emailjs-com';
 import {
   Mail,
   Phone,
@@ -30,6 +31,8 @@ import {
   Briefcase,
   GraduationCap
 } from 'lucide-react';
+
+emailjs.init('yNaFf9wCjc8dWEEtj');
 
 const skills = [
   { name: 'SEO (On-page & Off-page)', level: 100, icon: Search, category: 'SEO' },
@@ -196,39 +199,35 @@ function App() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    try {
-      const response = await fetch('https://formspree.io/f/xanyoqpw', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          _replyto: formData.email,
-        }),
-      });
+  try {
+    const serviceId = 'service_jij055t';
+    const templateId = 'template_jnvlv3b';
+    const publicKey = 'yNaFf9wCjc8dWEEtj';
 
-      if (!response.ok) {
-        throw new Error('Failed to send message');
-      }
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+      to_email: 'surendranbba006@gmail.com'
+    };
 
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus('idle'), 5000);
-    }
-  };
+    await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+    setSubmitStatus('success');
+    setFormData({ name: '', email: '', subject: '', message: '' });
+  } catch (error) {
+    console.error('Form submission error:', error);
+    setSubmitStatus('error');
+  } finally {
+    setIsSubmitting(false);
+    setTimeout(() => setSubmitStatus('idle'), 5000);
+  }
+};
+
 
   const scrollToSection2 = (sectionId) => {
     setActiveSection(sectionId);
