@@ -206,7 +206,8 @@ function App() {
     const serviceId = 'service_k6euo7p';
     const templateId = 'template_ygearai';
     const publicKey = 'ZA-pQ89lZWCinkjZO';
-
+    const privateKey = 'KSn7RJCda0na4wZ1ngBsU';
+    
     const templateParams = {
       from_name: formData.name,
       from_email: formData.email,
