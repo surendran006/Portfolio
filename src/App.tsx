@@ -204,9 +204,9 @@ function App() {
 
   try {
     const serviceId = 'service_jij055t';
-    const templateId = 'template_erqwzv9';
+    const templateId = 'template_jnvlv3b';
     const publicKey = 'yNaFf9wCjc8dWEEtj';
- 
+
     const templateParams = {
       from_name: formData.name,
       from_email: formData.email,
@@ -215,12 +215,17 @@ function App() {
       to_email: 'surendranbba006@gmail.com'
     };
 
-    await emailjs.send(serviceId, templateId, templateParams, publicKey);
+    console.log("🔹 Sending Email via EmailJS...");
+    console.log({ serviceId, templateId, publicKey, templateParams });
+
+    const response = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+    console.log("✅ EmailJS Response:", response);
 
     setSubmitStatus('success');
     setFormData({ name: '', email: '', subject: '', message: '' });
   } catch (error) {
-    console.error('Form submission error:', error);
+    console.error("❌ EmailJS Error:", error);
+    alert("Error: " + JSON.stringify(error));
     setSubmitStatus('error');
   } finally {
     setIsSubmitting(false);
