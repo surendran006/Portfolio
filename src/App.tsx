@@ -203,8 +203,8 @@ function App() {
   setIsSubmitting(true);
 
   try {
-    const serviceId = 'service_jij055t';
-    const templateId = 'template_jnvlv3b';
+    const serviceId = 'service_k6euo7p';
+    const templateId = 'template_ygearai';
     const publicKey = 'yNaFf9wCjc8dWEEtj';
 
     const templateParams = {
