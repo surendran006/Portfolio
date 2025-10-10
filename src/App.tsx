@@ -204,7 +204,7 @@ function App() {
 
   try {
     const serviceId = 'service_jij055t';
-    const templateId = 'template_jnvlv3b';
+    const templateId = 'template_erqwzv9';
     const publicKey = 'yNaFf9wCjc8dWEEtj';
  
     const templateParams = {
