@@ -205,7 +205,7 @@ function App() {
   try {
     const serviceId = 'service_k6euo7p';
     const templateId = 'template_ygearai';
-    const publicKey = 'yNaFf9wCjc8dWEEtj';
+    const publicKey = 'ZA-pQ89lZWCinkjZO';
 
     const templateParams = {
       from_name: formData.name,
