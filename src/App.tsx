@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from 'emailjs-com';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
+import {
+  Mail,
+  Phone,
+  MapPin,
   Linkedin,
   BookOpen,
   ExternalLink,
@@ -12,7 +12,7 @@ import {
   Calendar,
   Award,
   Target,
-  TrendingUp, 
+  TrendingUp,
   Users,
   BarChart3,
   Search,
@@ -31,6 +31,8 @@ import {
   Briefcase,
   GraduationCap
 } from 'lucide-react';
+
+emailjs.init('yNaFf9wCjc8dWEEtj');
 
 const skills = [
   { name: 'SEO (On-page & Off-page)', level: 100, icon: Search, category: 'SEO' },
