@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import emailjs from 'emailjs-com';
 import {
   Mail,
   Phone,
@@ -31,8 +30,6 @@ import {
   Briefcase,
   GraduationCap
 } from 'lucide-react';
-
-emailjs.init('yNaFf9wCjc8dWEEtj');
 
 const skills = [
   { name: 'SEO (On-page & Off-page)', level: 100, icon: Search, category: 'SEO' },
@@ -201,22 +198,27 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    try {
-      const serviceId = 'service_jij055t';
-      const templateId = 'template_jnvlv3b';
-      const publicKey = 'yNaFf9wCjc8dWEEtj';
-      
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-        to_email: 'surendranbba006@gmail.com'
-      };
+    setSubmitStatus('idle');
 
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
-      
+    try {
+      const response = await fetch('https://formspree.io/f/xanyoqpw', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          _replyto: formData.email,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
