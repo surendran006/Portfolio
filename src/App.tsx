@@ -198,16 +198,16 @@ function App() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
   setIsSubmitting(true);
 
   try {
+    // ✅ Use ONLY public key in frontend
     const serviceId = 'service_k6euo7p';
     const templateId = 'template_ygearai';
     const publicKey = 'ZA-pQ89lZWCinkjZO';
-    const privateKey = 'KSn7RJCda0na4wZ1ngBsU';
-    
+
     const templateParams = {
       from_name: formData.name,
       from_email: formData.email,
@@ -216,23 +216,23 @@ function App() {
       to_email: 'surendranbba006@gmail.com'
     };
 
-    console.log("🔹 Sending Email via EmailJS...");
-    console.log({ serviceId, templateId, publicKey, templateParams });
+    console.log("📨 Sending email via EmailJS...", templateParams);
 
     const response = await emailjs.send(serviceId, templateId, templateParams, publicKey);
-    console.log("✅ EmailJS Response:", response);
+    console.log("✅ Email sent successfully:", response);
 
     setSubmitStatus('success');
     setFormData({ name: '', email: '', subject: '', message: '' });
   } catch (error) {
-    console.error("❌ EmailJS Error:", error);
-    alert("Error: " + JSON.stringify(error));
+    console.error("❌ Email send failed:", error);
+    alert("Failed to send message. Please check console for details.");
     setSubmitStatus('error');
   } finally {
     setIsSubmitting(false);
     setTimeout(() => setSubmitStatus('idle'), 5000);
   }
 };
+
 
 
   const scrollToSection2 = (sectionId) => {
