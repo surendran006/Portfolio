@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import emailjs from 'emailjs-com';
+import { supabase } from './lib/supabase';
 import {
   Mail,
   Phone,
@@ -31,8 +31,6 @@ import {
   Briefcase,
   GraduationCap
 } from 'lucide-react';
-
-emailjs.init('yNaFf9wCjc8dWEEtj');
 
 const skills = [
   { name: 'SEO (On-page & Off-page)', level: 100, icon: Search, category: 'SEO' },
@@ -201,31 +199,28 @@ function App() {
 const handleSubmit = async (e) => {
   e.preventDefault();
   setIsSubmitting(true);
+  setSubmitStatus('idle');
 
   try {
-    // ✅ Use ONLY public key in frontend
-    const serviceId = 'service_k6euo7p';
-    const templateId = 'template_ygearai';
-    const publicKey = 'ZA-pQ89lZWCinkjZO';
+    const { error } = await supabase
+      .from('contact_messages')
+      .insert([
+        {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }
+      ]);
 
-    const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
-      subject: formData.subject,
-      message: formData.message,
-      to_email: 'surendranbba006@gmail.com'
-    };
-
-    console.log("📨 Sending email via EmailJS...", templateParams);
-
-    const response = await emailjs.send(serviceId, templateId, templateParams, publicKey);
-    console.log("✅ Email sent successfully:", response);
+    if (error) {
+      throw error;
+    }
 
     setSubmitStatus('success');
     setFormData({ name: '', email: '', subject: '', message: '' });
   } catch (error) {
-    console.error("❌ Email send failed:", error);
-    alert("Failed to send message. Please check console for details.");
+    console.error('Form submission error:', error);
     setSubmitStatus('error');
   } finally {
     setIsSubmitting(false);
