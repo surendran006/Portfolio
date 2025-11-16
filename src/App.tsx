@@ -364,7 +364,7 @@ function App() {
             >
               Results-driven digital marketing professional specializing in <span className="font-semibold text-teal-600">SEO</span>, 
               <span className="font-semibold text-blue-600"> Google Ads</span>, 
-              <span className="font-semibold text-Navy blue-600"> Meta Ads</span>,and 
+              <span className="font-semibold text-Navyblue-600"> Meta Ads</span>,and 
               <span className="font-semibold text-purple-600"> e-commerce optimization</span>. 
               Passionate about driving measurable growth through data-driven marketing strategies.
             </motion.p>
