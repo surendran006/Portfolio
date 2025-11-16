@@ -351,7 +351,7 @@ function App() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-xl sm:text-2xl md:text-3xl text-transparent bg-gradient-to-r from-teal-600 via-blue-600 to-purple-600 to-Navy blue-600 bg-clip-text mb-6 sm:mb-8 font-bold px-2"
+              className="text-xl sm:text-2xl md:text-3xl text-transparent bg-gradient-to-r from-teal-600 via-blue-600 to-purple-600 to-Navyblue-600 bg-clip-text mb-6 sm:mb-8 font-bold px-2"
             >
               Digital Marketing Executive
             </motion.p>
