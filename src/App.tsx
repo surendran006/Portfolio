@@ -351,7 +351,8 @@ function App() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-xl sm:text-2xl md:text-3xl text-transparent bg-gradient-to-r from-teal-600 via-blue-600 to-purple-600 to-Navyblue-600 bg-clip-text mb-6 sm:mb-8 font-bold px-2"
+              className="text-xl sm:text-2xl md:text-3xl text-transparent bg-gradient-to-r from-teal-600 via-blue-600 to-indigo-800 bg-clip-text mb-6 sm:mb-8 font-bold px-2"
+
             >
               Digital Marketing Executive
             </motion.p>
@@ -364,7 +365,7 @@ function App() {
             >
               Results-driven digital marketing professional specializing in <span className="font-semibold text-teal-600">SEO</span>, 
               <span className="font-semibold text-blue-600"> Google Ads</span>, 
-              <span className="font-semibold text-Navy blue-600"> Meta Ads</span>, and 
+              <span className="font-semibold text-indigo-800"> Meta Ads</span>, and 
               <span className="font-semibold text-purple-600"> e-commerce optimization</span>. 
               Passionate about driving measurable growth through data-driven marketing strategies.
             </motion.p>
