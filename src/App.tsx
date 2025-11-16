@@ -146,6 +146,7 @@ function App() {
   const aboutRef = useRef(null);
   const experienceRef = useRef(null);
   const skillsRef = useRef(null);
+  const bestWorkRef = useRef(null);
   const projectsRef = useRef(null);
   const contactRef = useRef(null);
 
@@ -212,6 +213,7 @@ function App() {
                 { name: 'about', ref: aboutRef },
                 { name: 'experience', ref: experienceRef },
                 { name: 'skills', ref: skillsRef },
+                { name: 'best work', ref: bestWorkRef },
                 { name: 'projects', ref: projectsRef },
                 { name: 'contact', ref: contactRef }
               ].map((section) => (
@@ -268,6 +270,7 @@ function App() {
                     { name: 'about', ref: aboutRef },
                     { name: 'experience', ref: experienceRef },
                     { name: 'skills', ref: skillsRef },
+                    { name: 'best work', ref: bestWorkRef },
                     { name: 'projects', ref: projectsRef },
                     { name: 'contact', ref: contactRef }
                   ].map((section) => (
@@ -692,10 +695,68 @@ function App() {
         </div>
       </section>
 
+      {/* Best Work Section */}
+      <section ref={bestWorkRef} id="best work" className="py-16 sm:py-20 px-3 sm:px-4 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl font-bold text-center mb-8 text-gray-800 relative"
+          >
+            My Best Work
+            <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-blue-50 via-teal-50 to-blue-50 p-8 sm:p-12 rounded-3xl border border-blue-200 shadow-lg"
+          >
+            <div className="space-y-6 text-gray-700 leading-relaxed">
+              <p className="text-lg">
+                I managed the end-to-end SEO strategy for <span className="font-semibold text-gray-800">Supreme India Computers</span>, focusing on strengthening organic visibility, improving search ranking performance, and driving sustained traffic growth.
+              </p>
+
+              <div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                  <span className="w-2 h-2 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full mr-3"></span>
+                  On-Page & Technical SEO
+                </h3>
+                <p>
+                  My work included extensive keyword research targeting high-intent commercial and informational terms, optimizing meta tags, product descriptions, category pages, and implementing structured data to improve SERP appearance. I enhanced technical SEO by improving site speed, fixing crawl and indexing issues, optimizing Core Web Vitals, refining internal linking, and strengthening the overall site architecture for better user and crawler experience.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                  <span className="w-2 h-2 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full mr-3"></span>
+                  Advanced Search Integration
+                </h3>
+                <p>
+                  I expanded the website's reach by integrating it into AI-driven search platforms, ensuring the brand appeared prominently in next-generation search results.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                  <span className="w-2 h-2 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full mr-3"></span>
+                  Off-Page SEO & Results
+                </h3>
+                <p>
+                  Through strategic off-page SEO—such as building high-authority backlinks, creating niche citations, and increasing domain trust—the website experienced significant and measurable improvements. These efforts collectively helped the site achieve <span className="font-semibold text-teal-600">top 10 Google rankings</span> for multiple competitive hardware-related keywords and consistently grow its organic traffic to <span className="font-semibold text-teal-600">2,000+ daily visitors</span>, contributing to stronger brand visibility, improved engagement, and scalable long-term growth.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Projects Section */}
       <section ref={projectsRef} id="projects" className="py-16 sm:py-20 px-3 sm:px-4 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-6xl mx-auto">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -704,8 +765,8 @@ function App() {
             Featured Projects
             <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
