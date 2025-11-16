@@ -363,7 +363,8 @@ function App() {
               className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed px-2"
             >
               Results-driven digital marketing professional specializing in <span className="font-semibold text-teal-600">SEO</span>, 
-              <span className="font-semibold text-blue-600"> Google Ads</span>, and 
+              <span className="font-semibold text-blue-600"> Google Ads</span>, 
+              <span className="font-semibold text-Navy blue-600"> Meta Ads</span>,and 
               <span className="font-semibold text-purple-600"> e-commerce optimization</span>. 
               Passionate about driving measurable growth through data-driven marketing strategies.
             </motion.p>
@@ -456,7 +457,7 @@ function App() {
                     I bring hands-on experience in e-commerce operations, SEO strategies, and paid advertising campaigns.
                   </p>
                   <p className="text-lg">
-                    My expertise spans across multiple digital platforms including <span className="font-semibold">Shopify</span>, 
+                    My expertise spans across multiple digital platforms including <span className="font-semibold">Shopify Made Website</span>, 
                     <span className="font-semibold"> Google Analytics</span>, and <span className="font-semibold">Google Ads, Meta Ads</span> 
                     with a proven track record of delivering measurable improvements in online sales and user experience.
                   </p>
