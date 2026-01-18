@@ -400,7 +400,7 @@ function App() {
               </motion.button>
               
               <motion.a 
-                href="https://drive.google.com/uc?export=download&id=1_fDXmk5FfUv6Bd9W3bukp-T1VyZ4jkB6"
+                href="https://drive.google.com/uc?export=download&id=12MCObiJlP-fUZTf4T2DPqGu0d4w7a-bN"
                 target="_blank" 
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, y: -2 }}
