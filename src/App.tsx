@@ -27,6 +27,7 @@ import {
   Briefcase,
   GraduationCap
 } from 'lucide-react';
+import Hero3D from './components/Hero3D';
 
 const skills = [
   { name: 'SEO (On-page & Off-page)', level: 100, icon: Search, category: 'SEO' },
@@ -312,11 +313,10 @@ function App() {
 
       {/* Hero Section */}
       <section ref={homeRef} id="home" className="pt-20 sm:pt-24 pb-16 sm:pb-20 px-3 sm:px-4 relative overflow-hidden min-h-screen flex items-center">
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-teal-200/30 to-blue-200/30 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-br from-purple-200/30 to-pink-200/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-blue-200/20 to-teal-200/20 rounded-full blur-3xl animate-pulse delay-500"></div>
+        <div className="absolute inset-0 z-0">
+          <Hero3D />
         </div>
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-sm z-0"></div>
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center">
