@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, Suspense } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Mail,
@@ -27,24 +27,16 @@ import {
   Briefcase,
   GraduationCap
 } from 'lucide-react';
-import {
-  AnimatedBackground,
-  HeroFloatingElements,
-  SkillCard3D,
-  ProjectCard3D,
-  About3DElement,
-  Contact3DElement
-} from './components';
 
 const skills = [
-  { name: 'SEO (On-page & Off-page)', level: 100, icon: Search, category: 'SEO', iconType: 'search' },
-  { name: 'Google Ads (PPC)', level: 100, icon: MousePointer, category: 'Paid Advertising', iconType: 'target' },
-  { name: 'Meta Ads', level: 100, icon: BarChart3, category: 'Paid Advertising', iconType: 'chart' },
-  { name: 'Google Analytics', level: 100, icon: TrendingUp, category: 'Analytics', iconType: 'chart' },
-  { name: 'Google Search Console', level: 100, icon: Search, category: 'Analytics', iconType: 'search' },
-  { name: 'Shopify', level: 100, icon: Globe, category: 'E-commerce', iconType: 'default' },
-  { name: 'Social Media Marketing', level: 100, icon: Users, category: 'Social Media', iconType: 'target' },
-  { name: 'Content Optimization', level: 100, icon: TrendingUp, category: 'Content', iconType: 'chart' }
+  { name: 'SEO (On-page & Off-page)', level: 100, icon: Search, category: 'SEO' },
+  { name: 'Google Ads (PPC)', level: 100, icon: MousePointer, category: 'Paid Advertising' },
+  { name: 'Meta Ads', level: 100, icon: BarChart3, category: 'Paid Advertising' },
+  { name: 'Google Analytics', level: 100, icon: TrendingUp, category: 'Analytics' },
+  { name: 'Google Search Console', level: 100, icon: Search, category: 'Analytics' },
+  { name: 'Shopify', level: 100, icon: Globe, category: 'E-commerce' }, 
+  { name: 'Social Media Marketing', level: 100, icon: Users, category: 'Social Media' },
+  { name: 'Content Optimization', level: 100, icon: TrendingUp, category: 'Content' }
 ];
 
 const experience = [
@@ -193,10 +185,6 @@ function App() {
 
   return (
     <div className="min-h-screen w-full max-w-screen overflow-x-hidden">
-      <Suspense fallback={<div className="fixed inset-0 -z-10 bg-gradient-to-br from-gray-50 to-blue-50" />}>
-        <AnimatedBackground />
-      </Suspense>
-
       {/* Navigation */}
       <motion.nav 
         initial={{ y: -100 }}
@@ -324,10 +312,6 @@ function App() {
 
       {/* Hero Section */}
       <section ref={homeRef} id="home" className="pt-20 sm:pt-24 pb-16 sm:pb-20 px-3 sm:px-4 relative overflow-hidden min-h-screen flex items-center">
-        <Suspense fallback={null}>
-          <HeroFloatingElements />
-        </Suspense>
-
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-teal-200/30 to-blue-200/30 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-br from-purple-200/30 to-pink-200/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -448,26 +432,15 @@ function App() {
       {/* About Section */}
       <section ref={aboutRef} id="about" className="py-16 sm:py-20 px-3 sm:px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <motion.h2
+          <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl font-bold text-center mb-8 text-gray-800 relative"
+            className="text-5xl font-bold text-center mb-16 text-gray-800 relative"
           >
             About Me
             <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
           </motion.h2>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-12"
-          >
-            <Suspense fallback={<div className="w-full h-48 bg-gradient-to-r from-gray-100 to-blue-100 rounded-3xl animate-pulse" />}>
-              <About3DElement />
-            </Suspense>
-          </motion.div>
           
           <div className="grid lg:grid-cols-3 gap-8 sm:gap-12">
             <motion.div 
@@ -684,24 +657,40 @@ function App() {
           </motion.h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {skills.map((skill, index) => (
-              <Suspense key={index} fallback={
-                <div className="bg-gradient-to-br from-gray-50 to-blue-50 p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-lg animate-pulse">
-                  <div className="h-32 bg-gray-200 rounded-2xl mb-4"></div>
-                  <div className="h-4 bg-gray-200 rounded mb-3"></div>
-                  <div className="h-3 bg-gray-200 rounded mb-4 w-1/2 mx-auto"></div>
-                  <div className="h-2.5 bg-gray-200 rounded"></div>
-                </div>
-              }>
-                <SkillCard3D
-                  iconType={skill.iconType}
-                  title={skill.name}
-                  category={skill.category}
-                  level={skill.level}
-                  index={index}
-                />
-              </Suspense>
-            ))}
+            {skills.map((skill, index) => {
+              const IconComponent = skill.icon;
+              return (
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="group bg-gradient-to-br from-gray-50 to-blue-50 p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                >
+                  <div className="text-center">
+                    <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-teal-500 to-blue-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <IconComponent className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-3">{skill.name}</h3>
+                    <div className="text-xs sm:text-sm text-gray-600 mb-4">{skill.category}</div>
+                    <div className="relative">
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.5, delay: index * 0.1 }}
+                          className="bg-gradient-to-r from-teal-500 to-blue-500 h-2 rounded-full"
+                        ></motion.div>
+                      </div>
+                      <span className="absolute -top-6 right-0 text-sm font-semibold text-gray-700">{skill.level}%</span>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -806,21 +795,61 @@ function App() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
               {filteredProjects.map((project, index) => (
-                <Suspense key={project.title} fallback={
-                  <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 sm:p-8 animate-pulse">
-                    <div className="h-12 w-12 bg-gray-200 rounded-2xl mb-6"></div>
-                    <div className="h-6 bg-gray-200 rounded mb-3"></div>
-                    <div className="h-20 bg-gray-200 rounded mb-6"></div>
-                    <div className="space-y-2">
-                      <div className="h-3 bg-gray-200 rounded"></div>
-                      <div className="h-3 bg-gray-200 rounded w-5/6"></div>
+                <motion.div 
+                  key={project.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -30 }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden group hover:shadow-2xl transition-all duration-300"
+                >
+                  <div className="p-6 sm:p-8">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-blue-500 rounded-2xl flex items-center justify-center">
+                        <TrendingUp className="w-6 h-6 text-white" />
+                      </div>
+                      <span className="px-3 py-1 bg-gradient-to-r from-teal-50 to-blue-50 text-teal-700 rounded-full text-sm font-medium border border-teal-200">
+                        {project.category}
+                      </span>
+                    </div>
+                    
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 group-hover:text-teal-600 transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    
+                    <p className="text-sm sm:text-base text-gray-600 mb-6 leading-relaxed">
+                      {project.description}
+                    </p>
+                    
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-800 mb-2">Technologies Used:</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.map((tech, techIndex) => (
+                            <span key={techIndex} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div className="pt-4 border-t border-gray-100">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <p className="text-sm text-gray-600 mb-1">Impact:</p>
+                            <p className="font-bold text-lg text-green-600">{project.impact}</p>
+                          </div>
+                          <div className="text-right">
+                            <Users className="w-5 h-5 text-gray-400 group-hover:text-teal-500 transition-colors duration-300" />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                }>
-                  <ProjectCard3D project={project} index={index} />
-                </Suspense>
+                </motion.div>
               ))}
             </AnimatePresence>
           </div>
@@ -830,7 +859,7 @@ function App() {
       {/* Contact Section */}
       <section ref={contactRef} id="contact" className="py-16 sm:py-20 px-3 sm:px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <motion.h2
+          <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -839,17 +868,6 @@ function App() {
             Get In Touch
             <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
           </motion.h2>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-8"
-          >
-            <Suspense fallback={<div className="w-full h-64 bg-gradient-to-r from-gray-100 to-blue-100 rounded-3xl animate-pulse" />}>
-              <Contact3DElement />
-            </Suspense>
-          </motion.div>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
