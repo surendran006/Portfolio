@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ThreeDIntro } from './components/ThreeDIntro';
+import { ThreeDCard } from './components/ThreeDCard';
 import {
   Mail,
   Phone,
@@ -317,20 +319,19 @@ function App() {
           <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-br from-purple-200/30 to-pink-200/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-blue-200/20 to-teal-200/20 rounded-full blur-3xl animate-pulse delay-500"></div>
         </div>
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center">
-            <motion.div 
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ duration: 0.8, type: "spring" }}
-              className="relative inline-block mb-8"
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1, type: "spring" }}
+              className="relative inline-block mb-8 w-40 h-40 sm:w-48 sm:h-48"
             >
-              <div className="w-32 h-32 sm:w-40 sm:h-40 mx-auto bg-gradient-to-br from-teal-500 via-blue-500 to-purple-500 rounded-3xl flex items-center justify-center text-white text-4xl sm:text-5xl font-bold shadow-2xl transform hover:scale-105 transition-transform duration-300 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
-                <span className="relative z-10">MS</span>
+              <div className="w-full h-full rounded-3xl shadow-2xl overflow-hidden">
+                <ThreeDIntro />
               </div>
-              <motion.div 
+              <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
                 className="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full border-3 sm:border-4 border-white shadow-lg flex items-center justify-center"
@@ -473,21 +474,25 @@ function App() {
               </div>
 
               {/* Statistics Cards - BBA, MBA, and 1+ Year Experience */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4" style={{ perspective: '900px' }}>
                 {[
                   { number: 'BBA', label: 'Bachelor of Business Administration', icon: GraduationCap, color: 'from-purple-500 to-pink-500' },
                   { number: 'MBA', label: 'Marketing Management (Correspondence)', icon: GraduationCap, color: 'from-blue-500 to-purple-500' },
                   { number: '1+', label: 'Year Experience', icon: Calendar, color: 'from-teal-500 to-blue-500' }
                 ].map((stat, index) => {
-                  const IconComponent = stat.icon; 
+                  const IconComponent = stat.icon;
                   return (
-                    <motion.div 
+                    <motion.div
                       key={index}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
+                      initial={{ opacity: 0, y: 30, rotateX: -10 }}
+                      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      whileHover={{ scale: 1.05, y: -5 }}
+                      transition={{ delay: index * 0.1, duration: 0.5 }}
+                      whileHover={{ scale: 1.08, y: -5, rotateX: 5, rotateY: -3 }}
+                      style={{
+                        transformStyle: 'preserve-3d',
+                        transform: 'translateZ(0)',
+                      }}
                       className="text-center p-4 sm:p-6 bg-white rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
                     >
                       <div className={`w-12 h-12 mx-auto mb-3 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center shadow-lg`}>
@@ -656,17 +661,21 @@ function App() {
             <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full"></div>
           </motion.h2>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6" style={{ perspective: '800px' }}>
             {skills.map((skill, index) => {
               const IconComponent = skill.icon;
               return (
-                <motion.div 
+                <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 30, rotateX: -15 }}
+                  whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  whileHover={{ scale: 1.08, y: -8, rotateX: 8, rotateY: -5 }}
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    transform: 'translateZ(0)',
+                  }}
                   className="group bg-gradient-to-br from-gray-50 to-blue-50 p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                 >
                   <div className="text-center">
@@ -794,16 +803,20 @@ function App() {
             ))}
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" style={{ perspective: '1000px' }}>
             <AnimatePresence>
               {filteredProjects.map((project, index) => (
-                <motion.div 
+                <motion.div
                   key={project.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 30, rotateX: -20 }}
+                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
                   exit={{ opacity: 0, y: -30 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
+                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                  whileHover={{ y: -8, rotateX: 5, rotateY: -5, scale: 1.02 }}
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    transform: 'translateZ(0)',
+                  }}
                   className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden group hover:shadow-2xl transition-all duration-300"
                 >
                   <div className="p-6 sm:p-8">
