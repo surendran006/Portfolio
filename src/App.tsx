@@ -27,6 +27,7 @@ import {
   Briefcase,
   GraduationCap
 } from 'lucide-react';
+import GrowthAnalytics from './components/GrowthAnalytics';
 
 const skills = [
   { name: 'SEO (On-page & Off-page)', level: 100, icon: Search, category: 'SEO' },
@@ -147,6 +148,7 @@ function App() {
   const experienceRef = useRef(null);
   const skillsRef = useRef(null);
   const bestWorkRef = useRef(null);
+  const growthRef = useRef(null);
   const projectsRef = useRef(null);
   const contactRef = useRef(null);
 
@@ -214,6 +216,7 @@ function App() {
                 { name: 'experience', ref: experienceRef },
                 { name: 'skills', ref: skillsRef },
                 { name: 'best work', ref: bestWorkRef },
+                { name: 'growth', ref: growthRef },
                 { name: 'projects', ref: projectsRef },
                 { name: 'contact', ref: contactRef }
               ].map((section) => (
@@ -271,6 +274,7 @@ function App() {
                     { name: 'experience', ref: experienceRef },
                     { name: 'skills', ref: skillsRef },
                     { name: 'best work', ref: bestWorkRef },
+                    { name: 'growth', ref: growthRef },
                     { name: 'projects', ref: projectsRef },
                     { name: 'contact', ref: contactRef }
                   ].map((section) => (
@@ -750,6 +754,13 @@ function App() {
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Growth Analytics Section */}
+      <section ref={growthRef} id="growth" className="py-16 sm:py-20 px-3 sm:px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <GrowthAnalytics />
         </div>
       </section>
 
