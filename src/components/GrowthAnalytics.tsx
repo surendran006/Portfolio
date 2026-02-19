@@ -74,116 +74,44 @@ const GrowthAnalytics: React.FC = () => {
     }
   ];
 
-  const renderChart = (data: DataPoint[], maxValue: number, chartColor: string = 'from-teal-500 to-blue-500') => {
+  const renderChart = (data: DataPoint[], maxValue: number) => {
+    const chartWidth = 100;
     const barWidth = 12;
-    const spacing = 8;
+    const spacing = 3;
     const chartHeight = 200;
-
-    const points = data.map((point, index) => {
-      const percentage = (point.value / maxValue) * 100;
-      return {
-        x: (index * (barWidth + spacing)) + (barWidth / 2),
-        y: chartHeight - (chartHeight * percentage / 100),
-        percentage
-      };
-    });
-
-    const pathData = points
-      .map((point, index) => `${index === 0 ? 'M' : 'L'} ${point.x} ${point.y}`)
-      .join(' ');
+    const bottomPadding = 40;
 
     return (
-      <div className="relative w-full h-64 px-4">
-        <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox={`0 0 ${(data.length * (barWidth + spacing))} ${chartHeight}`}>
-          <defs>
-            <linearGradient id={`lineGradient-${Math.random()}`} x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="rgb(20, 184, 166)" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="rgb(59, 130, 246)" stopOpacity="0.6" />
-            </linearGradient>
-            <filter id={`glow-${Math.random()}`} x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-              <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
+      <div className="flex items-end justify-center gap-2 h-64 px-2">
+        {data.map((point, index) => {
+          const percentage = (point.value / maxValue) * 100;
+          const barHeight = (chartHeight / 100) * percentage;
 
-          <motion.path
-            d={pathData}
-            fill="none"
-            stroke="url(#lineGradient-content)"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            initial={{ pathLength: 0, opacity: 0 }}
-            whileInView={{ pathLength: 1, opacity: 0.8 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            filter={`url(#glow-${Math.random()})`}
-          />
-
-          <motion.path
-            d={pathData}
-            fill="url(#lineGradient-content)"
-            opacity="0.15"
-            initial={{ pathLength: 0 }}
-            whileInView={{ pathLength: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-          />
-
-          {points.map((point, index) => (
-            <motion.circle
+          return (
+            <motion.div
               key={index}
-              cx={point.x}
-              cy={point.y}
-              r="4"
-              fill="rgb(6, 182, 212)"
-              stroke="white"
-              strokeWidth="2"
-              initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
+              initial={{ height: 0 }}
+              whileInView={{ height: `${percentage}%` }}
               viewport={{ once: true }}
-              transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
-              className="drop-shadow-lg"
-            />
-          ))}
-        </svg>
-
-        <div className="absolute inset-0 flex items-end justify-center gap-2 px-2">
-          {data.map((point, index) => {
-            const percentage = (point.value / maxValue) * 100;
-
-            return (
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="group relative"
+              style={{ minHeight: '4px' }}
+            >
               <motion.div
-                key={index}
-                initial={{ height: 0 }}
-                whileInView={{ height: `${percentage}%` }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="group relative"
-                style={{ minHeight: '2px' }}
+                whileHover={{ scale: 1.1 }}
+                className={`w-${barWidth === 12 ? '3' : '4'} bg-gradient-to-t from-teal-500 to-blue-500 rounded-t-lg cursor-pointer shadow-lg transition-all duration-300 group-hover:shadow-xl`}
+                style={{ width: `${barWidth}px` }}
               >
-                <motion.div
-                  whileHover={{ scale: 1.15 }}
-                  className={`w-3 bg-gradient-to-t ${chartColor} rounded-t-lg cursor-pointer shadow-lg transition-all duration-300 group-hover:shadow-2xl`}
-                />
                 <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-800 text-white text-xs font-semibold py-1 px-2 rounded whitespace-nowrap z-10">
                   {point.value.toLocaleString()}
                 </div>
               </motion.div>
-            );
-          })}
-        </div>
-
-        <div className="absolute inset-x-0 bottom-0 flex items-end justify-center gap-2 px-2 pt-16">
-          {data.map((point) => (
-            <div key={point.month} className="text-center text-xs text-gray-600 font-medium" style={{ width: `${barWidth}px` }}>
-              {point.month}
-            </div>
-          ))}
-        </div>
+              <div className="text-center mt-3 text-xs text-gray-600 font-medium">
+                {point.month}
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     );
   };
@@ -249,7 +177,7 @@ const GrowthAnalytics: React.FC = () => {
             <span className="mx-2 text-gray-400">→</span>
             <span className="font-semibold text-teal-600">2,000+</span> daily visitors
           </div>
-          {renderChart(trafficGrowth, maxTraffic, 'from-teal-500 to-blue-500')}
+          {renderChart(trafficGrowth, maxTraffic)}
           <div className="mt-6 pt-6 border-t border-gray-200">
             <p className="text-sm text-gray-600">
               Achieved through comprehensive SEO optimization, technical improvements, and strategic content positioning targeting high-intent search queries.
@@ -276,7 +204,7 @@ const GrowthAnalytics: React.FC = () => {
             <span className="mx-2 text-gray-400">→</span>
             <span className="font-semibold text-purple-600">9.1%</span> optimized
           </div>
-          {renderChart(conversionGrowth, maxConversion, 'from-purple-500 to-pink-500')}
+          {renderChart(conversionGrowth, maxConversion)}
           <div className="mt-6 pt-6 border-t border-gray-200">
             <p className="text-sm text-gray-600">
               Improved through A/B testing, page speed optimization, mobile responsiveness, and CRO strategies.
@@ -303,7 +231,7 @@ const GrowthAnalytics: React.FC = () => {
             <span className="mx-2 text-gray-400">→</span>
             <span className="font-semibold text-pink-600">9,500+</span> interactions
           </div>
-          {renderChart(engagementGrowth, maxEngagement, 'from-pink-500 to-red-500')}
+          {renderChart(engagementGrowth, maxEngagement)}
           <div className="mt-6 pt-6 border-t border-gray-200">
             <p className="text-sm text-gray-600">
               Built through strategic social media campaigns, paid advertising, email marketing, and community engagement.
