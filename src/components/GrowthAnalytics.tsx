@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { TrendingUp, BarChart3, Users, Globe, Zap } from 'lucide-react';
+import LineChart from './LineChart';
 
 interface DataPoint {
   month: string;
@@ -18,28 +19,28 @@ interface GrowthMetric {
 const GrowthAnalytics: React.FC = () => {
   const trafficGrowth: DataPoint[] = [
     { month: 'Jan', value: 500 },
-    { month: 'Feb', value: 1200 },
-    { month: 'Mar', value: 1800 },
-    { month: 'Apr', value: 2500 },
-    { month: 'May', value: 3200 },
-    { month: 'Jun', value: 2000 }
+    { month: 'Feb', value: 820 },
+    { month: 'Mar', value: 1350 },
+    { month: 'Apr', value: 1680 },
+    { month: 'May', value: 1920 },
+    { month: 'Jun', value: 2100 }
   ];
 
   const conversionGrowth: DataPoint[] = [
-    { month: 'Jan', value: 2 },
-    { month: 'Feb', value: 3.5 },
-    { month: 'Mar', value: 5 },
-    { month: 'Apr', value: 6.8 },
-    { month: 'May', value: 8.2 },
+    { month: 'Jan', value: 2.0 },
+    { month: 'Feb', value: 3.2 },
+    { month: 'Mar', value: 4.8 },
+    { month: 'Apr', value: 6.5 },
+    { month: 'May', value: 7.9 },
     { month: 'Jun', value: 9.1 }
   ];
 
   const engagementGrowth: DataPoint[] = [
     { month: 'Jan', value: 1200 },
-    { month: 'Feb', value: 2800 },
-    { month: 'Mar', value: 4500 },
-    { month: 'Apr', value: 6200 },
-    { month: 'May', value: 7800 },
+    { month: 'Feb', value: 2400 },
+    { month: 'Mar', value: 4100 },
+    { month: 'Apr', value: 6000 },
+    { month: 'May', value: 7600 },
     { month: 'Jun', value: 9500 }
   ];
 
@@ -74,51 +75,6 @@ const GrowthAnalytics: React.FC = () => {
     }
   ];
 
-  const renderChart = (data: DataPoint[], maxValue: number) => {
-    const chartWidth = 100;
-    const barWidth = 12;
-    const spacing = 3;
-    const chartHeight = 200;
-    const bottomPadding = 40;
-
-    return (
-      <div className="flex items-end justify-center gap-2 h-64 px-2">
-        {data.map((point, index) => {
-          const percentage = (point.value / maxValue) * 100;
-          const barHeight = (chartHeight / 100) * percentage;
-
-          return (
-            <motion.div
-              key={index}
-              initial={{ height: 0 }}
-              whileInView={{ height: `${percentage}%` }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="group relative"
-              style={{ minHeight: '4px' }}
-            >
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                className={`w-${barWidth === 12 ? '3' : '4'} bg-gradient-to-t from-teal-500 to-blue-500 rounded-t-lg cursor-pointer shadow-lg transition-all duration-300 group-hover:shadow-xl`}
-                style={{ width: `${barWidth}px` }}
-              >
-                <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-800 text-white text-xs font-semibold py-1 px-2 rounded whitespace-nowrap z-10">
-                  {point.value.toLocaleString()}
-                </div>
-              </motion.div>
-              <div className="text-center mt-3 text-xs text-gray-600 font-medium">
-                {point.month}
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
-    );
-  };
-
-  const maxTraffic = Math.max(...trafficGrowth.map(d => d.value));
-  const maxConversion = Math.max(...conversionGrowth.map(d => d.value));
-  const maxEngagement = Math.max(...engagementGrowth.map(d => d.value));
 
   return (
     <div className="w-full">
@@ -172,13 +128,18 @@ const GrowthAnalytics: React.FC = () => {
               <Globe className="w-5 h-5 text-white" />
             </div>
           </div>
-          <div className="mb-4 text-sm text-gray-600">
+          <div className="mb-6 text-sm text-gray-600">
             <span className="font-semibold text-teal-600">500</span> daily visitors
             <span className="mx-2 text-gray-400">→</span>
-            <span className="font-semibold text-teal-600">2,000+</span> daily visitors
+            <span className="font-semibold text-teal-600">2,100+</span> daily visitors
           </div>
-          {renderChart(trafficGrowth, maxTraffic)}
-          <div className="mt-6 pt-6 border-t border-gray-200">
+          <LineChart
+            data={trafficGrowth}
+            gradientFrom="#14b8a6"
+            gradientTo="#3b82f6"
+            gradientId="traffic-gradient"
+          />
+          <div className="mt-8 pt-6 border-t border-gray-200">
             <p className="text-sm text-gray-600">
               Achieved through comprehensive SEO optimization, technical improvements, and strategic content positioning targeting high-intent search queries.
             </p>
@@ -199,13 +160,18 @@ const GrowthAnalytics: React.FC = () => {
               <BarChart3 className="w-5 h-5 text-white" />
             </div>
           </div>
-          <div className="mb-4 text-sm text-gray-600">
+          <div className="mb-6 text-sm text-gray-600">
             <span className="font-semibold text-purple-600">2%</span> baseline
             <span className="mx-2 text-gray-400">→</span>
             <span className="font-semibold text-purple-600">9.1%</span> optimized
           </div>
-          {renderChart(conversionGrowth, maxConversion)}
-          <div className="mt-6 pt-6 border-t border-gray-200">
+          <LineChart
+            data={conversionGrowth}
+            gradientFrom="#a855f7"
+            gradientTo="#ec4899"
+            gradientId="conversion-gradient"
+          />
+          <div className="mt-8 pt-6 border-t border-gray-200">
             <p className="text-sm text-gray-600">
               Improved through A/B testing, page speed optimization, mobile responsiveness, and CRO strategies.
             </p>
@@ -226,13 +192,18 @@ const GrowthAnalytics: React.FC = () => {
               <Users className="w-5 h-5 text-white" />
             </div>
           </div>
-          <div className="mb-4 text-sm text-gray-600">
+          <div className="mb-6 text-sm text-gray-600">
             <span className="font-semibold text-pink-600">1,200</span> interactions
             <span className="mx-2 text-gray-400">→</span>
             <span className="font-semibold text-pink-600">9,500+</span> interactions
           </div>
-          {renderChart(engagementGrowth, maxEngagement)}
-          <div className="mt-6 pt-6 border-t border-gray-200">
+          <LineChart
+            data={engagementGrowth}
+            gradientFrom="#ef4444"
+            gradientTo="#f97316"
+            gradientId="engagement-gradient"
+          />
+          <div className="mt-8 pt-6 border-t border-gray-200">
             <p className="text-sm text-gray-600">
               Built through strategic social media campaigns, paid advertising, email marketing, and community engagement.
             </p>
