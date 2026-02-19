@@ -18,7 +18,7 @@ interface GrowthMetric {
 
 const GrowthAnalytics: React.FC = () => {
   const trafficGrowth: DataPoint[] = [
-    { month: 'Jan', value: 500 },
+    { month: 'Jan', value: 200 },
     { month: 'Feb', value: 820 },
     { month: 'Mar', value: 1350 },
     { month: 'Apr', value: 1680 },
@@ -129,7 +129,7 @@ const GrowthAnalytics: React.FC = () => {
             </div>
           </div>
           <div className="mb-6 text-sm text-gray-600">
-            <span className="font-semibold text-teal-600">500</span> daily visitors
+            <span className="font-semibold text-teal-600">200</span> daily visitors
             <span className="mx-2 text-gray-400">→</span>
             <span className="font-semibold text-teal-600">2,100+</span> daily visitors
           </div>
